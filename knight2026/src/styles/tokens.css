@@ -1,0 +1,114 @@
+/*
+  K-Night design tokens — site-wide cool light system.
+  Consumed by tailwind.config.js via CSS variables.
+*/
+
+:root {
+  /*
+    Page #FFFFFF · Alt #F8F8FA · Card #FFFFFF
+    Text primary #242422 · secondary #5F6368 · tertiary #80868B
+    Border #E8EAED · Accent #F03466 · Hover #D92D58 · Active #C4284F
+  */
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 248 248 250;
+  --color-surface-muted: 248 248 250;
+  --color-surface-panel: 248 248 250;
+  --color-footer: 255 255 255;
+  --color-text: 36 36 34;
+  --color-text-muted: 95 99 104;
+  --color-text-subtle: 128 134 139;
+  --color-accent: 240 52 102;
+  --color-accent-hover: 217 45 88;
+  --color-accent-active: 196 40 79;
+  --color-accent-muted: 253 232 238;
+  --color-accent-foreground: 255 255 255;
+  /* Primary CTA (Get a Ticket) — alias of accent for product clarity */
+  --color-primary: 240 52 102;
+  --color-primary-hover: 217 45 88;
+  --color-primary-active: 196 40 79;
+  --color-primary-muted: 253 232 238;
+  --color-primary-foreground: 255 255 255;
+  /* Shared accent wash — looping banner + nav CTA test */
+  --gradient-primary: linear-gradient(
+    135deg,
+    rgb(var(--color-primary)) 0%,
+    rgb(var(--color-primary-hover)) 100%
+  );
+  --color-line: 232 234 237;
+  --color-chip-pink: 216 148 168;
+  --color-chip-lavender: 176 184 216;
+  --color-chip-lilac: 208 196 232;
+  --color-chip-ice: 216 228 236;
+  --color-chip-mint: 176 208 204;
+  --gradient-donation-cta-wash: 244 245 249;
+
+  /* Motion / elevation — Google-inspired */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --shadow-sm: 0 1px 2px rgb(60 64 67 / 0.08),
+    0 1px 3px 1px rgb(60 64 67 / 0.06);
+  --shadow-md: 0 1px 3px 1px rgb(60 64 67 / 0.08),
+    0 4px 8px 3px rgb(60 64 67 / 0.06);
+
+  /* Layout — mobile-first page gutter */
+  --space-page-x: 1rem; /* 16px */
+  --nav-height: 5rem; /* 80px — matches Header h-20 */
+  --section-viewport-max: 900px;
+
+  --section-pad-top: calc(var(--nav-height) + 1.25rem);
+  --section-pad-bottom: 2rem;
+
+  /*
+    Typography — mobile-first scale
+    H1–H2: Stack Sans Notch · H3–H5/Body/Footer: Pretendard · Label/Caption: JetBrains Mono
+  */
+  --type-h1-size: 2.5rem;
+  --type-h1-leading: 1;
+  --type-h2-size: 2rem;
+  --type-h2-leading: 1.14;
+  --type-h3-size: 1.5rem;
+  --type-h3-leading: 1.25;
+  --type-h4-size: 1.125rem;
+  --type-h4-leading: 1.23;
+  --type-h5-size: 1.125rem;
+  --type-h5-leading: 1.25;
+  --type-body-size: 1rem;
+  --type-body-leading: 1.65;
+  --type-body-tracking: 0;
+  --type-caption-size: 0.875rem; /* 14px */
+  --type-caption-leading: 1.25rem; /* 20px */
+  --type-caption-tracking: 0.06em;
+  --type-button-size: 0.875rem;
+  --type-button-leading: 1.25rem;
+  --type-footer-size: 0.8125rem;
+  --type-footer-leading: 1.5;
+  --touch-min: 2.75rem; /* 44px */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --space-page-x: 1.5rem; /* 24px */
+    --section-pad-top: 100px;
+    --section-pad-bottom: 100px;
+
+    --type-h1-size: clamp(2.5rem, 7vw, 6rem); /* ~96px */
+    --type-h1-leading: 1;
+    --type-h2-size: clamp(2rem, 4.5vw, 3.5rem); /* 56px */
+    --type-h2-leading: 1.14;
+    --type-h3-size: clamp(1.5rem, 2.5vw, 2rem); /* 32px */
+    --type-h3-leading: 1.35;
+    --type-h4-size: clamp(1.125rem, 2vw, 1.625rem); /* 26px */
+    --type-h4-leading: 1.23;
+    --type-h5-size: 1.5rem; /* 24px */
+    --type-h5-leading: 1.25;
+    --type-body-size: 1rem; /* 16px */
+    --type-body-leading: 1.65;
+    --type-body-tracking: 0;
+    --type-caption-size: 0.875rem;
+    --type-caption-leading: 1.25rem;
+    --type-caption-tracking: 0.06em;
+    --type-button-size: 1rem; /* 16px */
+    --type-button-leading: 1.5rem; /* 24px */
+    --type-footer-size: 0.875rem;
+    --type-footer-leading: 2.25rem;
+  }
+}

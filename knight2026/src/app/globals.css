@@ -1,0 +1,1192 @@
+@import '../styles/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply antialiased;
+    width: 100%;
+    max-width: 100%;
+    scroll-behavior: smooth;
+    /*
+      Proximity snap — softer than mandatory so light wheel/trackpad
+      deltas don’t jump the next section immediately.
+    */
+    scroll-snap-type: y proximity;
+    /* Fixed nav overlays sections — keep 0 so snapped sections align to viewport */
+    scroll-padding-top: 0;
+  }
+
+  body {
+    @apply min-h-dvh bg-surface font-sans text-body text-text;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* White-on-dark PNG assets → ink on light surfaces */
+  .asset-on-dark {
+    filter: brightness(0) saturate(100%);
+  }
+
+  /* Global design system — 4px radius (Home language) */
+  .btn,
+  button,
+  input,
+  textarea,
+  select,
+  .hero-tile,
+  .rounded-ui,
+  .card-ui {
+    border-radius: 4px;
+  }
+
+  .btn {
+    padding-block: 4px;
+  }
+
+  .hero-tile,
+  .bg-surface-panel {
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  /* Past K-Night tiles — Figma 561:6267 radius 8 */
+  .section-past-k-night .marquee-track > div {
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  /* Overview bottom graphic — no radius/clip */
+  .section-overview .container-graphic {
+    overflow: visible;
+    border-radius: 0;
+  }
+
+  /* Shared focus ring — keep for a11y; do not use outline as hover affordance */
+  a:focus-visible,
+  button:focus-visible,
+  .btn:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  /* Prevent media overflow without breaking fixed-aspect cards (slideshow, avatars) */
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-light text-text;
+  }
+
+  h4,
+  h5 {
+    @apply font-sans font-normal text-text;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-surface;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .layout-container {
+    @apply mx-auto w-full max-w-content;
+    padding-left: var(--space-page-x);
+    padding-right: var(--space-page-x);
+  }
+
+  .layout-container-nav {
+    @apply mx-auto flex h-20 w-full max-w-content items-center justify-between;
+    padding-left: var(--space-page-x);
+    padding-right: var(--space-page-x);
+  }
+
+  @media (min-width: 1200px) {
+    .layout-container-nav {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .section-viewport {
+    @apply flex w-full flex-col bg-surface;
+    height: auto;
+    min-height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding-top: var(--section-pad-top);
+    padding-bottom: var(--section-pad-bottom);
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  .section-viewport-network {
+    @apply relative flex w-full flex-col;
+    background-color: #f8f8fa;
+    height: auto;
+    min-height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding-top: 0;
+    padding-bottom: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  /* Homepage: cool alternate surface */
+  .home-page .section-viewport-network {
+    background-color: #f8f8fa;
+  }
+
+  /* L/R strokes were for CTA↔footer pad; network is content-height now */
+  @media (min-width: 1024px) {
+    .section-viewport-network::after {
+      content: none;
+    }
+  }
+
+  /* Tablet/desktop: one-screen sections cap at laptop height on tall displays */
+  @media (min-width: 768px) {
+    .section-viewport:not(.section-viewport-auto) {
+      min-height: min(100svh, var(--section-viewport-max));
+      scroll-snap-stop: always;
+    }
+
+    .section-viewport.section-viewport-auto,
+    .section-viewport-network {
+      min-height: auto;
+      scroll-snap-stop: normal;
+    }
+  }
+
+  /* First section under fixed nav — extra top clearance when needed */
+  .section-page-start {
+    padding-top: calc(var(--nav-height) + 1.5rem);
+  }
+
+  @media (min-width: 768px) {
+    .section-page-start {
+      padding-top: var(--section-pad-top);
+    }
+  }
+
+  /* Subtle alternating depth without changing page/component structure. */
+  .about-page > .section-viewport:nth-of-type(even),
+  .donation-page > .section-viewport:nth-of-type(even),
+  .ticket-page > .section-viewport:nth-of-type(even) {
+    background-color: #f8f8fa;
+  }
+
+  /*
+    Homepage section rhythm — #FFFFFF / #F8F8FA
+    Overview → K-Night → Past → Network → Footer
+  */
+  .home-page .section-overview.section-viewport {
+    background-color: #ffffff;
+  }
+
+  .home-page .section-k-night.section-viewport {
+    background-color: #f8f8fa;
+  }
+
+  .home-page .section-past-k-night.section-viewport {
+    background-color: #ffffff;
+  }
+
+  .home-page .section-network,
+  .about-page .section-network {
+    background-color: #f8f8fa;
+  }
+
+  .home-page > footer,
+  .home-page footer,
+  .about-page > footer,
+  .about-page footer,
+  .donation-page > footer,
+  .donation-page footer,
+  .ticket-page > footer,
+  .ticket-page footer,
+  .agenda-page > footer,
+  .agenda-page footer,
+  .speakers-page > footer,
+  .speakers-page footer {
+    background-color: #ffffff;
+  }
+
+  /*
+    Site-wide polish — hierarchy, typography, surfaces, motion.
+    Matches homepage treatment across About / Ticket / Donation / Agenda / Speakers.
+  */
+  .type-h1,
+  .type-h2 {
+    letter-spacing: -0.02em;
+  }
+
+  .type-h3 {
+    letter-spacing: -0.015em;
+  }
+
+  .type-body {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .type-caption {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .chip-badge {
+    display: inline-flex;
+    width: fit-content;
+    height: 28px;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgb(var(--color-line));
+    background-color: rgb(var(--color-surface-panel));
+    padding-inline: 0.75rem 0.875rem;
+    box-shadow: none;
+  }
+
+  .chip-badge-mark {
+    display: block;
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background-color: rgb(var(--color-accent));
+  }
+
+  .chip-badge-label,
+  .chip-badge .type-button {
+    color: rgb(var(--color-text));
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .surface-card {
+    border-radius: 12px;
+    border: 1px solid rgb(var(--color-line));
+    background-color: #ffffff;
+    box-shadow: none;
+  }
+
+  a.surface-card {
+    transition:
+      border-color 0.25s var(--ease-out),
+      box-shadow 0.3s var(--ease-out),
+      transform 0.3s var(--ease-out);
+  }
+
+  .section-overview .overview-detail-value {
+    letter-spacing: -0.015em;
+  }
+
+  .section-k-night .stat-value {
+    letter-spacing: -0.03em;
+  }
+
+  .section-k-night .stat-label {
+    margin-top: 0.25rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  /* Stats enter — opacity + translateY only (no bounce/scale/glow) */
+  .section-k-night .stat-cell .stat-value,
+  .section-k-night .stat-cell .stat-label {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity 0.55s var(--ease-out),
+      transform 0.55s var(--ease-out);
+    transition-delay: var(--stat-delay, 0ms);
+  }
+
+  .section-k-night .stat-cell--in .stat-value,
+  .section-k-night .stat-cell--in .stat-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-k-night .stat-cell .stat-value,
+    .section-k-night .stat-cell .stat-label {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* Compact social CTA cards — Google product list-tile tone */
+  .social-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .social-card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .social-card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .social-card-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+  }
+
+  /* Network section — content-driven, no viewport fill */
+  .section-network {
+    height: auto;
+    min-height: 0;
+    overflow-x: clip;
+  }
+
+  .section-network-inner {
+    padding-top: 4rem; /* 64px mobile */
+    padding-bottom: 0;
+    gap: 0;
+  }
+
+  .section-network-header {
+    margin-bottom: 2.75rem; /* ~44px → cards */
+  }
+
+  .section-network .social-card-grid {
+    margin-bottom: 3.5rem; /* ~56px → banner on mobile */
+  }
+
+  .section-network .section-cta-banner-slot {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .section-network-inner {
+      padding-top: 5.5rem; /* 88px within 80–96 */
+      padding-bottom: 0;
+    }
+
+    .section-network-header {
+      margin-bottom: 3.25rem; /* 52px within 48–56 */
+    }
+
+    .section-network .social-card-grid {
+      margin-bottom: 4.5rem; /* 72px within 64–80 */
+    }
+  }
+
+  .social-card {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    min-height: 120px;
+    max-height: 160px;
+    height: 100%;
+    padding: 1.125rem 1rem 1.125rem 1.125rem;
+    border: 1px solid rgb(var(--color-line));
+    border-radius: 14px;
+    background-color: #ffffff;
+    box-shadow: none;
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    transition:
+      background-color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out),
+      box-shadow 0.25s var(--ease-out);
+  }
+
+  .social-card-icon {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(var(--color-surface-muted));
+  }
+
+  .social-card-icon img {
+    width: 1.375rem;
+    height: 1.375rem;
+    object-fit: contain;
+  }
+
+  .social-card-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .social-card-name {
+    font-family: theme('fontFamily.sans');
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.375;
+    letter-spacing: -0.01em;
+    color: rgb(var(--color-text));
+  }
+
+  .social-card-action {
+    font-family: theme('fontFamily.sans');
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .social-card-arrow {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--color-text-subtle));
+    transition: transform 0.2s var(--ease-out), color 0.2s var(--ease-out);
+  }
+
+  .social-card:focus-visible {
+    outline: 2px solid rgb(var(--color-primary));
+    outline-offset: 2px;
+  }
+
+  .section-past-k-night .visual-lift {
+    border-radius: 12px;
+  }
+
+  /* Looping CTA — full-bleed accent gradient, white text */
+  .section-looping-cta-banner {
+    height: 3.25rem; /* 52px within 48–56 */
+    width: 100%;
+    border-radius: 0;
+    background: var(--gradient-primary);
+    color: #ffffff;
+    transition:
+      filter 0.2s var(--ease-out),
+      opacity 0.2s var(--ease-out);
+  }
+
+  .section-looping-cta-text {
+    font-family: theme('fontFamily.sans');
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: #ffffff;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .social-card:hover {
+      background-color: rgb(var(--color-surface-muted));
+      border-color: rgb(218 220 224);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-card:hover .social-card-action {
+      color: rgb(var(--color-text));
+    }
+
+    .social-card:hover .social-card-arrow {
+      color: rgb(var(--color-text));
+      transform: translateX(3px);
+    }
+
+    a.surface-card:hover {
+      border-color: rgb(218 220 224);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .section-looping-cta-banner:hover {
+      filter: brightness(0.97);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .social-card,
+    .social-card-arrow,
+    a.surface-card {
+      transition: none;
+    }
+
+    .social-card:hover .social-card-arrow,
+    a.surface-card:hover {
+      transform: none;
+    }
+  }
+
+  /* Section bottom divider — skip last section (before footer) and footer */
+  .home-page > *:not(footer):not(:nth-last-child(2)),
+  .about-page > *:not(footer):not(:nth-last-child(2)),
+  .donation-page > *:not(footer):not(:nth-last-child(2)),
+  .ticket-page > *:not(footer):not(:nth-last-child(2)),
+  .agenda-page > *:not(footer):not(:nth-last-child(2)),
+  .speakers-page > *:not(footer):not(:nth-last-child(2)) {
+    border-bottom: 1px solid rgb(var(--color-line));
+  }
+
+  .section-viewport-network .section-network {
+    @apply shrink-0;
+  }
+
+  /* Legacy wrapper — content height only (About/Home now use SectionNetwork alone) */
+  .section-viewport-network {
+    gap: 0;
+    min-height: auto;
+    padding-bottom: 0;
+  }
+
+  .section-viewport-network .section-cta-banner-slot {
+    margin-top: 0;
+  }
+
+  /* Agenda / Speakers — single section fills viewport; footer sits below */
+  .section-coming-soon.section-viewport {
+    min-height: 100svh;
+    height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding-top: var(--section-pad-top);
+    padding-bottom: var(--section-pad-bottom);
+  }
+
+  @media (min-width: 768px) {
+    .section-coming-soon.section-viewport {
+      min-height: 100svh;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
+  /* Hero mosaic — Figma 486:760 inset, no section pad */
+  .section-hero.section-viewport {
+    padding: 1.25rem; /* 20px */
+  }
+
+  @media (min-width: 768px) {
+    .section-hero.section-viewport {
+      padding: 1.25rem;
+    }
+  }
+
+  /*
+    Overview — flex column; graphic flush to section bottom via mt-auto.
+    Fill the viewport with min-height (never fixed height) so content can grow
+    on small screens; cap with --section-viewport-max on large monitors.
+    Top: section-page-start + copy pt.
+  */
+  .section-overview.section-viewport.section-viewport-auto {
+    @apply gap-0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100svh;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding-top: calc(var(--nav-height) + 1.5rem);
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    /* Beat .home-page even-section bg-surface-elevated */
+    background-color: rgb(var(--color-surface));
+  }
+
+  @media (min-width: 768px) {
+    .section-overview.section-viewport.section-viewport-auto {
+      min-height: min(100svh, var(--section-viewport-max));
+      padding-top: var(--section-pad-top);
+      padding-bottom: 0 !important;
+    }
+  }
+
+  /*
+    Donation intro — Figma 562:6935 content-height (1200 / 1160).
+    First section uses section-page-start (same top clearance as ticket header).
+    Inner container handles the rest (py-12 / md:py-20 / lg:py-[100px]).
+  */
+  .section-donation.section-viewport {
+    height: auto;
+    min-height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding-bottom: 0;
+  }
+
+  .section-donation-support.section-viewport {
+    height: auto;
+    min-height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #f8f8fa;
+  }
+
+  @media (min-width: 768px) {
+    .section-donation.section-viewport {
+      min-height: auto;
+      padding-bottom: 0;
+      scroll-snap-stop: normal;
+    }
+
+    .section-donation-support.section-viewport {
+      min-height: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+      scroll-snap-stop: normal;
+    }
+  }
+
+  /*
+    Ticket first section —
+    content-height by default; landscape laptop fills 100svh.
+  */
+  .section-ticket-header.section-viewport {
+    height: auto;
+    min-height: auto;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  @media (min-width: 768px) {
+    .section-ticket-header.section-viewport {
+      min-height: auto;
+      scroll-snap-stop: normal;
+    }
+  }
+
+  @media (min-width: 1024px) and (max-height: 1100px) and (orientation: landscape) {
+    .section-ticket-header.section-viewport {
+      height: 100svh;
+      min-height: 100svh;
+      box-sizing: border-box;
+      padding-top: calc(var(--nav-height) + 1.25rem);
+      padding-bottom: 2.5rem;
+      scroll-snap-stop: always;
+    }
+
+    .section-ticket-header .section-text {
+      flex: 1 1 auto;
+      min-height: 0;
+      justify-content: flex-start;
+      gap: 1.75rem;
+    }
+
+    .section-ticket-header .ticket-options {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  /* Past K-Night — Figma 561:6267; strokes continue below image row */
+  .section-past-k-night.section-viewport {
+    gap: 3rem;
+    background-color: #ffffff;
+    /* Space below marquee so L/R strokes remain visible (Figma ~100px) */
+    padding-bottom: clamp(3rem, 8vh, 100px) !important;
+  }
+
+  @media (min-width: 768px) {
+    .section-past-k-night.section-viewport {
+      gap: 0;
+      padding-bottom: 100px !important;
+    }
+
+    .section-past-k-night .container-img {
+      @apply mt-auto flex min-h-0 w-full flex-1 items-end;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-past-k-night .marquee {
+      margin-bottom: 0;
+    }
+  }
+
+  .section-overview .overview-copy {
+    @apply relative z-[1] w-full shrink-0;
+  }
+
+  .section-overview .container {
+    @apply w-full shrink-0;
+  }
+
+  /* Flush graphic to section bottom — Figma container 1200px */
+  .section-overview .container-graphic {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: min(1200px, 100%);
+    max-width: 1200px;
+    margin-inline: auto;
+    flex-shrink: 0;
+    margin-top: auto;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    line-height: 0;
+    font-size: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .section-overview .container-graphic img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    vertical-align: bottom;
+  }
+
+  /* K-Night intro — Figma 565:7852; #F8F8FA, H4 copy + 320px stats */
+  .section-k-night.section-viewport {
+    padding-top: 0;
+    padding-bottom: 0;
+    gap: 0;
+    background-color: #f8f8fa;
+  }
+
+  .section-about-header .smooth-3d-slideshow img {
+    image-rendering: auto;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .section-text {
+    @apply layout-container;
+  }
+
+  .section-split-header {
+    @apply flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12;
+  }
+
+  .container-title {
+    @apply w-full shrink-0 lg:w-[min(784px,100%)];
+  }
+
+  .container-aside {
+    @apply w-full shrink-0 lg:ml-auto lg:w-[min(368px,100%)];
+  }
+
+  footer {
+    scroll-snap-align: end;
+    scroll-snap-stop: normal;
+  }
+
+  /* —— Typography system —— */
+  .type-h1 {
+    font-family: theme('fontFamily.display');
+    font-size: var(--type-h1-size);
+    font-weight: 300;
+    line-height: var(--type-h1-leading);
+    letter-spacing: -0.05px;
+  }
+
+  .type-h2 {
+    font-family: theme('fontFamily.display');
+    font-size: var(--type-h2-size);
+    font-weight: 300;
+    line-height: var(--type-h2-leading);
+    letter-spacing: -0.05px;
+  }
+
+  .type-h3 {
+    font-family: theme('fontFamily.sans');
+    font-size: var(--type-h3-size);
+    font-weight: 400;
+    line-height: var(--type-h3-leading);
+    letter-spacing: -0.01em;
+  }
+
+  .type-h4 {
+    font-family: theme('fontFamily.sans');
+    font-size: var(--type-h4-size);
+    font-weight: 400;
+    line-height: var(--type-h4-leading);
+    letter-spacing: -0.01em;
+  }
+
+  .type-h5 {
+    font-family: theme('fontFamily.sans');
+    font-size: var(--type-h5-size);
+    font-weight: 400;
+    line-height: var(--type-h5-leading);
+    letter-spacing: -0.01em;
+  }
+
+  .type-body {
+    font-family: theme('fontFamily.sans');
+    font-size: var(--type-body-size);
+    font-weight: 400;
+    line-height: var(--type-body-leading);
+    letter-spacing: var(--type-body-tracking);
+  }
+
+  .type-caption {
+    font-family: theme('fontFamily.mono');
+    font-size: var(--type-caption-size);
+    font-weight: 400;
+    line-height: var(--type-caption-leading);
+    letter-spacing: var(--type-caption-tracking);
+    text-transform: uppercase;
+  }
+
+  /* Buttons, nav links, chips — JetBrains Mono label */
+  .type-button {
+    font-family: theme('fontFamily.mono');
+    font-size: var(--type-button-size);
+    font-weight: 400;
+    line-height: var(--type-button-leading);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .type-footer {
+    font-family: theme('fontFamily.sans');
+    font-size: var(--type-footer-size);
+    font-weight: 400;
+    line-height: var(--type-footer-leading);
+    letter-spacing: 0;
+    color: rgb(var(--color-text));
+  }
+
+  .btn {
+    @apply type-button inline-flex items-center justify-center gap-2;
+    min-height: var(--touch-min);
+    padding-inline: 1.25rem;
+    padding-block: 4px;
+    border-radius: 8px;
+    transition:
+      background-color 0.2s var(--ease-out),
+      color 0.2s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      opacity 0.2s var(--ease-out),
+      transform 0.25s var(--ease-out),
+      border-color 0.2s var(--ease-out);
+  }
+
+  .btn-accent {
+    background-color: transparent;
+    background-image: var(--gradient-primary);
+    color: rgb(var(--color-primary-foreground));
+    transition:
+      background-color 0.2s var(--ease-out),
+      background-image 0.2s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out),
+      filter 0.2s var(--ease-out);
+  }
+
+  .btn-accent:hover {
+    background-color: transparent;
+    background-image: var(--gradient-primary);
+    filter: brightness(0.97);
+  }
+
+  .btn-accent:active {
+    background-color: transparent;
+    background-image: var(--gradient-primary);
+    filter: brightness(0.94);
+  }
+
+  .btn-accent img {
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  /* Primary CTA — same accent gradient as looping banner */
+  .btn-home-cta {
+    background-color: transparent;
+    background-image: var(--gradient-primary);
+    color: rgb(var(--color-primary-foreground));
+    border-radius: 8px;
+    transition:
+      background-color 0.2s var(--ease-out),
+      background-image 0.2s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out),
+      filter 0.2s var(--ease-out);
+  }
+
+  .btn-home-cta:hover {
+    background-color: transparent;
+    background-image: var(--gradient-primary);
+    filter: brightness(0.97);
+  }
+
+  .btn-home-cta:active {
+    background-color: transparent;
+    background-image: var(--gradient-primary);
+    filter: brightness(0.94);
+  }
+
+  .btn-home-cta img {
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .btn-ghost {
+    @apply border border-line text-text;
+    border-radius: 8px;
+    background-color: transparent;
+    padding-inline: 1.25rem;
+    transition:
+      background-color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out),
+      filter 0.2s var(--ease-out),
+      color 0.2s var(--ease-out);
+  }
+
+  .btn-ghost img {
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .btn-ghost-on-accent {
+    @apply bg-surface text-text;
+  }
+
+  /* Visual tiles — subtle lift (images / featured cards). Text cards use .card-ui / .surface-card. */
+  .card-ui {
+    @apply border border-line bg-surface;
+    border-radius: 12px;
+    transition:
+      border-color 0.25s var(--ease-out),
+      box-shadow 0.3s var(--ease-out);
+  }
+
+  .visual-lift {
+    border-radius: 12px;
+    transition:
+      transform 0.45s var(--ease-out),
+      box-shadow 0.45s var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .visual-lift:hover {
+      z-index: 2;
+      transform: scale(1.02);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Ghost — same lift/shadow motion as accent; soft fill, no border jump */
+    .btn-ghost:hover {
+      background-color: rgb(var(--color-text) / 0.05);
+      border-color: rgb(var(--color-line));
+      filter: brightness(0.97);
+      transform: translateY(-1px);
+      box-shadow:
+        0 1px 2px rgb(var(--color-text) / 0.06),
+        0 4px 12px rgb(var(--color-text) / 0.08);
+    }
+
+    .btn-ghost:hover img {
+      transform: translateX(2px);
+    }
+
+    .btn-ghost:active {
+      filter: brightness(0.94);
+      transform: translateY(0);
+      box-shadow:
+        0 1px 2px rgb(var(--color-text) / 0.05),
+        0 2px 6px rgb(var(--color-text) / 0.06);
+    }
+
+    .btn-ghost-on-accent:hover {
+      filter: brightness(0.97);
+      box-shadow:
+        0 1px 2px rgb(var(--color-text) / 0.06),
+        0 4px 12px rgb(var(--color-text) / 0.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-accent:hover,
+    .btn-home-cta:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 1px 2px rgb(240 52 102 / 0.2),
+        0 4px 12px rgb(240 52 102 / 0.28);
+    }
+
+    .btn-accent:hover img,
+    .btn-home-cta:hover img {
+      transform: translateX(2px);
+    }
+
+    .btn-accent:active,
+    .btn-home-cta:active {
+      transform: translateY(0);
+    }
+
+    .card-ui:hover {
+      border-color: rgb(218 220 224);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .visual-lift,
+    .btn,
+    .btn-home-cta,
+    .btn-ghost,
+    .card-ui {
+      transition:
+        box-shadow 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .visual-lift:hover,
+    .btn-ghost:hover,
+    .btn-accent:hover,
+    .btn-home-cta:hover,
+    .card-ui:hover {
+      transform: none;
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    @apply border border-line bg-surface text-text;
+    border-radius: 4px;
+    min-height: var(--touch-min);
+    padding-inline: 0.875rem;
+    padding-block: 0.5rem;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgb(var(--color-text-subtle));
+  }
+
+  /*
+    Donation CTA banner — Figma 561:5255
+    Background white. Graphic PNG has transparent wash.
+  */
+  .bg-donation-cta {
+    background-color: #ffffff;
+  }
+
+  /* Figma graphic-right ~579×306 @2x — flush bottom-right, no hard edge */
+  .donation-cta-graphic-right {
+    width: min(579px, 52%);
+    max-width: none;
+    height: auto;
+    aspect-ratio: 579 / 306;
+    bottom: 0;
+    right: 0;
+    top: auto;
+  }
+
+  @media (max-width: 767px) {
+    .donation-cta-graphic-right {
+      width: min(300px, 70%);
+      opacity: 0.9;
+      bottom: 0;
+      right: 0;
+      top: auto;
+    }
+  }
+
+  .marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: marquee-scroll var(--marquee-duration, 50s) linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-cta .marquee-track {
+    gap: clamp(2rem, 6vw, 4rem);
+  }
+
+  /* Looping CTA banner — Figma 565:7850 grain overlay */
+  .section-looping-cta-grain {
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .marquee-item {
+    flex: none;
+    white-space: nowrap;
+  }
+
+  .last-knight-track {
+    align-items: flex-end;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
