@@ -1,11 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bay Area K Group Events</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bay Area K-Group — Events</title>
+<meta name="description" content="Archive of Bay Area K-Group events.">
+
+<link
+  rel="stylesheet"
+  as="style"
+  crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Stack+Sans+Notch:wght@300;400&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+  :root{
+    --color-surface: 255 255 255;
+    --color-surface-elevated: 248 248 250;
+    --color-text: 36 36 34;
+    --color-text-muted: 95 99 104;
+    --color-text-subtle: 128 134 139;
+    --color-accent: 240 52 102;
+    --color-accent-hover: 217 45 88;
+    --color-accent-muted: 253 232 238;
+    --color-line: 232 234 237;
+    --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin: 0;
+    background: rgb(var(--color-surface-elevated));
+    color: rgb(var(--color-text));
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  header.masthead{
+    padding: 5rem 0 3.5rem;
+  }
+
+  .chip-badge{
+    display: inline-flex;
+    width: fit-content;
+    height: 28px;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgb(var(--color-line));
+    background-color: rgb(var(--color-surface));
+    padding-inline: 0.75rem 0.875rem;
+    margin: 0 0 1.5rem;
+  }
+  .chip-badge-mark{
+    width: 6px; height: 6px;
+    border-radius: 9999px;
+    background-color: rgb(var(--color-accent));
+    flex-shrink: 0;
+  }
+  .chip-badge-label{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8125rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgb(var(--color-text));
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  h1{
+    font-family: 'Stack Sans Notch', 'Pretendard', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    color: rgb(var(--color-text));
+  }
+
+  .sub{
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: rgb(var(--color-text-muted));
+    max-width: 34em;
+    margin: 0;
+  }
+
+  main{ padding-bottom: 5rem; }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .card{
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    border: 1px solid rgb(var(--color-line));
+    border-radius: 14px;
+    background-color: rgb(var(--color-surface));
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out);
+  }
+  .card:hover{
+    border-color: rgb(var(--color-accent));
+    box-shadow: 0 1px 2px rgb(60 64 67 / 0.08), 0 1px 3px 1px rgb(60 64 67 / 0.06);
+    transform: translateY(-2px);
+  }
+  .card:hover .card-arrow{ color: rgb(var(--color-accent)); gap: 0.6em; }
+
+  .card-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-status{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgb(var(--color-accent));
+    background: rgb(var(--color-accent-muted));
+    border-radius: 9999px;
+    padding: 0.3em 0.7em 0.3em 0.55em;
+  }
+  .card-status::before{
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 9999px;
+    background: rgb(var(--color-accent));
+  }
+
+  .card-index{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.75rem;
+    color: rgb(var(--color-text-subtle));
+    letter-spacing: 0.5px;
+  }
+
+  .card-body{ margin-top: auto; }
+
+  .card-title{
+    font-family: 'Pretendard', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem;
+    color: rgb(var(--color-text));
+  }
+
+  .card-meta{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8125rem;
+    color: rgb(var(--color-text-muted));
+    line-height: 1.7;
+  }
+
+  .card-arrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-top: 1.25rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgb(var(--color-text-muted));
+    transition: color 0.25s var(--ease-out), gap 0.25s var(--ease-out);
+  }
+  .card-arrow svg{ flex-shrink: 0; }
+
+  .card.future{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-style: dashed;
+    background: transparent;
+  }
+  .card.future span{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8125rem;
+    letter-spacing: 0.5px;
+    color: rgb(var(--color-text-subtle));
+  }
+
+  footer{
+    border-top: 1px solid rgb(var(--color-line));
+    padding: 2rem 0 3rem;
+    font-size: 0.875rem;
+    color: rgb(var(--color-text-subtle));
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  footer a{
+    color: rgb(var(--color-text-muted));
+    text-decoration: none;
+  }
+  footer a:hover{ color: rgb(var(--color-accent)); }
+
+  @media (max-width: 480px){
+    header.masthead{ padding: 3.5rem 0 2.5rem; }
+    .card{ padding: 1.5rem 1.375rem 1.25rem; }
+  }
+</style>
 </head>
 <body>
-  <h1>Bay Area K Group Events</h1>
-  <p>Event pages coming soon.</p>
+  <div class="wrap">
+    <header class="masthead">
+      <div class="chip-badge">
+        <span class="chip-badge-mark" aria-hidden="true"></span>
+        <span class="chip-badge-label">Bay Area K-Group</span>
+      </div>
+      <h1>Event Archive</h1>
+      <p class="sub">A running record of Bay Area K-Group gatherings — one page per year, indexed here as it grows.</p>
+    </header>
+
+    <main>
+      <div class="grid">
+        <a class="card" href="knight2026/">
+          <div class="card-top">
+            <span class="card-index">N&deg;001</span>
+            <span class="card-status">Upcoming</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title">K-Night 2026</h2>
+            <p class="card-meta">Sep 12, 2026<br>Computer History Museum, Mountain View, CA</p>
+            <span class="card-arrow">
+              View event
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+        <div class="card future" aria-hidden="true">
+          <span>Next year&rsquo;s event<br>will appear here</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>&copy; Bay Area K-Group</span>
+      <a href="https://bayareakgroup.org/">bayareakgroup.org</a>
+    </footer>
+  </div>
 </body>
 </html>
