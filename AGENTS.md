@@ -74,3 +74,11 @@ events/
 
 - Work happens on `main` via normal pushes (small team). Never force-push.
 - Do not commit as, or impersonate, another contributor.
+- AI attribution in commits is forbidden: never add
+  `Co-Authored-By: Claude <noreply@anthropic.com>` or any other
+  `Co-Authored-By:` / "Generated with" trailer crediting an AI tool.
+  Commit messages must contain no AI-authorship lines at all.
+- Git operations (`git add`, `git commit`, `git push`, or any variant) are
+  the human contributor's responsibility by default. An AI agent may run
+  them only when the human explicitly asks for that operation in the
+  current session — never proactively, and never on its own judgment.
