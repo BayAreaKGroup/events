@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.cursor/
+.venv-img/
+.vscode/
+*.log
+.env
+.env.local
+.env.*.local
