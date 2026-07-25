@@ -7,6 +7,13 @@ import img2 from '@/assets/past-knight/new/k-night-2.jpg'
 import img1 from '@/assets/past-knight/new/k-night-1.jpg'
 import img5 from '@/assets/past-knight/new/k-night-5.jpg'
 import img3 from '@/assets/past-knight/new/k-night-3.jpg'
+import event7 from '@/assets/past-knight/new/events/event-7.jpg'
+import event5 from '@/assets/past-knight/new/events/event-5.jpg'
+import event2 from '@/assets/past-knight/new/events/event-2.jpg'
+import event1 from '@/assets/past-knight/new/events/event-1.jpg'
+import event6 from '@/assets/past-knight/new/events/event-6.jpg'
+import event3 from '@/assets/past-knight/new/events/event-3.jpg'
+import event4 from '@/assets/past-knight/new/events/event-4.jpg'
 import IconArrow from '@/assets/icons/icon-arrow.svg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
@@ -28,6 +35,13 @@ const images = [
     className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]',
     imageClassName: 'origin-bottom scale-[1.15] object-bottom',
   },
+  { src: event2, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: event5, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: event7, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: event1, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: event6, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: event3, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: event4, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
 ] as const
 
 const loopImages = [...images, ...images]

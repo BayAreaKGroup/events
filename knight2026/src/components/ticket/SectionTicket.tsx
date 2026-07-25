@@ -7,7 +7,7 @@ import { fadeUpSubtle } from '@/lib/motion'
 /** Figma section-ticket 562:6728 — viewport 1440, content 1160 (1200−40) */
 
 const noticeIntro =
-  'K-Night에 관심을 가져주셔서 감사합니다. 본 행사는 사전 예약제로 운영되며, 원활한 진행을 위해 아래 안내 사항을 반드시 확인해 주시기 바랍니다.'
+  '본 행사는 사전 예약제로 운영되며, 원활한 진행을 위해 아래 안내 사항을 반드시 확인해 주시기 바랍니다.'
 
 const noticeItems = [
   {

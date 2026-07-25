@@ -13,6 +13,10 @@ import slide8 from '@/assets/about/8.jpg'
 import slide9 from '@/assets/about/9.jpg'
 import slide10 from '@/assets/about/10.jpg'
 import slide11 from '@/assets/about/11.jpg'
+import slide12 from '@/assets/about/12.jpg'
+import slide13 from '@/assets/about/13.jpg'
+import slide14 from '@/assets/about/14.jpg'
+import slide15 from '@/assets/about/15.jpg'
 
 type AutoplayDir = 'leftToRight' | 'rightToLeft'
 type TitleCorner = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
@@ -58,12 +62,12 @@ interface Smooth3DSlideshowProps {
 
 const PERSPECTIVE = 1600
 const SCALE_STEP = 0.16
-const MAX_VISIBLE = 2
+const MAX_VISIBLE = 3
 const DEPTH = 240
-/** fitContainer: compact fan below lg; desktop uses original wide spread */
-const FIT_COMPACT_MAX_WIDTH = 1024
+/** fitContainer: compact fan below 1280px; desktop uses original wide spread */
+const FIT_COMPACT_MAX_WIDTH = 1280
 const MOBILE_MAX_WIDTH = 768
-const FIT_FAN_OFFSET = 0.26
+const FIT_FAN_OFFSET = 0.18
 const FIT_FAN_OFFSET_BUDGET = 0.22
 const FIT_FAN_DEPTH = 1.2
 const DESKTOP_FAN_GAP_MULTIPLIER = 30
@@ -88,6 +92,22 @@ const DEFAULT_SLIDES: Slide[] = [
   {
     image: { src: slide11.src, alt: 'K-Night group photo' },
     title: 'Title 5',
+  },
+  {
+    image: { src: slide12.src, alt: 'K-Night 2025 volunteer group photo' },
+    title: 'Title 6',
+  },
+  {
+    image: { src: slide13.src, alt: 'K-Night event welcome reception' },
+    title: 'Title 7',
+  },
+  {
+    image: { src: slide14.src, alt: 'K-Night volunteer group photo' },
+    title: 'Title 8',
+  },
+  {
+    image: { src: slide15.src, alt: 'K-Night audience group photo' },
+    title: 'Title 9',
   },
 ]
 
