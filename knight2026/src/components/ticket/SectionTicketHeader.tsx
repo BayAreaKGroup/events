@@ -103,7 +103,7 @@ export default function SectionTicketHeader() {
           amount={0.2}
           data-node-id="562:6710"
         >
-          {ticketOptions.map((option) => {
+          {ticketOptions.map((option, index) => {
             const isEarly = option.variant === 'early'
 
             return (
@@ -125,8 +125,9 @@ export default function SectionTicketHeader() {
                       width={500}
                       height={220}
                       className="absolute left-1/2 top-1/2 h-auto w-full max-w-[500px] -translate-x-1/2 -translate-y-1/2"
-                      loading="lazy"
+                      loading={index === 0 ? 'eager' : 'lazy'}
                       decoding="async"
+                      fetchPriority={index === 0 ? 'high' : 'low'}
                     />
                   </div>
 

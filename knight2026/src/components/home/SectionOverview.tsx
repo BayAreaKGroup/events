@@ -73,7 +73,9 @@ export default function SectionOverview() {
           alt=""
           width={897}
           height={750}
+          loading="eager"
           decoding="async"
+          fetchPriority="high"
         />
       </div>
 
@@ -86,7 +88,9 @@ export default function SectionOverview() {
           alt=""
           width={1179}
           height={884}
+          loading="eager"
           decoding="async"
+          fetchPriority="low"
         />
       </div>
 
@@ -188,7 +192,9 @@ export default function SectionOverview() {
             alt=""
             width={1200}
             height={237}
+            loading="lazy"
             decoding="async"
+            fetchPriority="low"
             className="pointer-events-none block h-auto w-full select-none"
           />
         </Reveal>

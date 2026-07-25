@@ -191,11 +191,14 @@ export default function SectionPastKNight() {
                   ]
                     .filter(Boolean)
                     .join(' ')}
+                  width={image.src.width}
+                  height={image.src.height}
                   style={{
                     filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
                   }}
                   loading="lazy"
                   decoding="async"
+                  fetchPriority="low"
                 />
                 <div
                   className="pointer-events-none absolute inset-0 bg-[#f3ddc8]/[0.1] mix-blend-color"

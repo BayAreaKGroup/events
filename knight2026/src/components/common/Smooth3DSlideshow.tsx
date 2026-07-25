@@ -451,7 +451,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                 sizes={`${Math.max(size.width, 1)}px`}
                 className="smooth-3d-slideshow-image size-full object-cover"
                 draggable={false}
-                loading={ax <= 1 ? 'eager' : 'lazy'}
+                loading={isActive ? 'eager' : 'lazy'}
                 decoding={isActive ? 'sync' : 'async'}
                 fetchPriority={isActive ? 'high' : 'low'}
               />

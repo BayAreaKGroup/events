@@ -29,7 +29,15 @@ export default function SocialCard({
       className={['social-card', className].filter(Boolean).join(' ')}
     >
       <span className="social-card-icon" aria-hidden>
-        <img src={icon} alt="" width={24} height={24} decoding="async" />
+        <img
+          src={icon}
+          alt=""
+          width={24}
+          height={24}
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
+        />
       </span>
 
       <span className="social-card-copy">
