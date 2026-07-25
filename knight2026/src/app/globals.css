@@ -840,8 +840,62 @@
     vertical-align: bottom;
   }
 
+  .mobile-overview-graphic {
+    display: none;
+  }
+
   /* Mobile overview graphic stays flush with the bottom edge. */
   @media (max-width: 767px) {
+    .section-overview .overview-title-group {
+      margin-bottom: -0.5rem;
+    }
+
+    .section-overview .overview-aside-title {
+      font-size: var(--type-h3-size);
+      line-height: var(--type-h3-leading);
+    }
+
+    .section-overview .overview-copy {
+      position: absolute;
+      top: 24%;
+      right: 0;
+      bottom: 24%;
+      left: 0;
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .section-overview .container-graphic {
+      display: none;
+    }
+
+    .mobile-overview-graphic {
+      display: block;
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      line-height: 0;
+    }
+
+    .mobile-overview-graphic img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .mobile-overview-graphic-top-right {
+      top: var(--nav-height);
+      right: 0;
+      width: 78%;
+    }
+
+    .mobile-overview-graphic-bottom-left {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
     .section-overview .container-graphic {
       position: absolute;
       right: 0;

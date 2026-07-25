@@ -120,7 +120,7 @@ export default function Header() {
             />
           </Link>
 
-          <div className="flex items-center" style={{ gap: NAV.linkGap }}>
+          <div className="flex items-center gap-2 md:gap-6">
             <ul
               className="hidden items-center md:flex"
               style={{ gap: NAV.linkGap }}
@@ -154,6 +154,15 @@ export default function Header() {
                 className="size-[15px] shrink-0"
                 aria-hidden
               />
+            </Link>
+
+            <Link
+              href="/ticket"
+              className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm md:hidden"
+              onClick={closeMenu}
+              aria-label="Get a Ticket"
+            >
+              Get a Ticket
             </Link>
 
             <button
@@ -239,21 +248,6 @@ export default function Header() {
                 ))}
               </ul>
 
-              <Link
-                href="/ticket"
-                onClick={closeMenu}
-                className={`${ticketBtnClass} w-fit`}
-              >
-                Get a Ticket
-                <img
-                  src={arrowIcon.src}
-                  alt=""
-                  width={15}
-                  height={15}
-                  className="size-[15px] shrink-0"
-                  aria-hidden
-                />
-              </Link>
             </motion.div>
           </motion.div>
         ) : null}
