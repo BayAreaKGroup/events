@@ -128,7 +128,7 @@ export default function SectionDonation() {
                 href={DONATION_LINKS.paypalVenmo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost type-button inline-flex h-11 items-center justify-center px-[21px]"
+                className="btn-ghost type-button inline-flex h-10 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                 data-node-id="570:108"
               >
                 PayPal · Venmo
@@ -137,14 +137,14 @@ export default function SectionDonation() {
                 href={DONATION_LINKS.zeffy}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost type-button inline-flex h-11 items-center justify-center px-[21px]"
+                className="btn-ghost type-button inline-flex h-10 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                 data-node-id="570:110"
               >
                 Zeffy
               </a>
               <a
                 href={DONATION_LINKS.getInTouch}
-                className="btn-ghost type-button inline-flex h-11 items-center justify-center px-[21px]"
+                className="btn-ghost type-button inline-flex h-10 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                 data-node-id="570:112"
               >
                 Get in Touch
@@ -173,7 +173,7 @@ export default function SectionDonation() {
             {benefits.map((benefit, index) => (
               <StaggerItem as="li" key={benefit.title} className="h-full min-w-0">
                 <article
-                  className="flex h-full flex-col overflow-hidden rounded-[4px] border border-line bg-white"
+                  className="flex h-full flex-col overflow-hidden rounded-[12px] border border-line bg-white"
                   data-node-id={benefit.nodeId}
                 >
                   <div

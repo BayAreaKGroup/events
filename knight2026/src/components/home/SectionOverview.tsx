@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import overviewGraphic from '@/assets/overview/container-graphic-5668032.png'
+import mobileOverviewGraphic from '@/assets/overview/mobile-overview.png'
 import EventBadge from '@/components/ui/EventBadge'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
@@ -48,8 +49,8 @@ export default function SectionOverview() {
 
   return (
     <section
-      id="overview"
-      className="section-overview section-viewport section-viewport-auto section-page-start relative flex flex-col bg-white"
+      id="hero"
+      className="section-overview section-viewport section-viewport-auto section-page-start relative flex flex-col bg-white max-md:h-[100dvh] max-md:min-h-[100dvh] max-md:overflow-hidden"
       aria-labelledby="overview-heading"
       data-node-id="566:8030"
       data-name="section-overview"
@@ -63,10 +64,13 @@ export default function SectionOverview() {
       />
 
       <div
-        className="overview-copy relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 pt-12 md:gap-12 md:pt-20 lg:pt-[100px]"
+        className="overview-copy relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 pt-12 md:gap-12 md:pt-20 lg:pt-[100px] max-md:gap-6 max-md:pt-6"
         data-node-id="566:8114"
       >
-        <Stagger className="flex flex-col gap-5" data-node-id="566:8114-inner">
+        <Stagger
+          className="flex flex-col gap-5 max-md:gap-4"
+          data-node-id="566:8114-inner"
+        >
           {/* Badge */}
           <StaggerItem>
             <EventBadge className="overview-badge" label={countdown} />
@@ -74,7 +78,7 @@ export default function SectionOverview() {
 
           {/* Title + aside — align to 1200px content edges */}
           <StaggerItem
-            className="mb-5 flex flex-col gap-8 md:mb-7 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
+            className="mb-5 flex flex-col gap-8 max-md:mb-0 max-md:gap-4 md:mb-7 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
             data-node-id="566:8118"
           >
             <div
@@ -83,7 +87,7 @@ export default function SectionOverview() {
             >
               <h1
                 id="overview-heading"
-                className="type-h1 whitespace-nowrap text-[96px] text-text"
+                className="type-h1 whitespace-nowrap text-[96px] text-text max-md:text-[2.75rem]"
                 data-node-id="566:8121"
               >
                 K-Night 2026
@@ -111,13 +115,13 @@ export default function SectionOverview() {
           {/* Date / Time / Location — 3 × ~equal within 1200 */}
           <Stagger
             as="dl"
-            className="flex w-full flex-col gap-8 lg:flex-row lg:justify-between lg:gap-12"
+            className="flex w-full flex-col gap-8 max-md:gap-2 lg:flex-row lg:justify-between lg:gap-12"
             data-node-id="566:8131"
           >
             {details.map((detail) => (
               <StaggerItem
                 key={detail.label}
-                className="flex w-full flex-col gap-3 lg:max-w-[344px] lg:flex-1"
+                className="flex w-full flex-col gap-3 max-md:gap-0 lg:max-w-[344px] lg:flex-1"
               >
                 <dt className="type-caption">{detail.label}</dt>
                 <dd className="type-body text-text">{detail.value}</dd>
@@ -138,14 +142,20 @@ export default function SectionOverview() {
           variants={fadeUpSubtle}
           delay={0.08}
         >
-          <img
-            src={overviewGraphic.src}
-            alt=""
-            width={1200}
-            height={237}
-            decoding="async"
-            className="pointer-events-none block h-auto w-full select-none"
-          />
+          <picture>
+            <source
+              media="(max-width: 767px)"
+              srcSet={mobileOverviewGraphic.src}
+            />
+            <img
+              src={overviewGraphic.src}
+              alt=""
+              width={1200}
+              height={237}
+              decoding="async"
+              className="pointer-events-none block h-auto w-full select-none"
+            />
+          </picture>
         </Reveal>
       </div>
     </section>

@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="flex w-full flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
           <Link
             href="/#hero"
-            className="inline-flex size-[62px] shrink-0 items-center justify-center transition-opacity hover:opacity-70 md:size-[73px]"
+            className="inline-flex h-6 w-auto shrink-0 items-center justify-center transition-opacity hover:opacity-70 md:size-[73px]"
             aria-label="Bay Area Group home"
             onClick={(event) => {
               if (pathname !== '/') return
@@ -37,7 +37,7 @@ export default function Footer() {
               alt="Bay Area Group"
               width={73}
               height={73}
-              className="size-[39px] object-contain object-center md:size-[73px] md:object-left"
+              className="h-6 w-auto object-contain object-center md:size-[73px] md:object-left"
             />
           </Link>
 
@@ -48,7 +48,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex size-11 items-center justify-center rounded-lg transition-opacity hover:opacity-70 md:size-[52px]"
+                  className="inline-flex size-11 items-center justify-center rounded-[12px] transition-opacity hover:opacity-70 md:size-[52px]"
                   aria-label={social.label}
                 >
                   <img

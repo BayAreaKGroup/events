@@ -141,7 +141,7 @@ export default function SectionTicket() {
 
             <button
               type="button"
-              className="btn-ghost type-button inline-flex h-11 w-fit items-center gap-2 px-5"
+              className="btn-ghost type-button inline-flex h-10 w-fit items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-5 md:text-base"
               data-node-id="561:5145"
             >
               Coming soon

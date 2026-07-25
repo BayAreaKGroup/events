@@ -117,8 +117,8 @@ export default {
         footer: '77.125rem',
       },
       borderRadius: {
-        button: '4px',
-        ui: '4px',
+        button: '12px',
+        ui: '12px',
       },
     },
   },

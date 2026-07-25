@@ -98,11 +98,14 @@ export default function SectionHero() {
   return (
     <section
       id="hero"
-      className="hidden section-hero section-viewport bg-surface"
+      className="hidden max-md:flex max-md:h-[100dvh] max-md:min-h-[100dvh] max-md:items-center max-md:justify-center max-md:py-5 section-hero section-viewport bg-surface"
       aria-label="K-Night 2026"
       data-node-id="486:760"
     >
-      <Stagger className="flex h-full min-h-0 w-full flex-col gap-5" amount={0.15}>
+      <Stagger
+        className="flex h-full min-h-0 w-full flex-col gap-5 max-md:justify-center max-md:gap-3"
+        amount={0.15}
+      >
         {rows.map((row) => (
           <StaggerItem
             key={row.id}
@@ -113,7 +116,7 @@ export default function SectionHero() {
               <div
                 key={cell.id}
                 className={[
-                  'hero-tile relative flex h-full min-h-[7.5rem] min-w-0 items-center justify-center overflow-hidden rounded-[4px] sm:min-h-0',
+                  'hero-tile relative flex h-full min-h-[7.5rem] min-w-0 items-center justify-center overflow-hidden rounded-[12px] sm:min-h-0',
                   cell.label ? '' : 'visual-lift',
                   cell.flex === 'content'
                     ? 'w-fit shrink-0 px-3 sm:px-8 md:px-[60px]'

@@ -75,7 +75,7 @@ export default function SectionDonationSupport() {
                     href={DONATION_LINKS.paypalVenmo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost type-button inline-flex h-11 items-center px-[21px]"
+                    className="btn-ghost type-button inline-flex h-10 items-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                     data-node-id="562:7328"
                   >
                     PayPal · Venmo
@@ -84,7 +84,7 @@ export default function SectionDonationSupport() {
                     href={DONATION_LINKS.zeffy}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost type-button inline-flex h-11 items-center px-[21px]"
+                    className="btn-ghost type-button inline-flex h-10 items-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                     data-node-id="562:7330"
                   >
                     Zeffy
@@ -133,7 +133,7 @@ export default function SectionDonationSupport() {
                 </h3>
 
                 <div
-                  className="flex flex-col gap-3 rounded-lg border border-line bg-white p-6"
+                  className="flex flex-col gap-3 rounded-[12px] border border-line bg-white p-6"
                   data-node-id="562:7337"
                 >
                   <h4
@@ -200,7 +200,7 @@ export default function SectionDonationSupport() {
 
             <StaggerItem>
               <div
-                className="flex items-start gap-3 rounded-lg border border-line px-[25px] py-[13px]"
+                className="flex items-start gap-3 rounded-[12px] border border-line px-[25px] py-[13px]"
                 data-node-id="562:7344"
               >
                 <img
@@ -228,7 +228,7 @@ export default function SectionDonationSupport() {
         {/* CTA — Figma 561:5255 (no stroke; graphic blends into #F4F5F9) */}
         <Reveal variants={fadeUpScale} delay={0.08}>
           <div
-            className="section-donation-cta relative isolate min-h-[17.5rem] overflow-hidden rounded-lg border border-line bg-white sm:min-h-[19rem] md:min-h-[21.125rem]"
+            className="section-donation-cta relative isolate min-h-[17.5rem] overflow-hidden rounded-[12px] border border-line bg-white sm:min-h-[19rem] md:min-h-[21.125rem]"
             data-node-id="561:5255"
           >
             <img
@@ -262,7 +262,7 @@ export default function SectionDonationSupport() {
                 href="https://bayareakgroup.org/events/support-bay-area-k-group/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-home-cta type-button group inline-flex h-11 items-center gap-2 px-5"
+                className="btn-home-cta type-button group inline-flex h-10 items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-5 md:py-0 md:text-base"
                 data-node-id="561:5301"
               >
                 Support K-Group

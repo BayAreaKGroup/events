@@ -134,7 +134,7 @@ export default function SectionTicketHeader() {
                   <button
                     type="button"
                     className={[
-                      'type-button inline-flex h-11 shrink-0 items-center justify-center px-5',
+                      'type-button inline-flex h-10 shrink-0 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-5 md:py-0 md:text-base',
                       isEarly
                         ? 'btn-home-cta'
                         : 'btn-ghost',

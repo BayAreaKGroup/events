@@ -33,7 +33,7 @@ const navLinkClass =
   'type-button text-text transition-opacity hover:opacity-70 active:opacity-70'
 
 const ticketBtnClass =
-  'btn-home-cta type-button inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-lg px-6 py-3'
+  'btn-home-cta type-button inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-[12px] px-6 py-3'
 
 /** trailingSlash-safe active check for flat routes */
 function isActivePath(pathname: string | null, href: string) {
@@ -158,7 +158,7 @@ export default function Header() {
 
             <button
               type="button"
-              className="relative flex size-11 items-center justify-center md:hidden"
+              className="relative flex size-10 items-center justify-center md:hidden"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
               aria-controls={menuId}
@@ -227,7 +227,7 @@ export default function Header() {
                       href={item.href}
                       onClick={closeMenu}
                       className={[
-                        'type-button text-2xl text-text transition-opacity hover:opacity-70 active:opacity-70',
+                        'type-button text-sm text-text transition-opacity hover:opacity-70 active:opacity-70 md:text-2xl',
                         isActivePath(pathname, item.href)
                           ? 'opacity-100'
                           : 'opacity-80',

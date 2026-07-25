@@ -29,7 +29,7 @@ export default function SectionKNight() {
 
       {/* Copy — Pretendard H4 32/40, max 740 — Figma 565:7872 */}
       <Stagger
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-5 py-16 md:py-[100px]"
+        className="section-k-night-copy relative z-[1] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center px-5 py-16 md:py-[100px]"
         data-node-id="565:7872"
       >
         <StaggerItem className="w-full" data-node-id="565:7873">
@@ -48,7 +48,7 @@ export default function SectionKNight() {
 
       {/* Stats band — compact proof strip + one-shot count-up */}
       <div
-        className="relative z-[1] w-full shrink-0 border-t border-line"
+        className="section-k-night-stats relative z-[1] w-full shrink-0 border-t border-line"
         data-node-id="565:7854"
       >
         <AnimatedStats

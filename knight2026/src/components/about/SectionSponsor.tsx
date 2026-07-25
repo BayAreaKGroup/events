@@ -46,7 +46,7 @@ function SponsorLogoCard({
   return (
     <div
       className={[
-        'flex h-[120px] w-full items-center justify-center overflow-hidden rounded-xl border border-line bg-[#F8F8FA] px-4 sm:h-[140px] lg:h-[153px]',
+        'flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-[#F8F8FA] px-4 sm:h-[140px] lg:h-[153px]',
         wide ? 'px-6 sm:px-8' : '',
       ].join(' ')}
     >
@@ -147,7 +147,7 @@ export default function SectionSponsor() {
 
             <a
               href={`mailto:${inquiryEmail}`}
-              className="btn-ghost type-button inline-flex h-11 w-fit shrink-0 items-center gap-2 px-6 py-3"
+              className="btn-ghost type-button inline-flex h-10 w-fit shrink-0 items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
             >
               Get in Touch
               <img

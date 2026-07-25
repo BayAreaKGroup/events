@@ -91,7 +91,7 @@ const DEFAULT_SLIDES: Slide[] = [
 const COMPONENT_DEFAULTS = {
   cardWidth: 400,
   cardHeight: 400,
-  radius: 4,
+  radius: 12,
   tilt: 12,
   sideTilt: 8,
   gap: 8,
@@ -136,7 +136,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
     slides = DEFAULT_SLIDES,
     cardWidth = 400,
     cardHeight = 400,
-    radius = 4,
+    radius = 12,
     tilt = 12,
     sideTilt = 8,
     gap = 8,

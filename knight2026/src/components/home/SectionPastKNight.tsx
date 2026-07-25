@@ -49,7 +49,7 @@ export default function SectionPastKNight() {
       />
 
       <Stagger
-        className="relative z-[1] mx-auto w-full max-w-[1200px] shrink-0 px-5"
+        className="section-past-k-night-copy relative z-[1] mx-auto w-full max-w-[1200px] shrink-0 px-5"
         data-node-id="561:5639"
       >
         <div
@@ -80,7 +80,7 @@ export default function SectionPastKNight() {
               href="https://bayareakgroup.org/category/k-night/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost type-button inline-flex h-11 w-fit items-center gap-2 px-6 py-3"
+              className="btn-ghost type-button inline-flex h-10 w-fit items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
               data-node-id="561:5645"
             >
               View more
@@ -99,7 +99,7 @@ export default function SectionPastKNight() {
       </Stagger>
 
       <Reveal
-        className="container-img marquee relative z-[1] flex w-full shrink-0 md:mt-0"
+        className="section-past-k-night-gallery container-img marquee relative z-[1] flex w-full shrink-0 md:mt-0"
         variants={fadeUpSubtle}
         delay={0.1}
         style={{ ['--marquee-duration' as string]: '36s' }}

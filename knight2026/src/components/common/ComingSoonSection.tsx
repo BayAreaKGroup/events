@@ -23,7 +23,7 @@ export default function ComingSoonSection({
   return (
     <section
       id={id}
-      className="section-coming-soon section-viewport relative items-center justify-center overflow-x-clip px-[var(--space-page-x)]"
+      className="section-coming-soon section-viewport relative items-center justify-center overflow-x-clip px-[var(--space-page-x)] max-md:box-border max-md:h-[100dvh] max-md:min-h-[100dvh] max-md:py-6"
       aria-labelledby={headingId}
     >
       {/* Decorative vertical strokes — Figma bg-stroke 1200px */}
@@ -34,15 +34,16 @@ export default function ComingSoonSection({
 
       <Stagger
         variants={staggerContainerSlow}
-        className="relative z-10 flex w-full max-w-[768px] flex-col items-center gap-6 px-4 text-center md:px-10"
+        className="relative z-10 flex w-full max-w-[768px] flex-col items-center gap-6 px-4 text-center max-md:gap-4 md:px-10"
       >
         <StaggerItem>
           <EventBadge subdued />
         </StaggerItem>
 
-        <StaggerItem className="w-full pt-6">
+        <StaggerItem className="w-full pt-6 max-md:pt-2">
           <p className="type-h5 text-text">
-            올해에도 K-Group의 대표 행사인 K-Night이 찾아옵니다.
+            올해에도 K-Group의 대표 행사인
+            <br className="hidden max-md:block" /> K-Night이 찾아옵니다.
           </p>
         </StaggerItem>
 
@@ -57,7 +58,7 @@ export default function ComingSoonSection({
 
         <StaggerItem
           variants={fadeUpScale}
-          className="flex w-full flex-wrap items-center justify-center gap-3 pt-12"
+          className="flex w-full flex-wrap items-center justify-center gap-3 pt-12 max-md:gap-2 max-md:pt-6"
         >
           <Button href="/" variant="ghost">
             Back to Home
@@ -67,9 +68,10 @@ export default function ComingSoonSection({
           </Button>
         </StaggerItem>
 
-        <StaggerItem className="flex w-full flex-col items-center pt-16">
+        <StaggerItem className="flex w-full flex-col items-center pt-16 max-md:pt-8">
           <p className="type-body">
-            아래 채널을 팔로우하시면 가장 빠르게 업데이트 소식을 받아보실 수
+            아래 채널을 팔로우하시면 가장 빠르게
+            <br className="hidden max-md:block" /> 업데이트 소식을 받아보실 수
             있습니다.
           </p>
           <ul className="mt-0 flex max-w-full flex-wrap items-center justify-center gap-1 sm:gap-[6.5px]">
@@ -79,7 +81,7 @@ export default function ComingSoonSection({
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex size-11 items-center justify-center rounded-lg transition-opacity hover:opacity-70 active:opacity-70 md:size-[52px]"
+                  className="inline-flex size-11 items-center justify-center rounded-[12px] transition-opacity hover:opacity-70 active:opacity-70 md:size-[52px]"
                   aria-label={social.label}
                 >
                   <img
