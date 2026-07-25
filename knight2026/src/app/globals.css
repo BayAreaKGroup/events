@@ -699,6 +699,36 @@
     }
   }
 
+  /* Laptop-height desktops fill one viewport; taller displays stay capped. */
+  @media (min-width: 768px) and (max-height: 900px) {
+    .section-overview.section-viewport.section-viewport-auto {
+      height: 100svh;
+      min-height: 100svh;
+    }
+  }
+
+  @media (min-width: 768px) and (min-height: 901px) {
+    .section-overview.section-viewport.section-viewport-auto {
+      height: auto;
+      min-height: min(100svh, var(--section-viewport-max));
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .section-overview.section-viewport.section-viewport-auto {
+      height: 100svh;
+      min-height: 100svh;
+    }
+  }
+
+  /* Extend the full-viewport treatment to taller laptop browser viewports. */
+  @media (min-width: 768px) and (max-height: 1024px) {
+    .section-overview.section-viewport.section-viewport-auto {
+      height: 100svh;
+      min-height: 100svh;
+    }
+  }
+
   /*
     Donation intro — Figma 562:6935 content-height (1200 / 1160).
     First section uses section-page-start (same top clearance as ticket header).
@@ -932,6 +962,7 @@
   @media (max-width: 767px) {
     .section-about-header .smooth-3d-slideshow {
       overflow: visible !important;
+      touch-action: pan-y;
     }
   }
 
@@ -1310,6 +1341,12 @@
     align-items: flex-end;
   }
 
+  .last-knight-track-content {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+
   .marquee:hover .marquee-track {
     animation-play-state: paused;
   }
@@ -1326,6 +1363,23 @@
   @media (prefers-reduced-motion: reduce) {
     .marquee-track {
       animation: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .section-past-k-night-gallery .last-knight-track {
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .section-past-k-night-gallery .last-knight-track.is-dragging {
+      cursor: grabbing;
+      animation-play-state: paused;
+    }
+
+    .section-past-k-night-gallery .last-knight-track-content {
+      will-change: transform;
     }
   }
 }

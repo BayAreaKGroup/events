@@ -8,7 +8,6 @@ import img1 from '@/assets/past-knight/new/k-night-1.jpg'
 import img5 from '@/assets/past-knight/new/k-night-5.jpg'
 import img3 from '@/assets/past-knight/new/k-night-3.jpg'
 import event7 from '@/assets/past-knight/new/events/event-7.jpg'
-import event5 from '@/assets/past-knight/new/events/event-5.jpg'
 import event2 from '@/assets/past-knight/new/events/event-2.jpg'
 import event1 from '@/assets/past-knight/new/events/event-1.jpg'
 import event6 from '@/assets/past-knight/new/events/event-6.jpg'
@@ -17,6 +16,7 @@ import event4 from '@/assets/past-knight/new/events/event-4.jpg'
 import IconArrow from '@/assets/icons/icon-arrow.svg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
+import { useRef, useState, type PointerEvent } from 'react'
 
 /** Figma 561:5619 — landscape ~462×347, portrait ~347×462 / 355×462 */
 const images = [
@@ -36,7 +36,6 @@ const images = [
     imageClassName: 'origin-bottom scale-[1.15] object-bottom',
   },
   { src: event2, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: event5, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
   { src: event7, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
   { src: event1, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
   { src: event6, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
@@ -48,6 +47,45 @@ const loopImages = [...images, ...images]
 
 /** Figma section-past-k-night 561:6267 — viewport 1440, content 1160 (1200−40) */
 export default function SectionPastKNight() {
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const dragStart = useRef({ pointerId: -1, x: 0, offset: 0 })
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (
+      window.matchMedia('(min-width: 768px)').matches ||
+      (event.pointerType === 'mouse' && event.button !== 0)
+    ) {
+      return
+    }
+
+    dragStart.current = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      offset: dragOffset,
+    }
+    event.currentTarget.setPointerCapture(event.pointerId)
+    setIsDragging(true)
+  }
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (dragStart.current.pointerId !== event.pointerId) return
+
+    setDragOffset(
+      dragStart.current.offset + event.clientX - dragStart.current.x,
+    )
+  }
+
+  const handlePointerEnd = (event: PointerEvent<HTMLDivElement>) => {
+    if (dragStart.current.pointerId !== event.pointerId) return
+
+    dragStart.current.pointerId = -1
+    setIsDragging(false)
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+  }
+
   return (
     <section
       id="past-k-night"
@@ -120,36 +158,52 @@ export default function SectionPastKNight() {
         aria-hidden="true"
         data-node-id="561:5619"
       >
-        <div className="marquee-track last-knight-track items-end gap-6">
-          {loopImages.map((image, i) => (
-            <div
-              key={`${image.src.src}-${i}`}
-              className={[
-                'visual-lift relative shrink-0 overflow-hidden bg-text',
-                image.className,
-              ].join(' ')}
-            >
-              <img
-                src={image.src.src}
-                alt=""
-                className={[
-                  'absolute inset-0 size-full object-cover',
-                  image.imageClassName,
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                style={{
-                  filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
-                }}
-                loading="lazy"
-                decoding="async"
-              />
+        <div
+          className={[
+            'marquee-track last-knight-track items-end gap-6',
+            isDragging ? 'is-dragging' : '',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerEnd}
+          onPointerCancel={handlePointerEnd}
+        >
+          <div
+            className="last-knight-track-content flex items-end gap-6"
+            style={{ transform: `translate3d(${dragOffset}px, 0, 0)` }}
+          >
+            {loopImages.map((image, i) => (
               <div
-                className="pointer-events-none absolute inset-0 bg-[#f3ddc8]/[0.1] mix-blend-color"
-                aria-hidden="true"
-              />
-            </div>
-          ))}
+                key={`${image.src.src}-${i}`}
+                className={[
+                  'visual-lift relative shrink-0 overflow-hidden bg-text',
+                  image.className,
+                ].join(' ')}
+              >
+                <img
+                  src={image.src.src}
+                  alt=""
+                  className={[
+                    'absolute inset-0 size-full object-cover',
+                    image.imageClassName,
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  style={{
+                    filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
+                  }}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-[#f3ddc8]/[0.1] mix-blend-color"
+                  aria-hidden="true"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </Reveal>
     </section>

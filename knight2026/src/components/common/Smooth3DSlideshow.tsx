@@ -7,6 +7,7 @@ import {
   useLayoutEffect,
   useRef,
   type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
 } from 'react'
 import slide7 from '@/assets/about/7.jpg'
 import slide8 from '@/assets/about/8.jpg'
@@ -71,6 +72,7 @@ const FIT_FAN_OFFSET = 0.18
 const FIT_FAN_OFFSET_BUDGET = 0.22
 const FIT_FAN_DEPTH = 1.2
 const DESKTOP_FAN_GAP_MULTIPLIER = 30
+const SWIPE_THRESHOLD = 40
 
 const DEFAULT_SLIDES: Slide[] = [
   {
@@ -187,8 +189,16 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
   const [isMobileViewport, setIsMobileViewport] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth < MOBILE_MAX_WIDTH : true,
   )
+  const [dragOffset, setDragOffset] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
   const lockRef = useRef(false)
+  const dragRef = useRef<{
+    pointerId: number
+    startX: number
+    moved: boolean
+  } | null>(null)
+  const suppressClickRef = useRef(false)
   const n = slides.length
   const moveDur = transition?.duration ?? 0.6
   const autoplayDelay = (transition?.delay ?? 2.5) * 1000
@@ -276,9 +286,65 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
   }, [autoplay, autoplayDirection, autoplayDelay, n, step])
 
   const handleCardClick = (i: number) => {
-    if (autoplay || lockRef.current) return
+    if (autoplay || lockRef.current || suppressClickRef.current) return
     lock()
     setActive(i === active ? (active + 1) % n : i)
+  }
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (
+      !isMobileViewport ||
+      n <= 1 ||
+      (event.pointerType === 'mouse' && event.button !== 0)
+    ) {
+      return
+    }
+
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      moved: false,
+    }
+    suppressClickRef.current = false
+    setIsDragging(true)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current
+    if (!drag || drag.pointerId !== event.pointerId) return
+
+    const deltaX = event.clientX - drag.startX
+    if (Math.abs(deltaX) > 4) {
+      drag.moved = true
+      event.preventDefault()
+    }
+    setDragOffset(deltaX)
+  }
+
+  const handlePointerEnd = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current
+    if (!drag || drag.pointerId !== event.pointerId) return
+
+    const deltaX = event.clientX - drag.startX
+    const didSwipe = drag.moved && Math.abs(deltaX) >= SWIPE_THRESHOLD
+    dragRef.current = null
+    setIsDragging(false)
+    setDragOffset(0)
+
+    if (drag.moved) {
+      suppressClickRef.current = true
+      window.setTimeout(() => {
+        suppressClickRef.current = false
+      }, 250)
+    }
+
+    if (didSwipe && !lockRef.current) {
+      lock()
+      setActive((current) =>
+        (((current + (deltaX < 0 ? 1 : -1)) % n) + n) % n,
+      )
+    }
   }
 
   const stageHeight = Math.max(size.height, Math.round(size.height * 1.15))
@@ -315,6 +381,10 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
         perspective: `${PERSPECTIVE}px`,
         overflow: isCompactFit ? 'hidden' : 'visible',
       }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerEnd}
+      onPointerCancel={handlePointerEnd}
     >
       <div
         style={{
@@ -360,8 +430,10 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                 height: size.height,
                 borderRadius: radius,
                 overflow: 'hidden',
-                transform: `translate(-50%, -50%) translateX(${rel * offsetStep}px) translateZ(${-ax * depthStep}px) rotateY(${-rel * tilt}deg) rotateZ(${rel * resolvedSideTilt}deg) scale(${Math.max(0.4, 1 - ax * SCALE_STEP)})`,
-                transition: `transform ${moveDur}s cubic-bezier(0.22, 1, 0.36, 1), opacity ${moveDur}s cubic-bezier(0.22, 1, 0.36, 1)`,
+                transform: `translate(-50%, -50%) translateX(${rel * offsetStep + (isDragging ? dragOffset : 0)}px) translateZ(${-ax * depthStep}px) rotateY(${-rel * tilt}deg) rotateZ(${rel * resolvedSideTilt}deg) scale(${Math.max(0.4, 1 - ax * SCALE_STEP)})`,
+                transition: isDragging
+                  ? 'none'
+                  : `transform ${moveDur}s cubic-bezier(0.22, 1, 0.36, 1), opacity ${moveDur}s cubic-bezier(0.22, 1, 0.36, 1)`,
                 opacity: visible ? sideOpacity : 0,
                 cursor: 'pointer',
                 pointerEvents: visible ? 'auto' : 'none',
