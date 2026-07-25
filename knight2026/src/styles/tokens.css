@@ -72,16 +72,16 @@
   --type-h5-size: 1.125rem;
   --type-h5-leading: 1.25;
   --type-body-size: 1rem;
-  --type-body-leading: 1.65;
+  --type-body-leading: 1.6;
   --type-body-tracking: 0;
-  --type-caption-size: 0.875rem; /* 14px */
-  --type-caption-leading: 1.25rem; /* 20px */
-  --type-caption-tracking: 0.06em;
+  --type-caption-size: 0.75rem; /* 12px */
+  --type-caption-leading: 1.125rem; /* 18px */
+  --type-caption-tracking: 0.07em;
   --type-button-size: 0.875rem;
   --type-button-leading: 1.25rem;
   --type-button-tracking: 0.06em;
-  --type-footer-size: 0.8125rem;
-  --type-footer-leading: 1.5;
+  --type-footer-size: 0.75rem; /* 12px */
+  --type-footer-leading: 1.5; /* 18px */
   --touch-min: 2.75rem; /* 44px */
 }
 

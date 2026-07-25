@@ -1,10 +1,10 @@
 import Footer from '@/components/layout/Footer'
-import SectionAgendaComing from '@/components/agenda/SectionAgendaComing'
+import SectionSponsor from '@/components/sponsors/SectionSponsor'
 
-export default function AgendaPage() {
+export default function SponsorsPage() {
   return (
-    <main className="agenda-page">
-      <SectionAgendaComing />
+    <main className="sponsors-page">
+      <SectionSponsor />
       <Footer />
     </main>
   )

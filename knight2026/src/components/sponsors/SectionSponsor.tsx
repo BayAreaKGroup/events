@@ -2,11 +2,10 @@
 
 import type { StaticImageData } from 'next/image'
 import sponsorLogo from '@/assets/sponsors/consulate-sf.png'
-import IconArrow from '@/assets/icons/icon-arrow.svg'
 import { Reveal } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
 
-/** Figma section-sponsor 562:6869 — viewport 1440, content 1160 (1200−40) */
+/** Figma section-sponsor 562:6869 — viewport 1440, content 1160 */
 
 const logos = Array.from({ length: 8 }, () => sponsorLogo)
 
@@ -25,7 +24,6 @@ const marqueeItems = [
 
 const loopItems = [...marqueeItems, ...marqueeItems]
 
-/** Figma grid: row1 = wide + 2 · row2 = 4 standard (7 slots) */
 const sponsorSlots = [
   { wide: true, logo: logos[0] },
   { wide: false, logo: logos[1] },
@@ -69,11 +67,10 @@ export default function SectionSponsor() {
   return (
     <section
       id="sponsor"
-      className="section-sponsor section-viewport section-viewport-auto relative overflow-x-clip bg-white"
+      className="section-sponsor section-viewport relative min-h-[100svh] overflow-x-clip bg-white"
       aria-labelledby="sponsor-heading"
       data-node-id="562:6869"
     >
-      {/* Decorative vertical strokes — Figma bg-stroke 1200px */}
       <div
         className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-[min(1200px,100%)] -translate-x-1/2 border-x border-line lg:block"
         aria-hidden
@@ -94,9 +91,8 @@ export default function SectionSponsor() {
           </h2>
         </Reveal>
 
-        {/* Logo grid — 4 cols @ 1160: 254×4 + 48×3; diamond spans 2 (=556) */}
         <Reveal delay={0.08} data-node-id="562:6878">
-          <ul className="grid w-full list-none grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-6 lg:gap-x-12 lg:gap-y-12">
+          <ul className="hidden w-full list-none grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-4 sm:gap-x-6 sm:gap-y-6 lg:gap-x-12 lg:gap-y-12">
             {sponsorSlots.map((slot, index) => (
               <li
                 key={`sponsor-${index}`}
@@ -132,7 +128,6 @@ export default function SectionSponsor() {
           </div>
         </Reveal>
 
-        {/* Previous CTA banner — margins unified with section container */}
         <Reveal delay={0.16}>
           <div className="card-ui flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
@@ -150,14 +145,6 @@ export default function SectionSponsor() {
               className="btn-ghost type-button inline-flex h-10 w-fit shrink-0 items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
             >
               Get in Touch
-              <img
-                src={IconArrow.src}
-                alt=""
-                width={15}
-                height={15}
-                className="asset-on-dark size-[15px] shrink-0"
-                aria-hidden
-              />
             </a>
           </div>
         </Reveal>
