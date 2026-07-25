@@ -29,20 +29,20 @@ type TicketOption = {
 
 const ticketOptions: TicketOption[] = [
   {
-    id: 'regular',
-    image: ticketRegular,
-    imageAlt: 'K-Night 2026 Regular Ticket',
-    price: '$80',
-    buttonLabel: 'Buy regular Ticket',
-    variant: 'regular',
-  },
-  {
     id: 'early-bird',
     image: ticketEarly,
     imageAlt: 'K-Night 2026 Early Bird Ticket',
     price: '$70',
     buttonLabel: 'Buy Early Bird Ticket',
     variant: 'early',
+  },
+  {
+    id: 'regular',
+    image: ticketRegular,
+    imageAlt: 'K-Night 2026 Regular Ticket',
+    price: '$80',
+    buttonLabel: 'Buy regular Ticket',
+    variant: 'regular',
   },
 ]
 

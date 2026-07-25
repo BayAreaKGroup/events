@@ -1,23 +1,33 @@
 'use client'
 
-import img1 from '@/assets/past-knight/img1.jpg'
-import img2 from '@/assets/past-knight/img2.jpg'
-import img3 from '@/assets/past-knight/img3.jpg'
-import img4 from '@/assets/past-knight/img4.jpg'
-import img5 from '@/assets/past-knight/img5.jpg'
-import img6 from '@/assets/past-knight/img6.jpg'
+import img4 from '@/assets/past-knight/new/k-night-4.jpg'
+import img7 from '@/assets/past-knight/new/k-night-7.jpg'
+import img8 from '@/assets/past-knight/new/k-night-8.jpg'
+import img2 from '@/assets/past-knight/new/k-night-2.jpg'
+import img1 from '@/assets/past-knight/new/k-night-1.jpg'
+import img5 from '@/assets/past-knight/new/k-night-5.jpg'
+import img3 from '@/assets/past-knight/new/k-night-3.jpg'
 import IconArrow from '@/assets/icons/icon-arrow.svg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
 
 /** Figma 561:5619 — landscape ~462×347, portrait ~347×462 / 355×462 */
 const images = [
-  { src: img1, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]' },
-  { src: img2, className: 'h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]' },
-  { src: img3, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]' },
-  { src: img4, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]' },
-  { src: img5, className: 'h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[355px]' },
-  { src: img6, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]' },
+  { src: img4, className: 'h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]', imageClassName: '' },
+  { src: img7, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  {
+    src: img8,
+    className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]',
+    imageClassName: 'origin-bottom scale-[1.15] object-bottom',
+  },
+  { src: img2, className: 'h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]', imageClassName: '' },
+  { src: img1, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  { src: img5, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  {
+    src: img3,
+    className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]',
+    imageClassName: 'origin-bottom scale-[1.15] object-bottom',
+  },
 ] as const
 
 const loopImages = [...images, ...images]
@@ -64,7 +74,7 @@ export default function SectionPastKNight() {
             data-node-id="561:5642"
           >
             <p className="type-body" data-node-id="561:5644">
-              Explore highlights from previous years.
+              Explore highlights from previous K-Nights.
             </p>
             <a
               href="https://bayareakgroup.org/category/k-night/"
@@ -92,6 +102,7 @@ export default function SectionPastKNight() {
         className="container-img marquee relative z-[1] flex w-full shrink-0 md:mt-0"
         variants={fadeUpSubtle}
         delay={0.1}
+        style={{ ['--marquee-duration' as string]: '36s' }}
         aria-hidden="true"
         data-node-id="561:5619"
       >
@@ -107,12 +118,20 @@ export default function SectionPastKNight() {
               <img
                 src={image.src.src}
                 alt=""
-                className="absolute inset-0 size-full object-cover"
+                className={[
+                  'absolute inset-0 size-full object-cover',
+                  image.imageClassName,
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                style={{
+                  filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
+                }}
                 loading="lazy"
                 decoding="async"
               />
               <div
-                className="pointer-events-none absolute inset-0 bg-black/[0.06]"
+                className="pointer-events-none absolute inset-0 bg-[#f3ddc8]/[0.1] mix-blend-color"
                 aria-hidden="true"
               />
             </div>

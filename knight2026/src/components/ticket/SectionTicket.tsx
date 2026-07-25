@@ -11,28 +11,38 @@ const noticeIntro =
 
 const noticeItems = [
   {
-    title: '티켓 혜택',
+    title: '티켓',
     description: '모든 티켓에는 식사 및 음료가 포함되어 있습니다.',
   },
   {
-    title: '좌석 안내',
+    title: '좌석',
     description: '본 행사는 지정 좌석이 없는 자유석 행사입니다.',
+  },
+  {
+    title: '매진 유의',
+    description:
+      '준비된 티켓이 조기에 마감 될 수 있으니 구매를 서둘러 주세요.',
+  },
+  {
+    title: '사전 예매 및 환불',
+    description:
+      ' 9/10(목) 오후 5시까지만 가능합니다.',
   },
   {
     title: '현장 판매 없음',
     description:
-      '모든 티켓은 사전 구매로만 진행되며, 행사 당일 현장 판매는 절대 불가합니다.',
+      '모든 티켓은 사전 구매로만 판매되며, 행사 당일 현장 판매는 진행하지 않습니다.',
   },
   {
-    title: '미성년자 입장 불가 · No Minors Allowed',
-    description: '본 행사에는 미성년자가 동반 및 입장할 수 없습니다.',
+    title: '미성년자 입장 불가',
+    description: '본 행사에는 미성년자가 동반 및 입장할 수 없습니다.(No Minors Allowed)',
   },
   {
-    title: '진행 언어 안내 · Language',
-    description: '본 행사에는 미성년자가 동반 및 입장할 수 없습니다.',
+    title: '진행 언어',
+    description: '본 행사는 한국어로 진행되며, 부분적으로 영어를 사용합니다.',
   },
   {
-    title: '스트리밍 및 녹화본 미제공 · No Streaming, No Replay',
+    title: '스트리밍 및 녹화본 미제공',
     description:
       'K-Night은 유튜브 스트리밍 및 행사 후 녹화본을 공유하지 않습니다. 모든 세션은 오직 행사 당일 현장에서만 공개됩니다.',
   },

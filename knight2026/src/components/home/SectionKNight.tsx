@@ -6,7 +6,7 @@ import AnimatedStats from '@/components/home/AnimatedStats'
 const stats = [
   { end: 14, suffix: 'th', label: 'Years of K-Night' },
   { end: 400, suffix: '+', label: 'Professionals' },
-  { end: 1, suffix: '', label: 'Evening To Connect' },
+  { end: 7000, suffix: '+', label: 'K-GROUP MEMBERS' },
 ] as const
 
 /** Figma section-k-night 565:7852 — viewport 1440, content 1160 (1200−40) */

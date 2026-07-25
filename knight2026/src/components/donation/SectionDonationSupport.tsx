@@ -32,7 +32,7 @@ export default function SectionDonationSupport() {
           className="flex w-full flex-col gap-10 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="562:7243"
         >
-          <Reveal className="w-full shrink-0 lg:sticky lg:top-28 lg:w-[371px]">
+          <Reveal className="w-full shrink-0 lg:w-[371px]">
             <h2
               id="donation-support-heading"
               className="type-h3 text-text"
@@ -265,7 +265,7 @@ export default function SectionDonationSupport() {
                 className="btn-home-cta type-button group inline-flex h-11 items-center gap-2 px-5"
                 data-node-id="561:5301"
               >
-                Suppot K-Group
+                Support K-Group
                 <img
                   src={IconArrow.src}
                   alt=""

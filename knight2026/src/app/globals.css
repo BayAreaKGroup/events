@@ -16,13 +16,6 @@
     width: 100%;
     max-width: 100%;
     scroll-behavior: smooth;
-    /*
-      Proximity snap — softer than mandatory so light wheel/trackpad
-      deltas don’t jump the next section immediately.
-    */
-    scroll-snap-type: y proximity;
-    /* Fixed nav overlays sections — keep 0 so snapped sections align to viewport */
-    scroll-padding-top: 0;
   }
 
   body {
@@ -143,8 +136,6 @@
     overflow-y: visible;
     padding-top: var(--section-pad-top);
     padding-bottom: var(--section-pad-bottom);
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
   }
 
   .section-viewport-network {
@@ -156,8 +147,6 @@
     overflow-y: visible;
     padding-top: 0;
     padding-bottom: 0;
-    scroll-snap-align: start;
-    scroll-snap-stop: normal;
   }
 
   /* Homepage: cool alternate surface */
@@ -176,13 +165,11 @@
   @media (min-width: 768px) {
     .section-viewport:not(.section-viewport-auto) {
       min-height: min(100svh, var(--section-viewport-max));
-      scroll-snap-stop: always;
     }
 
     .section-viewport.section-viewport-auto,
     .section-viewport-network {
       min-height: auto;
-      scroll-snap-stop: normal;
     }
   }
 
@@ -668,14 +655,12 @@
     .section-donation.section-viewport {
       min-height: auto;
       padding-bottom: 0;
-      scroll-snap-stop: normal;
     }
 
     .section-donation-support.section-viewport {
       min-height: auto;
       padding-top: 0;
       padding-bottom: 0;
-      scroll-snap-stop: normal;
     }
   }
 
@@ -693,7 +678,6 @@
   @media (min-width: 768px) {
     .section-ticket-header.section-viewport {
       min-height: auto;
-      scroll-snap-stop: normal;
     }
   }
 
@@ -704,7 +688,6 @@
       box-sizing: border-box;
       padding-top: calc(var(--nav-height) + 1.25rem);
       padding-bottom: 2.5rem;
-      scroll-snap-stop: always;
     }
 
     .section-ticket-header .section-text {
@@ -801,6 +784,12 @@
     transform: translateZ(0);
   }
 
+  /* Keep the about gallery bright and warm across mixed lighting conditions. */
+  .section-about-header .smooth-3d-slideshow-image {
+    filter: brightness(1.14) contrast(0.97) saturate(0.94) sepia(0.07)
+      hue-rotate(-4deg);
+  }
+
   .section-text {
     @apply layout-container;
   }
@@ -818,8 +807,6 @@
   }
 
   footer {
-    scroll-snap-align: end;
-    scroll-snap-stop: normal;
   }
 
   /* —— Typography system —— */

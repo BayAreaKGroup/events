@@ -60,7 +60,7 @@ export default function SectionAboutHeader() {
               className="type-body mx-auto w-full max-w-[654px] text-center"
               data-node-id="561:5868"
             >
-              Bay Area K Group(BAKG)은 실리콘밸리 지역에서 테크 분야에 종사하는
+              Bay Area K-Group(BAKG)은 실리콘밸리 지역에서 테크 분야에 종사하는
               한인들의 자발적 조직입니다. 정기적으로 컨퍼런스와 네트워킹 행사를
               통해 회원들간의 기술 교류와 친목도모를 돕고 있으며, 다양한
               기술분야와 취미에 따라 여러 소모임들이 자율적으로 운영되고
@@ -85,6 +85,7 @@ export default function SectionAboutHeader() {
             opacity={100}
             autoplay
             autoplayDirection="rightToLeft"
+            transition={{ duration: 0.45, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
             fitContainer
             className="mx-auto w-full"
           />

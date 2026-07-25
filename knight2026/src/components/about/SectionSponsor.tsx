@@ -116,7 +116,7 @@ export default function SectionSponsor() {
         >
           <div
             className="marquee-track items-center gap-0"
-            style={{ ['--marquee-duration' as string]: '36s' }}
+            style={{ ['--marquee-duration' as string]: '26s' }}
           >
             {loopItems.map((item, index) => (
               <span

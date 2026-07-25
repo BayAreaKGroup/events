@@ -8,7 +8,6 @@ import logo from '@/assets/icons/logo-bay-area.png'
 import logoMark from '@/assets/icons/logo-bay-area-mark.png'
 import arrowIcon from '@/assets/icons/icon-arrow.svg'
 import { easeOutExpo } from '@/lib/motion'
-import { useSmartNavbar } from '@/hooks/useSmartNavbar'
 
 /** Figma nav-bar 561:6099 — follows page color tokens (cool on home, warm elsewhere) */
 const NAV = {
@@ -25,6 +24,7 @@ const NAV = {
 const navItems = [
   { href: '/agenda', label: 'Agenda' },
   { href: '/speakers', label: 'Speakers' },
+  { href: '/sponsors', label: 'Sponsors' },
   { href: '/about', label: 'About' },
   { href: '/donation', label: 'Donation' },
 ] as const
@@ -41,16 +41,10 @@ function isActivePath(pathname: string | null, href: string) {
 }
 
 export default function Header() {
-  const { hidden } = useSmartNavbar()
   const reduceMotion = useReducedMotion()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
-
-  useEffect(() => {
-    document.documentElement.dataset.navHidden =
-      !menuOpen && hidden ? 'true' : 'false'
-  }, [hidden, menuOpen])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -71,16 +65,14 @@ export default function Header() {
 
   const closeMenu = () => setMenuOpen(false)
 
-  const navHidden = !menuOpen && hidden
-
   return (
     <>
       <motion.header
         className="fixed inset-x-0 top-0 z-50 border-b border-line bg-surface"
-        style={{ height: NAV.height, willChange: 'transform' }}
+        style={{ height: NAV.height }}
         data-node-id="561:6099"
         initial={false}
-        animate={{ y: navHidden ? '-100%' : 0 }}
+        animate={{ y: 0 }}
         transition={
           reduceMotion
             ? { duration: 0 }

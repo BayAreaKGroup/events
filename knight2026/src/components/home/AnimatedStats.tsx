@@ -70,7 +70,7 @@ function StatCell({
       <dt className="sr-only">{label}</dt>
       <dd className="stat-value type-h2 text-text">
         <span className="stat-value-num tabular-nums">
-          {shown}
+          {shown.toLocaleString('en-US')}
           {suffix}
         </span>
       </dd>

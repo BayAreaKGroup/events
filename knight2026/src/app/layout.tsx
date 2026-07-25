@@ -1,9 +1,8 @@
-import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import Header from '@/components/layout/Header'
 import './globals.css'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'K-Night 2026',
   description:
     'K-Night 2026 — Bay Area K-Group 연례 테크 이벤트. Sep 12, Computer History Museum, Mountain View.',

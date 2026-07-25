@@ -1,11 +1,23 @@
 'use client'
 
-import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import overviewGraphic from '@/assets/overview/container-graphic-5668032.png'
-import arrowIcon from '@/assets/icons/icon-arrow.svg'
 import EventBadge from '@/components/ui/EventBadge'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
+
+const eventTime = new Date('2026-09-12T16:00:00-07:00').getTime()
+
+function getCountdown() {
+  const remaining = Math.max(0, eventTime - Date.now())
+  const totalSeconds = Math.floor(remaining / 1000)
+  const days = Math.floor(totalSeconds / 86400)
+  const hours = Math.floor((totalSeconds % 86400) / 3600)
+  const minutes = Math.floor((totalSeconds % 3600) / 60)
+  const seconds = totalSeconds % 60
+
+  return `D-${days} ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
 
 const details = [
   {
@@ -14,7 +26,7 @@ const details = [
   },
   {
     label: 'Time',
-    value: '4:00 – 9:00 PM',
+    value: '4:00 – 8:30 PM',
   },
   {
     label: 'Location',
@@ -24,6 +36,16 @@ const details = [
 
 /** Figma section-overview 566:8030 — viewport 1440, content ~1000 (608 / 48 / 304) */
 export default function SectionOverview() {
+  const [countdown, setCountdown] = useState(getCountdown)
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setCountdown(getCountdown())
+    }, 1000)
+
+    return () => window.clearInterval(interval)
+  }, [])
+
   return (
     <section
       id="overview"
@@ -44,58 +66,45 @@ export default function SectionOverview() {
         className="overview-copy relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 pt-12 md:gap-12 md:pt-20 lg:pt-[100px]"
         data-node-id="566:8114"
       >
-        <Stagger className="flex flex-col gap-10 md:gap-12" data-node-id="566:8114-inner">
+        <Stagger className="flex flex-col gap-5" data-node-id="566:8114-inner">
           {/* Badge */}
           <StaggerItem>
-            <EventBadge className="overview-badge" />
+            <EventBadge className="overview-badge" label={countdown} />
           </StaggerItem>
 
           {/* Title + aside — align to 1200px content edges */}
           <StaggerItem
-            className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
+            className="mb-5 flex flex-col gap-8 md:mb-7 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
             data-node-id="566:8118"
           >
             <div
               className="w-full shrink-0 lg:max-w-[608px]"
               data-node-id="566:8119"
             >
-              <h2
+              <h1
                 id="overview-heading"
-                className="type-h1 uppercase text-text"
+                className="type-h1 whitespace-nowrap text-[96px] text-text"
                 data-node-id="566:8121"
               >
-                Beyond
-                <br />
-                Tech
-              </h2>
+                K-Night 2026
+              </h1>
             </div>
 
             <div
-              className="flex w-full shrink-0 flex-col gap-7 lg:w-[min(344px,100%)]"
+              className="flex w-full shrink-0 flex-col gap-2 lg:w-[min(344px,100%)]"
               data-node-id="566:8122"
             >
+              <h4 className="type-h4 uppercase text-text">Beyond Tech</h4>
               <p
                 className="type-body max-w-[344px] text-pretty"
                 data-node-id="566:8124"
               >
-                Connecting people beyond technology in the age of AI, where
-                human connection and goodwill inspire growth.
+                Connecting people beyond technology in
+                <br />
+                the age of AI, where human connection
+                <br />
+                and goodwill inspire growth.
               </p>
-              <Link
-                href="/ticket"
-                className="btn-ghost type-button inline-flex h-11 w-fit items-center gap-2 px-6 py-3"
-                data-node-id="566:8125"
-              >
-                Get a Ticket
-                <img
-                  src={arrowIcon.src}
-                  alt=""
-                  width={15}
-                  height={15}
-                  className="size-[15px] shrink-0"
-                  aria-hidden
-                />
-              </Link>
             </div>
           </StaggerItem>
 

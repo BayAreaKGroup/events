@@ -17,9 +17,9 @@ export const socialChannels = [
     icon: iconKGroupFooter.src,
   },
   {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/bayareakgroup/',
-    icon: iconFacebookFooter.src,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/bay-area-k-group/',
+    icon: iconLinkedInFooter.src,
   },
   {
     label: 'Instagram',
@@ -27,39 +27,25 @@ export const socialChannels = [
     icon: iconInstagramFooter.src,
   },
   {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/bayareakgroup/',
+    icon: iconFacebookFooter.src,
+  },
+  {
     label: 'KakaoTalk',
     href: 'https://open.kakao.com/o/gIf6Qpwe',
     icon: iconKakaoFooter.src,
   },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/bay-area-k-group/',
-    icon: iconLinkedInFooter.src,
-  },
 ] as const
 
-/** Network section cards — order matches prior Figma 561:6411 */
+/** Network section cards */
 export const networkSocialCards = [
   {
     id: 'website',
-    name: 'Website',
+    name: 'K-Group',
     action: 'Visit',
     href: 'https://bayareakgroup.org/',
     icon: iconWebsite.src,
-  },
-  {
-    id: 'facebook',
-    name: 'Facebook',
-    action: 'Follow',
-    href: 'https://www.facebook.com/bayareakgroup/',
-    icon: iconFacebook.src,
-  },
-  {
-    id: 'kakao',
-    name: 'KakaoTalk',
-    action: 'Join',
-    href: 'https://open.kakao.com/o/gIf6Qpwe',
-    icon: iconKakao.src,
   },
   {
     id: 'linkedin',
@@ -74,5 +60,19 @@ export const networkSocialCards = [
     action: 'Follow',
     href: 'https://www.instagram.com/bayareakgroup/',
     icon: iconInstagram.src,
+  },
+  {
+    id: 'facebook',
+    name: 'Facebook',
+    action: 'Follow',
+    href: 'https://www.facebook.com/bayareakgroup/',
+    icon: iconFacebook.src,
+  },
+  {
+    id: 'kakao',
+    name: 'KakaoTalk',
+    action: 'Join',
+    href: 'https://open.kakao.com/o/gIf6Qpwe',
+    icon: iconKakao.src,
   },
 ] as const
