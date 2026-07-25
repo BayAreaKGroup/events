@@ -74,7 +74,7 @@ export default function SectionAboutHeader() {
 
         <StaggerItem
           variants={fadeUpScale}
-          className="container-images relative mx-auto flex w-full min-w-0 max-w-full shrink-0 justify-center"
+          className="container-images relative -mx-5 flex w-[calc(100%+2.5rem)] min-w-0 max-w-none shrink-0 justify-center md:mx-0 md:w-full md:max-w-full"
           data-name="container-images"
         >
           <Smooth3DSlideshow
@@ -83,8 +83,10 @@ export default function SectionAboutHeader() {
             cardHeight={400}
             radius={12}
             opacity={100}
+            sideTilt={0}
             autoplay
             autoplayDirection="rightToLeft"
+            mobileSideTilt={0}
             transition={{ duration: 0.45, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
             fitContainer
             className="mx-auto w-full"

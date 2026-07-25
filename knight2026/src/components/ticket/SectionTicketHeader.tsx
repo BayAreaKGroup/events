@@ -4,17 +4,18 @@ import type { StaticImageData } from 'next/image'
 import ticketEarly from '@/assets/ticket/ticket-early.png'
 import ticketRegular from '@/assets/ticket/ticket-regular.png'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
+import EventBadge from '@/components/ui/EventBadge'
 
 /** Figma section-ticket-header 562:6586 — viewport 1440, content 1160 (1200−40) */
 
 const eventDetails = (
   <>
-    September 12, Saturday
-    <br />
-    <br />
-    Computer History Museum
-    <br />
-    Mountain View, CA
+    <span className="block">September 12, Saturday</span>
+    <span className="mt-2 block md:mt-4">
+      Computer History Museum
+      <br />
+      Mountain View, CA
+    </span>
   </>
 )
 
@@ -74,13 +75,16 @@ export default function SectionTicketHeader() {
             className="w-full shrink-0 lg:w-[741px]"
             data-node-id="562:6699"
           >
-            <h2
-              id="ticket-header-heading"
-              className="type-h2 text-text md:whitespace-nowrap"
-              data-node-id="562:6700"
-            >
-              Ticket
-            </h2>
+            <div className="flex flex-col gap-4">
+              <EventBadge label="OPENS AUG 6, 12:00 PM PDT" />
+              <h2
+                id="ticket-header-heading"
+                className="type-h2 text-text md:whitespace-nowrap"
+                data-node-id="562:6700"
+              >
+                Ticket
+              </h2>
+            </div>
           </StaggerItem>
 
           <StaggerItem
@@ -120,7 +124,7 @@ export default function SectionTicketHeader() {
                       alt={option.imageAlt}
                       width={500}
                       height={220}
-                      className="absolute left-1/2 top-1/2 size-[300px] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover sm:size-[400px] md:size-[500px]"
+                      className="absolute left-1/2 top-1/2 h-auto w-full max-w-[500px] -translate-x-1/2 -translate-y-1/2"
                       loading="lazy"
                       decoding="async"
                     />
@@ -131,8 +135,10 @@ export default function SectionTicketHeader() {
                     <p className="type-caption">Per person</p>
                   </div>
 
-                  <button
-                    type="button"
+                  <a
+                    href="https://www.zeffy.com/en-US/ticketing/k-night--2026"
+                    target="_blank"
+                    rel="noreferrer"
                     className={[
                       'type-button inline-flex h-10 shrink-0 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-5 md:py-0 md:text-base',
                       isEarly
@@ -141,7 +147,7 @@ export default function SectionTicketHeader() {
                     ].join(' ')}
                   >
                     {option.buttonLabel}
-                  </button>
+                  </a>
                 </div>
               </StaggerItem>
             )

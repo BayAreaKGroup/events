@@ -139,7 +139,7 @@ export default function SectionTeam() {
                   {group.heading}
                 </h3>
 
-                <ul className="grid w-full list-none grid-cols-1 gap-x-8 gap-y-7 min-[480px]:grid-cols-2 sm:grid-cols-3 lg:col-span-2 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-8">
+                <ul className="grid w-full list-none grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-3 lg:col-span-2 lg:grid-cols-4 lg:gap-x-10 lg:gap-y-8">
                   {group.members.map((member, memberIndex) => (
                     <TeamMemberRow
                       key={`${group.heading}-${groupIndex}-${memberIndex}`}

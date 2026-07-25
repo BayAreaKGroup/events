@@ -52,6 +52,8 @@ interface Smooth3DSlideshowProps {
   className?: string
   /** Scale cards and fan spread to stay centered within the parent width */
   fitContainer?: boolean
+  /** Override side-card tilt on mobile without changing larger viewports. */
+  mobileSideTilt?: number
 }
 
 const PERSPECTIVE = 1600
@@ -60,6 +62,7 @@ const MAX_VISIBLE = 2
 const DEPTH = 240
 /** fitContainer: compact fan below lg; desktop uses original wide spread */
 const FIT_COMPACT_MAX_WIDTH = 1024
+const MOBILE_MAX_WIDTH = 768
 const FIT_FAN_OFFSET = 0.26
 const FIT_FAN_OFFSET_BUDGET = 0.22
 const FIT_FAN_DEPTH = 1.2
@@ -151,6 +154,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
     style,
     className,
     fitContainer = false,
+    mobileSideTilt,
   } = mergedProps
 
   const [active, setActive] = useState(0)
@@ -159,6 +163,9 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
     typeof window !== 'undefined'
       ? window.innerWidth < FIT_COMPACT_MAX_WIDTH
       : true,
+  )
+  const [isMobileViewport, setIsMobileViewport] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth < MOBILE_MAX_WIDTH : true,
   )
   const rootRef = useRef<HTMLDivElement>(null)
   const lockRef = useRef(false)
@@ -202,7 +209,14 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
     const update = () => setIsCompactViewport(!mq.matches)
     update()
     mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
+    const mobileMq = window.matchMedia(`(min-width: ${MOBILE_MAX_WIDTH}px)`)
+    const updateMobile = () => setIsMobileViewport(!mobileMq.matches)
+    updateMobile()
+    mobileMq.addEventListener('change', updateMobile)
+    return () => {
+      mq.removeEventListener('change', update)
+      mobileMq.removeEventListener('change', updateMobile)
+    }
   }, [])
 
   useEffect(() => {
@@ -254,6 +268,10 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
     ? size.width * FIT_FAN_OFFSET
     : gap * DESKTOP_FAN_GAP_MULTIPLIER * sizeScale
   const depthStep = isCompactFit ? DEPTH * sizeScale * FIT_FAN_DEPTH : DEPTH
+  const resolvedSideTilt =
+    isMobileViewport && mobileSideTilt !== undefined
+      ? mobileSideTilt
+      : sideTilt
   const stageWidth = isCompactFit
     ? '100%'
     : Math.round(size.width + 2 * MAX_VISIBLE * offsetStep + size.width * 0.2)
@@ -322,7 +340,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                 height: size.height,
                 borderRadius: radius,
                 overflow: 'hidden',
-                transform: `translate(-50%, -50%) translateX(${rel * offsetStep}px) translateZ(${-ax * depthStep}px) rotateY(${-rel * tilt}deg) rotateZ(${rel * sideTilt}deg) scale(${Math.max(0.4, 1 - ax * SCALE_STEP)})`,
+                transform: `translate(-50%, -50%) translateX(${rel * offsetStep}px) translateZ(${-ax * depthStep}px) rotateY(${-rel * tilt}deg) rotateZ(${rel * resolvedSideTilt}deg) scale(${Math.max(0.4, 1 - ax * SCALE_STEP)})`,
                 transition: `transform ${moveDur}s cubic-bezier(0.22, 1, 0.36, 1), opacity ${moveDur}s cubic-bezier(0.22, 1, 0.36, 1)`,
                 opacity: visible ? sideOpacity : 0,
                 cursor: 'pointer',

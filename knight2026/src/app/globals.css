@@ -928,6 +928,13 @@
       hue-rotate(-4deg);
   }
 
+  /* Mobile gallery is full-bleed; keep its card shadows visible below the stage. */
+  @media (max-width: 767px) {
+    .section-about-header .smooth-3d-slideshow {
+      overflow: visible !important;
+    }
+  }
+
   .section-text {
     @apply layout-container;
   }

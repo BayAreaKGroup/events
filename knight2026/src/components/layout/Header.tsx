@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useState } from 'react'
 import logo from '@/assets/icons/logo-bay-area.png'
 import logoMark from '@/assets/icons/logo-bay-area-mark.png'
 import arrowIcon from '@/assets/icons/icon-arrow.svg'
@@ -45,6 +45,19 @@ export default function Header() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
+
+  useEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration
+    window.history.scrollRestoration = 'manual'
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   useEffect(() => {
     if (!menuOpen) return
