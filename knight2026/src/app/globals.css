@@ -386,7 +386,13 @@
   /* Homepage mobile rhythm: equal viewport sections with a shared heading start. */
   @media (max-width: 767px) {
     .home-page .section-k-night,
-    .home-page .section-past-k-night,
+    .home-page .section-past-k-night {
+      box-sizing: border-box;
+      height: auto;
+      min-height: 0;
+      overflow-y: visible;
+    }
+
     .home-page .section-network {
       box-sizing: border-box;
       height: 100dvh;
@@ -407,7 +413,7 @@
     }
 
     .home-page .section-k-night-stats {
-      margin-top: auto;
+      margin-top: 0;
     }
 
     .home-page .section-past-k-night {
@@ -417,7 +423,7 @@
     }
 
     .home-page .section-past-k-night-gallery {
-      margin-top: auto;
+      margin-top: 0;
       margin-bottom: 0;
     }
 
@@ -874,8 +880,25 @@
     display: none;
   }
 
+  .mobile-overview-stage {
+    display: contents;
+  }
+
   /* Mobile overview graphic stays flush with the bottom edge. */
   @media (max-width: 767px) {
+    .section-overview {
+      overflow-x: clip;
+      overflow-y: visible;
+    }
+
+    .mobile-overview-stage {
+      position: sticky;
+      top: 0;
+      display: block;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
     .section-overview .overview-title-group {
       margin-bottom: -0.5rem;
     }
@@ -943,6 +966,21 @@
     padding-bottom: 0;
     gap: 0;
     background-color: #f8f8fa;
+  }
+
+  @media (max-width: 767px) {
+    /* Mobile K-Night content flows naturally instead of filling a viewport. */
+    .home-page .section-k-night.section-viewport {
+      gap: 2rem;
+      padding-top: 0;
+      padding-bottom: 2.5rem;
+    }
+
+    .home-page .section-past-k-night.section-viewport {
+      gap: 1.5rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem !important;
+    }
   }
 
   .section-about-header .smooth-3d-slideshow img {

@@ -1,8 +1,12 @@
 import type { ReactNode } from 'react'
+import ogImage from '@/assets/metadata/og-image.jpg'
 import Header from '@/components/layout/Header'
 import './globals.css'
 
+const ogImageUrl = ogImage.src
+
 export const metadata = {
+  metadataBase: new URL('https://bayareakgroup.github.io'),
   title: 'K-Night 2026',
   description:
     'K-Night 2026 — Bay Area K-Group 연례 테크 이벤트. Sep 12, Computer History Museum, Mountain View.',
@@ -11,12 +15,21 @@ export const metadata = {
     description:
       'Bay Area K-Group 연례 테크 이벤트. Sep 12, 2026 · Computer History Museum, Mountain View, CA',
     type: 'website',
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: 'K-Night 2026 — Beyond Tech',
+      },
+    ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'K-Night 2026',
     description:
       'Bay Area K-Group 연례 테크 이벤트. Sep 12, 2026 · Computer History Museum, Mountain View, CA',
+    images: [ogImageUrl],
   },
 }
 

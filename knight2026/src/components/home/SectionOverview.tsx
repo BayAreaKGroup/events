@@ -64,6 +64,8 @@ export default function SectionOverview() {
         data-name="bg-stroke"
       />
 
+      <div className="mobile-overview-stage">
+
       <div
         className="mobile-overview-graphic mobile-overview-graphic-top-right"
         aria-hidden="true"
@@ -198,6 +200,7 @@ export default function SectionOverview() {
             className="pointer-events-none block h-auto w-full select-none"
           />
         </Reveal>
+      </div>
       </div>
     </section>
   )
