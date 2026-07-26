@@ -18,12 +18,21 @@ import slide12 from '@/assets/about/12.jpg'
 import slide13 from '@/assets/about/13.jpg'
 import slide14 from '@/assets/about/14.jpg'
 import slide15 from '@/assets/about/15.jpg'
+import mobileSlide7 from '@/assets/about/mobile/7.jpg'
+import mobileSlide8 from '@/assets/about/mobile/8.jpg'
+import mobileSlide9 from '@/assets/about/mobile/9.jpg'
+import mobileSlide10 from '@/assets/about/mobile/10.jpg'
+import mobileSlide11 from '@/assets/about/mobile/11.jpg'
+import mobileSlide12 from '@/assets/about/mobile/12.jpg'
+import mobileSlide13 from '@/assets/about/mobile/13.jpg'
+import mobileSlide14 from '@/assets/about/mobile/14.jpg'
+import mobileSlide15 from '@/assets/about/mobile/15.jpg'
 
 type AutoplayDir = 'leftToRight' | 'rightToLeft'
 type TitleCorner = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
 
 interface Slide {
-  image?: { src?: string; alt?: string }
+  image?: { src?: string; mobileSrc?: string; alt?: string }
   title?: string
 }
 
@@ -76,39 +85,39 @@ const SWIPE_THRESHOLD = 40
 
 const DEFAULT_SLIDES: Slide[] = [
   {
-    image: { src: slide7.src, alt: 'K-Night audience cheering' },
+    image: { src: slide7.src, mobileSrc: mobileSlide7.src, alt: 'K-Night audience cheering' },
     title: 'Title 1',
   },
   {
-    image: { src: slide8.src, alt: 'K-Night highlights collage' },
+    image: { src: slide8.src, mobileSrc: mobileSlide8.src, alt: 'K-Night highlights collage' },
     title: 'Title 2',
   },
   {
-    image: { src: slide9.src, alt: 'K-Night panel discussion' },
+    image: { src: slide9.src, mobileSrc: mobileSlide9.src, alt: 'K-Night panel discussion' },
     title: 'Title 3',
   },
   {
-    image: { src: slide10.src, alt: 'K-Night workshop session' },
+    image: { src: slide10.src, mobileSrc: mobileSlide10.src, alt: 'K-Night workshop session' },
     title: 'Title 4',
   },
   {
-    image: { src: slide11.src, alt: 'K-Night group photo' },
+    image: { src: slide11.src, mobileSrc: mobileSlide11.src, alt: 'K-Night group photo' },
     title: 'Title 5',
   },
   {
-    image: { src: slide12.src, alt: 'K-Night 2025 volunteer group photo' },
+    image: { src: slide12.src, mobileSrc: mobileSlide12.src, alt: 'K-Night 2025 volunteer group photo' },
     title: 'Title 6',
   },
   {
-    image: { src: slide13.src, alt: 'K-Night event welcome reception' },
+    image: { src: slide13.src, mobileSrc: mobileSlide13.src, alt: 'K-Night event welcome reception' },
     title: 'Title 7',
   },
   {
-    image: { src: slide14.src, alt: 'K-Night volunteer group photo' },
+    image: { src: slide14.src, mobileSrc: mobileSlide14.src, alt: 'K-Night volunteer group photo' },
     title: 'Title 8',
   },
   {
-    image: { src: slide15.src, alt: 'K-Night audience group photo' },
+    image: { src: slide15.src, mobileSrc: mobileSlide15.src, alt: 'K-Night audience group photo' },
     title: 'Title 9',
   },
 ]
@@ -443,18 +452,26 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
                   : '0 12px 28px rgb(0 0 0 / 0.3)',
               }}
             >
-              <img
-                src={slide.image?.src}
-                alt={slide.image?.alt ?? slide.title ?? ''}
-                width={1024}
-                height={1024}
-                sizes={`${Math.max(size.width, 1)}px`}
-                className="smooth-3d-slideshow-image size-full object-cover"
-                draggable={false}
-                loading={isActive ? 'eager' : 'lazy'}
-                decoding={isActive ? 'sync' : 'async'}
-                fetchPriority={isActive ? 'high' : 'low'}
-              />
+              <picture className="block size-full">
+                {slide.image?.mobileSrc ? (
+                  <source
+                    media="(max-width: 767px)"
+                    srcSet={slide.image.mobileSrc}
+                  />
+                ) : null}
+                <img
+                  src={slide.image?.src}
+                  alt={slide.image?.alt ?? slide.title ?? ''}
+                  width={1024}
+                  height={1024}
+                  sizes={`${Math.max(size.width, 1)}px`}
+                  className="smooth-3d-slideshow-image size-full object-cover"
+                  draggable={false}
+                  loading={isActive ? 'eager' : 'lazy'}
+                  decoding={isActive ? 'sync' : 'async'}
+                  fetchPriority={isActive ? 'high' : 'low'}
+                />
+              </picture>
 
               {showTitle && slide.title ? (
                 <div

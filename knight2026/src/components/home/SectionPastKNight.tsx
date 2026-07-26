@@ -13,6 +13,19 @@ import event1 from '@/assets/past-knight/new/events/event-1.jpg'
 import event6 from '@/assets/past-knight/new/events/event-6.jpg'
 import event3 from '@/assets/past-knight/new/events/event-3.jpg'
 import event4 from '@/assets/past-knight/new/events/event-4.jpg'
+import mobileImg4 from '@/assets/past-knight/mobile/k-night-4.jpg'
+import mobileImg7 from '@/assets/past-knight/mobile/k-night-7.jpg'
+import mobileImg8 from '@/assets/past-knight/mobile/k-night-8.jpg'
+import mobileImg2 from '@/assets/past-knight/mobile/k-night-2.jpg'
+import mobileImg1 from '@/assets/past-knight/mobile/k-night-1.jpg'
+import mobileImg5 from '@/assets/past-knight/mobile/k-night-5.jpg'
+import mobileImg3 from '@/assets/past-knight/mobile/k-night-3.jpg'
+import mobileEvent2 from '@/assets/past-knight/mobile/event-2.jpg'
+import mobileEvent7 from '@/assets/past-knight/mobile/event-7.jpg'
+import mobileEvent1 from '@/assets/past-knight/mobile/event-1.jpg'
+import mobileEvent6 from '@/assets/past-knight/mobile/event-6.jpg'
+import mobileEvent3 from '@/assets/past-knight/mobile/event-3.jpg'
+import mobileEvent4 from '@/assets/past-knight/mobile/event-4.jpg'
 import IconArrow from '@/assets/icons/icon-arrow.svg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
@@ -43,7 +56,28 @@ const images = [
   { src: event4, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
 ] as const
 
-const loopImages = [...images, ...images]
+const mobileImages = [
+  mobileImg4,
+  mobileImg7,
+  mobileImg8,
+  mobileImg2,
+  mobileImg1,
+  mobileImg5,
+  mobileImg3,
+  mobileEvent2,
+  mobileEvent7,
+  mobileEvent1,
+  mobileEvent6,
+  mobileEvent3,
+  mobileEvent4,
+] as const
+
+const imagesWithMobileSources = images.map((image, index) => ({
+  ...image,
+  mobileSrc: mobileImages[index],
+}))
+
+const loopImages = [...imagesWithMobileSources, ...imagesWithMobileSources]
 
 /** Figma section-past-k-night 561:6267 — viewport 1440, content 1160 (1200−40) */
 export default function SectionPastKNight() {
@@ -182,24 +216,30 @@ export default function SectionPastKNight() {
                   image.className,
                 ].join(' ')}
               >
-                <img
-                  src={image.src.src}
-                  alt=""
-                  className={[
-                    'absolute inset-0 size-full object-cover',
-                    image.imageClassName,
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
-                  width={image.src.width}
-                  height={image.src.height}
-                  style={{
-                    filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
-                  }}
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                />
+                <picture>
+                  <source
+                    media="(max-width: 767px)"
+                    srcSet={image.mobileSrc.src}
+                  />
+                  <img
+                    src={image.src.src}
+                    alt=""
+                    className={[
+                      'absolute inset-0 size-full object-cover',
+                      image.imageClassName,
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    width={image.src.width}
+                    height={image.src.height}
+                    style={{
+                      filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
+                    }}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                  />
+                </picture>
                 <div
                   className="pointer-events-none absolute inset-0 bg-[#f3ddc8]/[0.1] mix-blend-color"
                   aria-hidden="true"
