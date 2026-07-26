@@ -888,8 +888,8 @@
   @media (max-width: 767px) {
     .section-overview.section-viewport.section-viewport-auto {
       box-sizing: border-box;
-      height: 100dvh;
-      min-height: 100dvh;
+      height: 100svh;
+      min-height: 100svh;
       padding-top: var(--nav-height);
       padding-bottom: 0;
     }
@@ -903,7 +903,11 @@
       position: sticky;
       top: var(--nav-height);
       display: block;
-      height: calc(100dvh - var(--nav-height));
+      flex: none;
+      width: 100%;
+      height: calc(100svh - var(--nav-height));
+      min-height: 0;
+      max-height: calc(100svh - var(--nav-height));
       overflow: hidden;
     }
 

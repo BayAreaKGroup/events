@@ -51,7 +51,7 @@ export default function SectionOverview() {
   return (
     <section
       id="hero"
-      className="section-overview section-viewport section-viewport-auto section-page-start relative flex flex-col bg-white max-md:h-[100dvh] max-md:min-h-[100dvh] max-md:overflow-hidden"
+      className="section-overview section-viewport section-viewport-auto section-page-start relative flex flex-col bg-white max-md:h-[100svh] max-md:min-h-[100svh] max-md:overflow-hidden"
       aria-labelledby="overview-heading"
       data-node-id="566:8030"
       data-name="section-overview"
