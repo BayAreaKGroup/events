@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import ogImage from '@/assets/metadata/og-image.jpg'
+import ogImage from '@/assets/metadata/og-img.jpg'
 import Header from '@/components/layout/Header'
 import './globals.css'
 
