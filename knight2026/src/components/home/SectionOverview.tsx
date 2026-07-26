@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import overviewGraphic from '@/assets/overview/container-graphic-5668032.png'
-import mobileOverviewBottomLeft from '@/assets/overview/mobile-overview-bottom-left.png'
-import mobileOverviewTopRight from '@/assets/overview/mobile-overview-top-right.png'
+import mobileOverviewBottomLeft from '@/assets/overview/mobile-overview-bottom-left-2.png'
+import mobileOverviewTopRight from '@/assets/overview/mobile-overview-top-right-2.png'
 import EventBadge from '@/components/ui/EventBadge'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
