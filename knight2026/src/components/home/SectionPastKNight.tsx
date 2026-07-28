@@ -26,7 +26,6 @@ import mobileEvent1 from '@/assets/past-knight/mobile/event-1.jpg'
 import mobileEvent6 from '@/assets/past-knight/mobile/event-6.jpg'
 import mobileEvent3 from '@/assets/past-knight/mobile/event-3.jpg'
 import mobileEvent4 from '@/assets/past-knight/mobile/event-4.jpg'
-import IconArrow from '@/assets/icons/icon-arrow.svg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
 import { useRef, useState, type PointerEvent } from 'react'
@@ -170,15 +169,6 @@ export default function SectionPastKNight() {
               data-node-id="561:5645"
             >
               View more
-              <img
-                src={IconArrow.src}
-                alt=""
-                width={15}
-                height={15}
-                className="size-[15px] shrink-0 opacity-70"
-                aria-hidden
-                style={{ filter: 'brightness(0) saturate(100%)' }}
-              />
             </a>
           </StaggerItem>
         </div>

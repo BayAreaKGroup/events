@@ -1,6 +1,5 @@
 'use client'
 
-import IconArrowMuted from '@/assets/icons/icon-arrow-muted.svg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
 
@@ -55,7 +54,7 @@ export default function SectionTicket() {
   return (
     <section
       id="ticket"
-      className="section-ticket section-viewport section-viewport-auto relative bg-[#F8F8FA]"
+      className="section-ticket section-viewport section-viewport-auto relative bg-[#FAFAFA]"
       aria-labelledby="ticket-notice-heading"
       data-node-id="562:6728"
     >
@@ -67,7 +66,7 @@ export default function SectionTicket() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-5 py-12 md:gap-20 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-5 py-8 md:gap-20 md:py-20 lg:gap-20 lg:py-[100px]"
         data-node-id="561:5110"
       >
         {/* section-notice — title 371 / gap 48 / content 741 */}
@@ -141,18 +140,11 @@ export default function SectionTicket() {
 
             <button
               type="button"
-              className="btn-ghost type-button inline-flex h-10 w-fit items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-5 md:text-base"
+              disabled
+              className="btn-ghost type-button inline-flex h-10 w-fit items-center gap-2 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:border-[#B8B8B8] disabled:bg-[#F3F3F3] disabled:text-[#8A8A8A] disabled:opacity-100 disabled:hover:border-[#B8B8B8] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
               data-node-id="561:5145"
             >
               Coming soon
-              <img
-                src={IconArrowMuted.src}
-                alt=""
-                width={15}
-                height={15}
-                className="size-[15px] shrink-0"
-                aria-hidden
-              />
             </button>
           </div>
         </Reveal>

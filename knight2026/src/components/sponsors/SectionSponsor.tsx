@@ -44,7 +44,7 @@ function SponsorLogoCard({
   return (
     <div
       className={[
-        'flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-[#F8F8FA] px-4 sm:h-[140px] lg:h-[153px]',
+        'flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-[#FAFAFA] px-4 sm:h-[140px] lg:h-[153px]',
         wide ? 'px-6 sm:px-8' : '',
       ].join(' ')}
     >
@@ -67,7 +67,7 @@ export default function SectionSponsor() {
   return (
     <section
       id="sponsor"
-      className="section-sponsor section-viewport relative min-h-[100svh] overflow-x-clip bg-white"
+      className="section-sponsor section-viewport relative h-[100svh] min-h-[100svh] overflow-x-clip bg-white"
       aria-labelledby="sponsor-heading"
       data-node-id="562:6869"
     >
@@ -78,7 +78,7 @@ export default function SectionSponsor() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-12 md:gap-16 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center gap-6 px-5 py-8 md:gap-16 md:py-20 lg:gap-20 lg:py-[100px]"
         data-node-id="562:6871"
       >
         <Reveal className="shrink-0" data-node-id="562:6872">
@@ -129,7 +129,7 @@ export default function SectionSponsor() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <div className="card-ui flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
+          <div className="card-ui bg-surface-muted flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <h3 className="type-h5 text-text">
                 Partnership & Sponsorship Inquiries
@@ -142,7 +142,7 @@ export default function SectionSponsor() {
 
             <a
               href={`mailto:${inquiryEmail}`}
-              className="btn-ghost type-button inline-flex h-10 w-fit shrink-0 items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
+              className="btn-accent type-button inline-flex h-10 w-fit shrink-0 items-center gap-2 rounded-[12px] px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
             >
               Get in Touch
             </a>

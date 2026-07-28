@@ -5,14 +5,14 @@
 
 :root {
   /*
-    Page #FFFFFF · Alt #F8F8FA · Card #FFFFFF
+    Page #FFFFFF · Alt #FAFAFA · Card #FFFFFF
     Text primary #242422 · secondary #5F6368 · tertiary #80868B
     Border #E8EAED · Accent #F03466 · Hover #D92D58 · Active #C4284F
   */
   --color-surface: 255 255 255;
-  --color-surface-elevated: 248 248 250;
-  --color-surface-muted: 248 248 250;
-  --color-surface-panel: 248 248 250;
+  --color-surface-elevated: 250 250 250;
+  --color-surface-muted: 250 250 250;
+  --color-surface-panel: 250 250 250;
   --color-footer: 255 255 255;
   --color-text: 36 36 34;
   --color-text-muted: 95 99 104;

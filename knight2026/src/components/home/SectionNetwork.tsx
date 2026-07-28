@@ -25,7 +25,7 @@ export default function SectionNetwork() {
   return (
     <section
       id="network"
-      className="section-network relative w-full bg-[#F8F8FA]"
+      className="section-network relative w-full bg-[#FAFAFA]"
       aria-labelledby="network-heading"
       data-node-id="561:6411"
     >
@@ -75,6 +75,7 @@ export default function SectionNetwork() {
                 action={card.action}
                 href={card.href}
                 icon={card.icon}
+                className={`social-card-${card.id}`}
               />
             </StaggerItem>
           ))}

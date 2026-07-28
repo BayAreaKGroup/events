@@ -1,6 +1,5 @@
 'use client'
 
-import IconArrow from '@/assets/icons/icon-arrow.svg'
 import IconInfo from '@/assets/icons/icon-info.svg'
 import ctaGraphicRight from '@/assets/donation/cta-graphic-right.png'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
@@ -12,7 +11,7 @@ export default function SectionDonationSupport() {
   return (
     <section
       id="donation-support"
-      className="section-donation-support section-viewport section-viewport-auto relative bg-[#F8F8FA]"
+      className="section-donation-support section-viewport section-viewport-auto relative bg-[#FAFAFA]"
       aria-labelledby="donation-support-heading"
       data-node-id="562:7233"
     >
@@ -24,7 +23,7 @@ export default function SectionDonationSupport() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 py-16 md:gap-20 md:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 py-10 md:gap-20 md:py-[100px]"
         data-node-id="562:7235"
       >
         {/* Title 371 / gap 48 / methods 741 */}
@@ -266,14 +265,6 @@ export default function SectionDonationSupport() {
                 data-node-id="561:5301"
               >
                 Support K-Group
-                <img
-                  src={IconArrow.src}
-                  alt=""
-                  width={15}
-                  height={15}
-                  className="size-[15px] shrink-0"
-                  aria-hidden
-                />
               </a>
             </div>
           </div>

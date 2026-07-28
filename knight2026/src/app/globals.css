@@ -140,7 +140,7 @@
 
   .section-viewport-network {
     @apply relative flex w-full flex-col;
-    background-color: #f8f8fa;
+    background-color: #fafafa;
     height: auto;
     min-height: auto;
     overflow-x: clip;
@@ -151,7 +151,7 @@
 
   /* Homepage: cool alternate surface */
   .home-page .section-viewport-network {
-    background-color: #f8f8fa;
+    background-color: #fafafa;
   }
 
   /* L/R strokes were for CTA↔footer pad; network is content-height now */
@@ -178,6 +178,12 @@
     padding-top: calc(var(--nav-height) + 1.5rem);
   }
 
+  @media (max-width: 767px) {
+    .section-page-start {
+      padding-top: 5rem;
+    }
+  }
+
   @media (min-width: 768px) {
     .section-page-start {
       padding-top: var(--section-pad-top);
@@ -188,11 +194,11 @@
   .about-page > .section-viewport:nth-of-type(even),
   .donation-page > .section-viewport:nth-of-type(even),
   .ticket-page > .section-viewport:nth-of-type(even) {
-    background-color: #f8f8fa;
+    background-color: #fafafa;
   }
 
   /*
-    Homepage section rhythm — #FFFFFF / #F8F8FA
+    Homepage section rhythm — #FFFFFF / #FAFAFA
     Overview → K-Night → Past → Network → Footer
   */
   .home-page .section-overview.section-viewport {
@@ -200,7 +206,7 @@
   }
 
   .home-page .section-k-night.section-viewport {
-    background-color: #f8f8fa;
+    background-color: #fafafa;
   }
 
   .home-page .section-past-k-night.section-viewport {
@@ -209,7 +215,7 @@
 
   .home-page .section-network,
   .about-page .section-network {
-    background-color: #f8f8fa;
+    background-color: #fafafa;
   }
 
   .home-page > footer,
@@ -483,7 +489,8 @@
     transition:
       background-color 0.2s var(--ease-out),
       border-color 0.2s var(--ease-out),
-      box-shadow 0.25s var(--ease-out);
+      box-shadow 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out);
   }
 
   .social-card-icon {
@@ -495,6 +502,26 @@
     justify-content: center;
     border-radius: 12px;
     background-color: rgb(var(--color-surface-muted));
+  }
+
+  .social-card-website .social-card-icon {
+    background-color: #edf4ff;
+  }
+
+  .social-card-linkedin .social-card-icon {
+    background-color: #e8f2ff;
+  }
+
+  .social-card-instagram .social-card-icon {
+    background-color: #fce9f1;
+  }
+
+  .social-card-facebook .social-card-icon {
+    background-color: #eaf2ff;
+  }
+
+  .social-card-kakao .social-card-icon {
+    background-color: #fff4b8;
   }
 
   .social-card-icon img {
@@ -572,9 +599,10 @@
 
   @media (hover: hover) and (pointer: fine) {
     .social-card:hover {
-      background-color: rgb(var(--color-surface-muted));
-      border-color: rgb(218 220 224);
-      box-shadow: var(--shadow-sm);
+      background-color: #ffffff;
+      border-color: rgb(var(--color-accent));
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px) scale(1.01);
     }
 
     .social-card:hover .social-card-action {
@@ -755,7 +783,7 @@
     overflow-y: visible;
     padding-top: 0;
     padding-bottom: 0;
-    background-color: #f8f8fa;
+    background-color: #fafafa;
   }
 
   @media (min-width: 768px) {
@@ -890,7 +918,7 @@
       box-sizing: border-box;
       height: 100svh;
       min-height: 100svh;
-      padding-top: var(--nav-height);
+      padding-top: 4rem;
       padding-bottom: 0;
     }
 
@@ -901,13 +929,13 @@
 
     .mobile-overview-stage {
       position: sticky;
-      top: var(--nav-height);
+      top: 4rem;
       display: block;
       flex: none;
       width: 100%;
-      height: calc(100svh - var(--nav-height));
+      height: calc(100svh - 4rem);
       min-height: 0;
-      max-height: calc(100svh - var(--nav-height));
+      max-height: calc(100svh - 4rem);
       overflow: hidden;
     }
 
@@ -922,13 +950,13 @@
 
     .section-overview .overview-copy {
       position: absolute;
-      top: 24%;
+      top: 50%;
       right: auto;
-      bottom: 24%;
+      bottom: auto;
       left: 50%;
       width: calc(100% - 3rem);
       max-width: 24rem;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       justify-content: center;
       padding-right: 0;
       padding-left: 0;
@@ -977,12 +1005,12 @@
     }
   }
 
-  /* K-Night intro — Figma 565:7852; #F8F8FA, H4 copy + 320px stats */
+  /* K-Night intro — Figma 565:7852; #FAFAFA, H4 copy + 320px stats */
   .section-k-night.section-viewport {
     padding-top: 0;
     padding-bottom: 0;
     gap: 0;
-    background-color: #f8f8fa;
+    background-color: #fafafa;
   }
 
   @media (max-width: 767px) {
@@ -1198,9 +1226,9 @@
   }
 
   .btn-ghost {
-    @apply border border-line text-text;
+    @apply border border-accent text-accent;
     border-radius: 12px;
-    background-color: transparent;
+    background-color: #ffffff;
     padding-inline: 1.25rem;
     transition:
       background-color 0.2s var(--ease-out),
@@ -1209,6 +1237,10 @@
       transform 0.25s var(--ease-out),
       filter 0.2s var(--ease-out),
       color 0.2s var(--ease-out);
+  }
+
+  .donation-page .btn-ghost {
+    background-color: rgb(var(--color-surface));
   }
 
   .btn-ghost img {
@@ -1244,13 +1276,12 @@
 
     /* Ghost — same lift/shadow motion as accent; soft fill, no border jump */
     .btn-ghost:hover {
-      background-color: rgb(var(--color-text) / 0.05);
-      border-color: rgb(var(--color-line));
-      filter: brightness(0.97);
+      background-color: #ffffff;
+      border-color: rgb(var(--color-accent));
       transform: translateY(-1px);
       box-shadow:
-        0 1px 2px rgb(var(--color-text) / 0.06),
-        0 4px 12px rgb(var(--color-text) / 0.08);
+        0 1px 2px rgb(var(--color-accent) / 0.12),
+        0 3px 8px rgb(var(--color-accent) / 0.16);
     }
 
     .btn-ghost:hover img {
@@ -1258,11 +1289,10 @@
     }
 
     .btn-ghost:active {
-      filter: brightness(0.94);
       transform: translateY(0);
       box-shadow:
-        0 1px 2px rgb(var(--color-text) / 0.05),
-        0 2px 6px rgb(var(--color-text) / 0.06);
+        0 1px 2px rgb(var(--color-accent) / 0.08),
+        0 2px 5px rgb(var(--color-accent) / 0.12);
     }
 
     .btn-ghost-on-accent:hover {

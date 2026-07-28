@@ -26,7 +26,7 @@ export default function SectionAboutHeader() {
 
       <Stagger
         variants={staggerContainerSlow}
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col items-center px-5 py-12 md:py-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col items-center px-5 py-8 md:py-20 lg:py-[100px]"
         data-node-id="562:6796"
       >
         {/* Text block — Figma container 784, gap 32 */}
@@ -48,7 +48,7 @@ export default function SectionAboutHeader() {
           <StaggerItem variants={fadeUpHero} className="w-full min-w-0">
             <h2
               id="about-header-heading"
-              className="type-h1 text-text md:whitespace-nowrap"
+              className="type-h2 text-text md:whitespace-nowrap"
               data-node-id="561:5867"
             >
               Bay Area K-Group
@@ -69,8 +69,8 @@ export default function SectionAboutHeader() {
           </StaggerItem>
         </div>
 
-        {/* 80px gap below text — keep slideshow placement */}
-        <div className="h-20 w-full shrink-0" aria-hidden />
+        {/* Mobile spacing follows the 24px rhythm; larger layouts keep 80px. */}
+        <div className="h-6 w-full shrink-0 md:h-20" aria-hidden />
 
         <StaggerItem
           variants={fadeUpScale}

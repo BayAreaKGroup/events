@@ -7,13 +7,11 @@ const ogImageUrl = ogImage.src
 
 export const metadata = {
   metadataBase: new URL('https://bayareakgroup.github.io'),
-  title: 'K-Night 2026',
-  description:
-    'K-Night 2026 — Bay Area K-Group 연례 테크 이벤트. Sep 12, Computer History Museum, Mountain View.',
+  title: 'K-Night 2026 | Bay Area K-Group',
+  description: 'Bay Area K-Group’s annual networking event.',
   openGraph: {
-    title: 'K-Night 2026',
-    description:
-      'Bay Area K-Group 연례 테크 이벤트. Sep 12, 2026 · Computer History Museum, Mountain View, CA',
+    title: 'K-Night 2026 | Bay Area K-Group',
+    description: 'Bay Area K-Group’s annual networking event.',
     type: 'website',
     images: [
       {
@@ -26,9 +24,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'K-Night 2026',
-    description:
-      'Bay Area K-Group 연례 테크 이벤트. Sep 12, 2026 · Computer History Museum, Mountain View, CA',
+    title: 'K-Night 2026 | Bay Area K-Group',
+    description: 'Bay Area K-Group’s annual networking event.',
     images: [ogImageUrl],
   },
 }

@@ -6,12 +6,10 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useId, useLayoutEffect, useState } from 'react'
 import logo from '@/assets/icons/logo-bay-area.png'
 import logoMark from '@/assets/icons/logo-bay-area-mark.png'
-import arrowIcon from '@/assets/icons/icon-arrow.svg'
 import { easeOutExpo } from '@/lib/motion'
 
 /** Figma nav-bar 561:6099 — follows page color tokens (cool on home, warm elsewhere) */
 const NAV = {
-  height: '80px',
   container: '1200px',
   buttonBg: '#F03466',
   buttonBgHover: '#D92D58',
@@ -60,6 +58,18 @@ export default function Header() {
   }, [pathname])
 
   useEffect(() => {
+    if (!window.matchMedia('(max-width: 767px)').matches) return
+
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [pathname])
+
+  useEffect(() => {
     if (!menuOpen) return
 
     const previousOverflow = document.body.style.overflow
@@ -81,8 +91,7 @@ export default function Header() {
   return (
     <>
       <motion.header
-        className="fixed inset-x-0 top-0 z-50 border-b border-line bg-surface"
-        style={{ height: NAV.height }}
+        className="fixed inset-x-0 top-0 z-50 h-16 border-b border-line bg-surface md:h-20"
         data-node-id="561:6099"
         initial={false}
         animate={{ y: 0 }}
@@ -122,7 +131,7 @@ export default function Header() {
               alt="Bay Area Group"
               width={44}
               height={44}
-              className="size-11 object-contain object-left md:hidden"
+              className="size-8 object-contain object-left md:hidden"
             />
             <img
               src={logo.src}
@@ -159,19 +168,11 @@ export default function Header() {
               data-node-id="561:6113"
             >
               Get a Ticket
-              <img
-                src={arrowIcon.src}
-                alt=""
-                width={15}
-                height={15}
-                className="size-[15px] shrink-0"
-                aria-hidden
-              />
             </Link>
 
             <Link
               href="/ticket"
-              className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm md:hidden"
+              className="btn-home-cta type-button inline-flex h-9 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
               onClick={closeMenu}
               aria-label="Get a Ticket"
             >
@@ -229,7 +230,7 @@ export default function Header() {
                 : { duration: 0.35, ease: easeOutExpo }
             }
           >
-            <div className="h-20 shrink-0" aria-hidden="true" />
+            <div className="h-16 shrink-0 md:h-20" aria-hidden="true" />
 
             <motion.div
               className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-between px-4 pb-12 pt-8 sm:px-6"

@@ -40,6 +40,15 @@ export default function ComingSoonSection({
           <EventBadge subdued />
         </StaggerItem>
 
+        <StaggerItem variants={fadeUpHero} className="w-full">
+          <Heading
+            id={headingId}
+            className="type-h2 text-balance text-text md:whitespace-nowrap"
+          >
+            Coming Soon
+          </Heading>
+        </StaggerItem>
+
         <StaggerItem className="w-full pt-6 max-md:pt-2">
           <p className="type-h5 text-text">
             올해에도 K-Group의 대표 행사인
@@ -47,23 +56,22 @@ export default function ComingSoonSection({
           </p>
         </StaggerItem>
 
-        <StaggerItem variants={fadeUpHero} className="w-full">
-          <Heading
-            id={headingId}
-            className="type-h1 text-balance text-text md:whitespace-nowrap"
-          >
-            Coming Soon
-          </Heading>
-        </StaggerItem>
-
         <StaggerItem
           variants={fadeUpScale}
           className="flex w-full flex-wrap items-center justify-center gap-3 pt-12 max-md:gap-2 max-md:pt-6"
         >
-          <Button href="/" variant="ghost">
+          <Button
+            href="/"
+            variant="ghost"
+            className="h-10 w-[9rem] whitespace-nowrap px-4 py-2 text-sm md:h-11 md:w-[11rem] md:px-6 md:py-3 md:text-base"
+          >
             Back to Home
           </Button>
-          <Button href="/ticket" variant="accent">
+          <Button
+            href="/ticket"
+            variant="accent"
+            className="h-10 w-[9rem] whitespace-nowrap px-4 py-2 text-sm md:h-11 md:w-[11rem] md:px-6 md:py-3 md:text-base"
+          >
             Get a Ticket
           </Button>
         </StaggerItem>

@@ -47,6 +47,8 @@ const ticketOptions: TicketOption[] = [
   },
 ]
 
+const ticketsOpeningSoon = true
+
 export default function SectionTicketHeader() {
   return (
     <section
@@ -63,7 +65,7 @@ export default function SectionTicketHeader() {
       />
 
       <div
-        className="section-text relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-12 md:gap-16 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="section-text relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-8 md:gap-16 md:py-20 lg:gap-20 lg:py-[100px]"
         data-node-id="562:6697"
       >
         {/* Header — title 741 / gap 48 / aside 371 */}
@@ -115,7 +117,7 @@ export default function SectionTicketHeader() {
                 <div
                   className={[
                     'surface-card flex h-full min-h-0 flex-col items-center gap-5 px-5 py-8 sm:gap-6 sm:px-8 sm:py-10 md:px-[33px] md:py-[49px]',
-                    isEarly ? 'bg-[#F8F8FA]' : 'bg-white',
+                    isEarly ? 'bg-[#FAFAFA]' : 'bg-white',
                   ].join(' ')}
                 >
                   <div className="relative h-[120px] w-full max-w-[500px] shrink overflow-hidden sm:h-[160px] md:h-[220px]">
@@ -142,12 +144,14 @@ export default function SectionTicketHeader() {
                     rel="noreferrer"
                     className={[
                       'type-button inline-flex h-10 shrink-0 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-5 md:py-0 md:text-base',
-                      isEarly
-                        ? 'btn-home-cta'
-                        : 'btn-ghost',
+                      ticketsOpeningSoon
+                        ? 'cursor-pointer rounded-[12px] border border-[#B8B8B8] bg-[#F3F3F3] text-[#8A8A8A]'
+                        : isEarly
+                          ? 'btn-home-cta'
+                          : 'btn-ghost',
                     ].join(' ')}
                   >
-                    {option.buttonLabel}
+                    {ticketsOpeningSoon ? 'Opening Soon' : option.buttonLabel}
                   </a>
                 </div>
               </StaggerItem>

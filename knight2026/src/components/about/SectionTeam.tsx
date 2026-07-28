@@ -77,7 +77,7 @@ export default function SectionTeam() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-14 px-5 py-12 md:gap-20 md:py-20 lg:gap-24 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-14 px-5 py-8 md:gap-20 md:py-20 lg:gap-24 lg:py-[100px]"
         data-node-id="562:6822"
       >
         <Stagger

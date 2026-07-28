@@ -50,7 +50,7 @@ export default function SectionDonation() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-12 md:gap-20 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-8 md:gap-20 md:py-20 lg:gap-20 lg:py-[100px]"
         data-node-id="570:91"
       >
         {/* Header — title 741 / gap 48 / aside 371 */}
@@ -173,11 +173,11 @@ export default function SectionDonation() {
             {benefits.map((benefit, index) => (
               <StaggerItem as="li" key={benefit.title} className="h-full min-w-0">
                 <article
-                  className="flex h-full flex-col overflow-hidden rounded-[12px] border border-line bg-white"
+                  className="flex h-full flex-col gap-6 overflow-hidden rounded-[12px] border border-line bg-white p-4 md:gap-6 md:p-6"
                   data-node-id={benefit.nodeId}
                 >
                   <div
-                    className="relative h-[92px] w-full shrink-0 overflow-hidden"
+                    className="relative h-[92px] w-full shrink-0 overflow-hidden rounded-[12px] md:aspect-[705/277] md:h-auto"
                     style={{ backgroundColor: benefit.artBg }}
                     data-node-id={`${benefit.nodeId}-art`}
                   >
@@ -186,13 +186,13 @@ export default function SectionDonation() {
                       alt=""
                       width={705}
                       height={277}
-                      className="size-full object-cover object-bottom"
+                      className="size-full object-cover object-bottom md:scale-[1.015] md:object-contain"
                       loading="lazy"
                       decoding="async"
                       sizes="(min-width: 1024px) 235px, (min-width: 640px) 50vw, 100vw"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col gap-3 p-[14px]">
+                  <div className="flex flex-1 flex-col gap-3 p-0">
                     <span className="type-h4 text-text">
                       {String(index + 1).padStart(2, '0')}
                     </span>
