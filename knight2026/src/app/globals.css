@@ -401,9 +401,9 @@
 
     .home-page .section-network {
       box-sizing: border-box;
-      height: 100dvh;
-      min-height: 100dvh;
-      overflow-y: hidden;
+      height: auto;
+      min-height: 0;
+      overflow-y: visible;
     }
 
     .home-page .section-k-night {
@@ -505,23 +505,23 @@
   }
 
   .social-card-website .social-card-icon {
-    background-color: #edf4ff;
+    background-color: rgb(237 244 255 / 0.55);
   }
 
   .social-card-linkedin .social-card-icon {
-    background-color: #e8f2ff;
+    background-color: rgb(232 242 255 / 0.55);
   }
 
   .social-card-instagram .social-card-icon {
-    background-color: #fce9f1;
+    background-color: rgb(252 233 241 / 0.55);
   }
 
   .social-card-facebook .social-card-icon {
-    background-color: #eaf2ff;
+    background-color: rgb(234 242 255 / 0.55);
   }
 
   .social-card-kakao .social-card-icon {
-    background-color: #fff4b8;
+    background-color: rgb(255 244 184 / 0.55);
   }
 
   .social-card-icon img {

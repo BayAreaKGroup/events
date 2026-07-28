@@ -172,7 +172,7 @@ export default function Header() {
 
             <Link
               href="/ticket"
-              className="btn-home-cta type-button inline-flex h-9 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
+              className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
               onClick={closeMenu}
               aria-label="Get a Ticket"
             >
