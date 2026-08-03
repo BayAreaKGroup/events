@@ -7,6 +7,7 @@ import mobileOverviewTopRight from '@/assets/overview/mobile-overview-top-right-
 import EventBadge from '@/components/ui/EventBadge'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
+import { homeCopy, type Locale } from '@/content/siteContent'
 
 const eventTime = new Date('2026-09-12T16:00:00-07:00').getTime()
 
@@ -37,7 +38,8 @@ const details = [
 ] as const
 
 /** Figma section-overview 566:8030 — viewport 1440, content ~1000 (608 / 48 / 304) */
-export default function SectionOverview() {
+export default function SectionOverview({ locale }: { locale?: Locale }) {
+  const copy = locale ? homeCopy[locale].overview : null
   const [countdown, setCountdown] = useState(getCountdown)
 
   useEffect(() => {
@@ -124,11 +126,13 @@ export default function SectionOverview() {
                 data-node-id="566:8121"
               >
                 <span className="md:hidden">
-                  K-Night
+                  {copy ? 'K-NIGHT' : 'K-Night'}
                   <br />
                   2026
                 </span>
-                <span className="hidden md:inline">K-Night 2026</span>
+                <span className="hidden md:inline">
+                  {copy ? 'K-NIGHT 2026' : 'K-Night 2026'}
+                </span>
               </h1>
             </div>
 
@@ -137,17 +141,23 @@ export default function SectionOverview() {
               data-node-id="566:8122"
             >
               <h3 className="overview-aside-title type-h4 uppercase text-text">
-                Beyond Tech
+                {copy?.subtitle ?? 'Beyond Tech'}
               </h3>
               <p
-                className="type-body max-w-[344px] text-pretty max-md:hidden"
+                className="type-body max-w-[344px] whitespace-pre-line text-pretty max-md:hidden"
                 data-node-id="566:8124"
               >
-                Connecting people beyond technology in
-                <br />
-                the age of AI, where human connection
-                <br />
-                and goodwill inspire growth.
+                {copy ? (
+                  copy.description
+                ) : (
+                  <>
+                    Connecting people beyond technology in
+                    <br />
+                    the age of AI, where human connection
+                    <br />
+                    and goodwill inspire growth.
+                  </>
+                )}
               </p>
             </div>
           </StaggerItem>
@@ -163,14 +173,22 @@ export default function SectionOverview() {
                 key={detail.label}
                 className={`flex w-full flex-col gap-3 max-md:items-end max-md:gap-0 max-md:text-right lg:max-w-[344px] lg:flex-1 ${detail.label === 'Time' ? 'max-md:hidden' : ''}`}
               >
-                <dt className="type-caption max-md:hidden">{detail.label}</dt>
+                <dt className="type-caption max-md:hidden">
+                  {copy?.labels[detail.label.toLowerCase() as 'date' | 'time' | 'location'] ?? detail.label}
+                </dt>
                 <dd className="type-body text-text">
                   <span className="md:hidden">
                     {detail.label === 'Date'
-                      ? 'September 12, Sat'
-                      : detail.value}
+                      ? copy?.mobileDate ?? 'September 12, Sat'
+                      : copy?.[detail.label.toLowerCase() as 'time' | 'location'] ?? detail.value}
                   </span>
-                  <span className="hidden md:inline">{detail.value}</span>
+                  <span className="hidden md:inline">
+                    {detail.label === 'Date'
+                      ? copy?.date ?? detail.value
+                      : detail.label === 'Time'
+                        ? copy?.time ?? detail.value
+                        : copy?.location ?? detail.value}
+                  </span>
                 </dd>
               </StaggerItem>
             ))}

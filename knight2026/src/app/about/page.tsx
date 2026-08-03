@@ -5,8 +5,9 @@ import Footer from '@/components/layout/Footer'
 import SectionAboutHeader from '@/components/about/SectionAboutHeader'
 import SectionTeam from '@/components/about/SectionTeam'
 import SectionNetwork from '@/components/home/SectionNetwork'
+import type { Locale } from '@/content/siteContent'
 
-export default function AboutPage() {
+export default function AboutPage({ locale = 'en' }: { locale?: Locale } = {}) {
   useEffect(() => {
     const scrollToHash = () => {
       const { hash } = window.location
@@ -27,9 +28,9 @@ export default function AboutPage() {
 
   return (
     <main className="about-page">
-      <SectionAboutHeader />
-      <SectionTeam />
-      <SectionNetwork />
+      <SectionAboutHeader locale={locale} />
+      <SectionTeam locale={locale} />
+      <SectionNetwork locale={locale} />
       <Footer />
     </main>
   )

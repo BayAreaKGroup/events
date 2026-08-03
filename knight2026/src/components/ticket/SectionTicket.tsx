@@ -2,6 +2,7 @@
 
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
+import { ticketCopy, type Locale } from '@/content/siteContent'
 
 /** Figma section-ticket 562:6728 — viewport 1440, content 1160 (1200−40) */
 
@@ -50,7 +51,9 @@ const noticeItems = [
 const carpoolIntro =
   'K-Night 행사장까지 교통편이 불편하신 분들을 위해 참가자 간 카풀을 지원합니다. 주변 참여자들과 매칭을 원하시는 분들은 아래 공유 리스트를 이용해 주세요.'
 
-export default function SectionTicket() {
+export default function SectionTicket({ locale }: { locale?: Locale }) {
+  const copy = locale ? ticketCopy[locale] : null
+  const localizedNoticeItems = copy?.noticeItems
   return (
     <section
       id="ticket"
@@ -83,7 +86,7 @@ export default function SectionTicket() {
               className="type-h3 text-text"
               data-node-id="561:5114"
             >
-              Notice
+              {copy?.noticeTitle ?? 'Notice'}
             </h3>
           </div>
 
@@ -92,18 +95,22 @@ export default function SectionTicket() {
             data-node-id="561:5115"
           >
             <p className="type-h4 text-text" data-node-id="561:5117">
-              {noticeIntro}
+              {copy?.noticeIntro ?? noticeIntro}
             </p>
 
             <Stagger as="dl" className="flex flex-col" amount={0.1}>
-              {noticeItems.map((item) => (
+              {noticeItems.map((item, index) => (
                 <StaggerItem
                   key={item.title}
                   as="div"
                   className="flex flex-col gap-2 border-b border-line py-6"
                 >
-                  <dt className="type-h4 text-text">{item.title}</dt>
-                  <dd className="type-body">{item.description}</dd>
+                  <dt className="type-h4 text-text">
+                    {localizedNoticeItems?.[index]?.[0] ?? item.title}
+                  </dt>
+                  <dd className="type-body">
+                    {localizedNoticeItems?.[index]?.[1] ?? item.description}
+                  </dd>
                 </StaggerItem>
               ))}
             </Stagger>
@@ -126,7 +133,7 @@ export default function SectionTicket() {
               className="type-h3 text-text"
               data-node-id="561:5140"
             >
-              Carpool
+              {copy?.carpoolTitle ?? 'Carpool'}
             </h3>
           </div>
 
@@ -135,16 +142,16 @@ export default function SectionTicket() {
             data-node-id="561:5141"
           >
             <p className="type-h4 text-text" data-node-id="561:5144">
-              {carpoolIntro}
+              {copy?.carpoolIntro ?? carpoolIntro}
             </p>
 
             <button
               type="button"
               disabled
-              className="btn-ghost type-button inline-flex h-10 w-fit items-center gap-2 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:border-[#B8B8B8] disabled:bg-[#F3F3F3] disabled:text-[#8A8A8A] disabled:opacity-100 disabled:hover:border-[#B8B8B8] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
+              className="btn-ghost type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:border-[#B8B8B8] disabled:bg-[#F3F3F3] disabled:text-[#8A8A8A] disabled:opacity-100 disabled:hover:border-[#B8B8B8] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
               data-node-id="561:5145"
             >
-              Coming soon
+              {copy?.button ?? 'Coming soon'}
             </button>
           </div>
         </Reveal>

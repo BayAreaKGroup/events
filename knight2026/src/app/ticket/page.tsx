@@ -4,8 +4,9 @@ import { useEffect } from 'react'
 import Footer from '@/components/layout/Footer'
 import SectionTicket from '@/components/ticket/SectionTicket'
 import SectionTicketHeader from '@/components/ticket/SectionTicketHeader'
+import type { Locale } from '@/content/siteContent'
 
-export default function TicketPage() {
+export default function TicketPage({ locale = 'en' }: { locale?: Locale } = {}) {
   useEffect(() => {
     const scrollToHash = () => {
       const { hash } = window.location
@@ -26,8 +27,8 @@ export default function TicketPage() {
 
   return (
     <main className="ticket-page">
-      <SectionTicketHeader />
-      <SectionTicket />
+      <SectionTicketHeader locale={locale} />
+      <SectionTicket locale={locale} />
       <Footer />
     </main>
   )

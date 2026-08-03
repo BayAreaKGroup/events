@@ -6,6 +6,7 @@ import card03 from '@/assets/donation/card-03.png'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { staggerContainerSlow } from '@/lib/motion'
 import { DONATION_LINKS } from '@/lib/donationLinks'
+import { donationCopy, type Locale } from '@/content/siteContent'
 
 /** Figma section-donation 570:89 / cards 570:117 — viewport 1440, content 1160 */
 const benefits = [
@@ -34,7 +35,9 @@ const benefits = [
   },
 ] as const
 
-export default function SectionDonation() {
+export default function SectionDonation({ locale }: { locale?: Locale }) {
+  const copy = locale ? donationCopy[locale] : null
+  const localizedBenefits = copy?.benefits
   return (
     <section
       id="donation"
@@ -67,7 +70,7 @@ export default function SectionDonation() {
               className="type-h2 text-text"
               data-node-id="570:94"
             >
-              Donation
+              {copy?.title ?? 'Donation'}
             </h2>
           </StaggerItem>
 
@@ -76,8 +79,12 @@ export default function SectionDonation() {
             data-node-id="570:95"
           >
             <p className="type-body" data-node-id="570:97">
-              K-Group은 여러분의 후원으로 운영되는 비영리 단체입니다. 편리하신
-              방법으로 따뜻한 마음을 전해 주세요.
+              {copy?.description ?? (
+                <>
+                  K-Group은 여러분의 후원으로 운영되는 비영리 단체입니다. 편리하신
+                  방법으로 따뜻한 마음을 전해 주세요.
+                </>
+              )}
             </p>
           </StaggerItem>
         </Stagger>
@@ -90,7 +97,7 @@ export default function SectionDonation() {
         >
           <div className="w-full shrink-0 lg:w-[371px]" data-node-id="570:100">
             <h3 className="type-h3 text-text" data-node-id="570:102">
-              Together, We Grow
+              {copy?.subtitle ?? 'Together, We Grow'}
             </h3>
           </div>
 
@@ -100,35 +107,47 @@ export default function SectionDonation() {
           >
             <div className="flex flex-col gap-3" data-node-id="570:104">
               <p className="type-h4 text-text" data-node-id="570:105">
-                Bay Area K-Group은 후원 규모와 관계없이 개인 및 기업 여러분의
-                소중한 후원을 언제나 환영합니다.
+                {copy?.supportSubtitle ?? (
+                  <>
+                    Bay Area K-Group은 후원 규모와 관계없이 개인 및 기업 여러분의
+                    소중한 후원을 언제나 환영합니다.
+                  </>
+                )}
               </p>
               <div className="type-body space-y-4" data-node-id="570:106">
-                <p>
-                  Bay Area K-Group(BAKG)은 2007년부터 회원들의 자발적인 참여와
-                  선의(Goodwill)로 성장해 온 501(c)(3) 비영리 단체입니다. 가입비
-                  없이 운영되는 K-Group이 지난 19년간 실리콘밸리 한인 테크 관련
-                  분야 종사자들을 위한 다양한 세미나와 네트워킹 모임은 물론 AI,
-                  반도체, 바이오, 모빌리티, 디자인 등 직군별 소모임을 이어올 수
-                  있었던 것은 모두 여러분의 후원 덕분이었습니다.
-                </p>
-                <p>
-                  여러분의 후원은 단순한 기부가 아닙니다. 오늘 K-Group 또는
-                  K-Night에서 나눈 인사와 영감이 내일의 기회로 이어지도록
-                  &apos;단단한 테크 생태계&apos;를 만드는 일입니다.
-                </p>
+                {copy ? (
+                  copy.body.split('\n').map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))
+                ) : (
+                  <>
+                    <p>
+                      Bay Area K-Group(BAKG)은 2007년부터 회원들의 자발적인 참여와
+                      선의(Goodwill)로 성장해 온 501(c)(3) 비영리 단체입니다. 가입비
+                      없이 운영되는 K-Group이 지난 19년간 실리콘밸리 한인 테크 관련
+                      분야 종사자들을 위한 다양한 세미나와 네트워킹 모임은 물론 AI,
+                      반도체, 바이오, 모빌리티, 디자인 등 직군별 소모임을 이어올 수
+                      있었던 것은 모두 여러분의 후원 덕분이었습니다.
+                    </p>
+                    <p>
+                      여러분의 후원은 단순한 기부가 아닙니다. 오늘 K-Group 또는
+                      K-Night에서 나눈 인사와 영감이 내일의 기회로 이어지도록
+                      &apos;단단한 테크 생태계&apos;를 만드는 일입니다.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
 
             <div
-              className="flex flex-wrap items-start gap-4 py-3 md:gap-6"
+              className="flex flex-wrap items-start gap-4 py-3 max-md:flex-col max-md:items-stretch md:gap-6"
               data-node-id="570:107"
             >
               <a
                 href={DONATION_LINKS.paypalVenmo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost type-button inline-flex h-10 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
+                className="btn-ghost type-button inline-flex h-10 max-md:w-full items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                 data-node-id="570:108"
               >
                 PayPal · Venmo
@@ -137,17 +156,17 @@ export default function SectionDonation() {
                 href={DONATION_LINKS.zeffy}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-ghost type-button inline-flex h-10 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
+                className="btn-ghost type-button inline-flex h-10 max-md:w-full items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                 data-node-id="570:110"
               >
                 Zeffy
               </a>
               <a
                 href={DONATION_LINKS.getInTouch}
-                className="btn-ghost type-button inline-flex h-10 items-center justify-center px-4 py-2 text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
+                className="btn-ghost type-button inline-flex h-10 max-md:w-full items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-[21px] md:py-0 md:text-base"
                 data-node-id="570:112"
               >
-                Get in Touch
+                {copy?.getInTouch ?? 'Get in Touch'}
               </a>
             </div>
           </div>
@@ -160,7 +179,7 @@ export default function SectionDonation() {
         >
           <Reveal className="w-full shrink-0 lg:w-[371px]" data-node-id="570:180">
             <h3 className="type-h3 text-text" data-node-id="570:182">
-              여러분의 후원이 만드는 변화
+              {copy?.impactTitle ?? '여러분의 후원이 만드는 변화'}
             </h3>
           </Reveal>
 
@@ -170,10 +189,12 @@ export default function SectionDonation() {
             className="grid w-full min-w-0 list-none grid-cols-1 items-stretch gap-[18px] sm:grid-cols-2 lg:w-[741px] lg:grid-cols-3 lg:gap-[18px]"
             data-node-id="570:117"
           >
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit, index) => {
+              const localizedBenefit = localizedBenefits?.[index]
+              return (
               <StaggerItem as="li" key={benefit.title} className="h-full min-w-0">
                 <article
-                  className="flex h-full flex-col gap-6 overflow-hidden rounded-[12px] border border-line bg-white p-4 md:gap-6 md:p-6"
+                  className="flex h-full flex-col gap-6 overflow-hidden rounded-[12px] border border-line bg-white p-4 md:gap-6 md:px-4 md:py-6"
                   data-node-id={benefit.nodeId}
                 >
                   <div
@@ -197,17 +218,22 @@ export default function SectionDonation() {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <div className="flex flex-col gap-1.5">
-                      <h4 className="type-body font-normal text-text">
-                        {benefit.title}
+                      <h4
+                        className={`type-body font-normal text-text ${locale === 'en' ? 'text-balance' : ''}`}
+                      >
+                        {localizedBenefit?.[0] ?? benefit.title}
                       </h4>
-                      <p className="type-body text-sm leading-[1.4] text-text">
-                        {benefit.description}
+                      <p
+                        className={`type-body text-sm leading-[1.4] text-text ${locale === 'en' ? 'text-balance' : ''}`}
+                      >
+                        {localizedBenefit?.[1] ?? benefit.description}
                       </p>
                     </div>
                   </div>
                 </article>
               </StaggerItem>
-            ))}
+              )
+            })}
           </Stagger>
         </div>
       </div>

@@ -6,10 +6,12 @@ import logo from '@/assets/icons/logo-bay-area.png'
 import { Reveal } from '@/components/motion/Reveal'
 import { footerFade } from '@/lib/motion'
 import { socialChannels } from '@/lib/socialChannels'
+import { getCurrentLocale, getLocalizedHref, getRouteSegment } from './LanguageSwitcher'
 
 /** Figma Footer 386:283 — aligns with page content width; top stroke only */
 export default function Footer() {
   const pathname = usePathname()
+  const currentLocale = getCurrentLocale(pathname) ?? 'en'
 
   return (
     <Reveal
@@ -21,11 +23,11 @@ export default function Footer() {
       <div className="layout-container flex flex-col items-center text-center md:items-stretch md:text-left">
         <div className="flex w-full flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
           <Link
-            href="/#hero"
+            href={`${getLocalizedHref(pathname, currentLocale, 'home')}#hero`}
             className="inline-flex h-6 w-auto shrink-0 items-center justify-center transition-opacity hover:opacity-70 md:size-[73px]"
             aria-label="Bay Area Group home"
             onClick={(event) => {
-              if (pathname !== '/') return
+              if (getRouteSegment(pathname) !== 'home') return
               event.preventDefault()
               document
                 .getElementById('hero')

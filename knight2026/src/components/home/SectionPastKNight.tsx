@@ -29,6 +29,7 @@ import mobileEvent4 from '@/assets/past-knight/mobile/event-4.jpg'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
 import { useRef, useState, type PointerEvent } from 'react'
+import { homeCopy, type Locale } from '@/content/siteContent'
 
 /** Figma 561:5619 — landscape ~462×347, portrait ~347×462 / 355×462 */
 const images = [
@@ -79,7 +80,8 @@ const imagesWithMobileSources = images.map((image, index) => ({
 const loopImages = [...imagesWithMobileSources, ...imagesWithMobileSources]
 
 /** Figma section-past-k-night 561:6267 — viewport 1440, content 1160 (1200−40) */
-export default function SectionPastKNight() {
+export default function SectionPastKNight({ locale }: { locale?: Locale }) {
+  const copy = locale ? homeCopy[locale].past : null
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const dragStart = useRef({ pointerId: -1, x: 0, offset: 0 })
@@ -150,7 +152,7 @@ export default function SectionPastKNight() {
               className="type-h2 text-text md:whitespace-nowrap"
               data-node-id="561:5641"
             >
-              K-Night Highlights
+              {copy?.title ?? 'K-Night Highlights'}
             </h2>
           </StaggerItem>
 
@@ -159,16 +161,16 @@ export default function SectionPastKNight() {
             data-node-id="561:5642"
           >
             <p className="type-body" data-node-id="561:5644">
-              Explore highlights from previous K-Nights.
+              {copy?.description ?? 'Explore highlights from previous K-Nights.'}
             </p>
             <a
               href="https://bayareakgroup.org/category/k-night/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost type-button inline-flex h-10 w-fit items-center gap-2 px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
+              className="btn-ghost type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm md:h-11 md:px-6 md:py-3 md:text-base"
               data-node-id="561:5645"
             >
-              View more
+              {copy?.cta ?? 'View more'}
             </a>
           </StaggerItem>
         </div>
