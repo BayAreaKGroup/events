@@ -89,12 +89,14 @@ Applies to all code in this repo — root `index.html` and every event app.
   for the event you're shipping, not a hypothetical next one.
 - **File size cap: 600 lines.** Split a file that grows past that into
   smaller, single-purpose files.
-- **Single-purpose components.** A component does one visual/behavioral
-  job. If it needs a "mode" prop to switch between unrelated renders, split
-  it into separate components.
-- **Content lives in the content dictionary, not components.** Copy/text
-  strings belong in the event's data/content module (see the knight2026
-  pattern), not hardcoded inline in JSX/HTML.
+- **In event apps, single-purpose components.** A component does one
+  visual/behavioral job. If it needs a "mode" prop to switch between
+  unrelated renders, split it into separate components. (Not applicable to
+  the componentless root `index.html`.)
+- **In event apps, content lives in the content dictionary, not
+  components.** Copy/text strings belong in the event's data/content
+  module (see the knight2026 pattern), not hardcoded inline in JSX. (Root
+  `index.html` keeps its copy inline per "Root archive page" above.)
 
 ### Formatting & linting
 
