@@ -4,6 +4,8 @@ import type { StaticImageData } from 'next/image'
 import sponsorLogo from '@/assets/sponsors/consulate-sf.png'
 import { Reveal } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
+import { sponsorCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 /** Figma section-sponsor 562:6869 — viewport 1440, content 1160 */
 
@@ -64,6 +66,7 @@ function SponsorLogoCard({
 const inquiryEmail = 'info@bayareakgroup.org'
 
 export default function SectionSponsor() {
+  const copy = sponsorCopy[useLocale()]
   return (
     <section
       id="sponsor"
@@ -87,7 +90,7 @@ export default function SectionSponsor() {
             className="type-h2 max-w-[741px] whitespace-pre-line text-text"
             data-node-id="562:6874"
           >
-            {'Thank you to our\nK-Night 2026 sponsors'}
+            {copy.title}
           </h2>
         </Reveal>
 
@@ -132,19 +135,18 @@ export default function SectionSponsor() {
           <div className="card-ui bg-surface-muted flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <h3 className="type-h5 text-text">
-                Partnership & Sponsorship Inquiries
+                {copy.subtitle}
               </h3>
               <p className="type-body max-w-[42rem] text-pretty text-text-muted">
-                Bay Area K-Group은 후원 규모와 관계없이 개인 및 기업 여러분의
-                소중한 후원을 언제나 환영합니다.
+                {copy.body}
               </p>
             </div>
 
             <a
               href={`mailto:${inquiryEmail}`}
-              className="btn-accent type-button inline-flex h-10 w-fit shrink-0 items-center gap-2 rounded-[12px] px-4 py-2 text-sm md:h-11 md:px-6 md:py-3 md:text-base"
+              className="btn-accent type-button inline-flex h-10 w-fit max-md:w-full shrink-0 items-center justify-center gap-2 rounded-[12px] px-4 py-2 text-center text-sm md:h-11 md:px-6 md:py-3 md:text-base"
             >
-              Get in Touch
+              {copy.cta}
             </a>
           </div>
         </Reveal>

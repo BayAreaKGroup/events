@@ -7,6 +7,8 @@ import { useEffect, useId, useLayoutEffect, useState } from 'react'
 import logo from '@/assets/icons/logo-bay-area.png'
 import logoMark from '@/assets/icons/logo-bay-area-mark.png'
 import { easeOutExpo } from '@/lib/motion'
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher'
+import { getCurrentLocale, getLocalizedHref, getRouteSegment } from '@/lib/locale'
 
 /** Figma nav-bar 561:6099 — follows page color tokens (cool on home, warm elsewhere) */
 const NAV = {
@@ -20,11 +22,11 @@ const NAV = {
 } as const
 
 const navItems = [
-  { href: '/agenda', label: 'Agenda' },
-  { href: '/speakers', label: 'Speakers' },
-  { href: '/sponsors', label: 'Sponsors' },
-  { href: '/about', label: 'About' },
-  { href: '/donation', label: 'Donation' },
+  { href: 'agenda', label: 'Agenda' },
+  { href: 'speakers', label: 'Speakers' },
+  { href: 'sponsors', label: 'Sponsors' },
+  { href: 'about', label: 'About' },
+  { href: 'donation', label: 'Donation' },
 ] as const
 
 const navLinkClass =
@@ -35,12 +37,13 @@ const ticketBtnClass =
 
 /** trailingSlash-safe active check for flat routes */
 function isActivePath(pathname: string | null, href: string) {
-  return pathname === href || pathname === `${href}/`
+  return getRouteSegment(pathname) === href
 }
 
 export default function Header() {
   const reduceMotion = useReducedMotion()
   const pathname = usePathname()
+  const currentLocale = getCurrentLocale(pathname)
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
 
@@ -90,8 +93,17 @@ export default function Header() {
 
   return (
     <>
+      <div className="fixed inset-x-0 top-0 z-50 hidden h-8 bg-line md:block">
+        <div
+          className="mx-auto flex h-full w-full items-center justify-end px-4 sm:px-6 md:px-8"
+          style={{ maxWidth: NAV.container }}
+        >
+          <LanguageSwitcher />
+        </div>
+      </div>
+
       <motion.header
-        className="fixed inset-x-0 top-0 z-50 h-16 border-b border-line bg-surface md:h-20"
+        className="fixed inset-x-0 top-0 z-50 h-16 border-b border-line bg-surface md:top-8 md:h-20"
         data-node-id="561:6099"
         initial={false}
         animate={{ y: 0 }}
@@ -107,19 +119,19 @@ export default function Header() {
         }
       >
         <nav
-          className="mx-auto flex h-full w-full items-center justify-between px-4 sm:px-6 md:px-8"
+          className="relative mx-auto flex h-full w-full items-center justify-between px-4 sm:px-6 md:px-8"
           style={{ maxWidth: NAV.container }}
           aria-label="Primary"
           data-node-id="561:6101"
         >
           <Link
-            href="/#hero"
+            href={`${getLocalizedHref(currentLocale)}#hero`}
             className="inline-flex h-11 w-11 shrink-0 items-center overflow-hidden transition-opacity hover:opacity-70 active:opacity-70 md:w-[132px]"
             aria-label="Bay Area Group — Home"
             data-node-id="561:6102"
             onClick={(event) => {
               closeMenu()
-              if (pathname !== '/') return
+              if (getRouteSegment(pathname) !== '') return
               event.preventDefault()
               document
                 .getElementById('hero')
@@ -150,7 +162,7 @@ export default function Header() {
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
-                    href={item.href}
+                    href={getLocalizedHref(currentLocale, item.href)}
                     className={[
                       navLinkClass,
                       isActivePath(pathname, item.href) ? 'opacity-100' : '',
@@ -163,7 +175,7 @@ export default function Header() {
             </ul>
 
             <Link
-              href="/ticket"
+              href={getLocalizedHref(currentLocale, 'ticket')}
               className={`${ticketBtnClass} hidden md:inline-flex`}
               data-node-id="561:6113"
             >
@@ -171,7 +183,7 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/ticket"
+              href={getLocalizedHref(currentLocale, 'ticket')}
               className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
               onClick={closeMenu}
               aria-label="Get a Ticket"
@@ -247,7 +259,7 @@ export default function Header() {
                 {navItems.map((item) => (
                   <li key={item.href}>
                     <Link
-                      href={item.href}
+                      href={getLocalizedHref(currentLocale, item.href)}
                       onClick={closeMenu}
                       className={[
                         'type-button text-sm text-text transition-opacity hover:opacity-70 active:opacity-70 md:text-2xl',
@@ -261,6 +273,11 @@ export default function Header() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-auto flex flex-col gap-3 border-t border-line pt-6">
+                <p className="type-caption text-text">Language</p>
+                <LanguageSwitcher onNavigate={closeMenu} />
+              </div>
 
             </motion.div>
           </motion.div>

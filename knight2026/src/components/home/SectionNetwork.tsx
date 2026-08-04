@@ -5,23 +5,22 @@ import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import SocialCard from '@/components/ui/SocialCard'
 import { fadeIn } from '@/lib/motion'
 import { networkSocialCards } from '@/lib/socialChannels'
+import { homeCopy } from '@/content/siteContent'
+import { getLocalizedHref, useLocale } from '@/lib/locale'
 
-/** Looping ticket CTA copy */
-const bannerSegments = [
-  'September 12, 2026',
-  'Get Tickets →',
-  'Computer History Museum',
-  'Mountain View, CA',
-] as const
-
-const bannerPhrase = `${bannerSegments.join('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0')}\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`
-const bannerLoop = [bannerPhrase, bannerPhrase, bannerPhrase, bannerPhrase]
+const makeBannerLoop = (segments: readonly string[]) => {
+  const phrase = `${segments.join('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0')}\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`
+  return [phrase, phrase, phrase, phrase]
+}
 
 /**
  * Join Our Network — compact content-driven layout:
  * header → social grid → full-bleed ticker banner.
  */
 export default function SectionNetwork() {
+  const currentLocale = useLocale()
+  const copy = homeCopy[currentLocale].network
+  const bannerLoop = makeBannerLoop(copy.banner)
   return (
     <section
       id="network"
@@ -46,7 +45,7 @@ export default function SectionNetwork() {
               className="type-h2 text-text md:whitespace-nowrap"
               data-node-id="561:6414"
             >
-              Join Our Network
+              {copy.title}
             </h2>
           </StaggerItem>
 
@@ -55,9 +54,7 @@ export default function SectionNetwork() {
             data-node-id="561:6415"
           >
             <p className="type-body" data-node-id="561:6417">
-              K-Group 공식채널을 팔로우하시면 가장 빠르게 업데이트 소식을
-              받아보실 수 있습니다. 지금 합류하셔서 멋진 회원분들과 먼저 교류를
-              시작해 보세요!
+              {copy.description}
             </p>
           </StaggerItem>
         </Stagger>
@@ -68,11 +65,11 @@ export default function SectionNetwork() {
           className="social-card-grid list-none"
           data-node-id="562:6583"
         >
-          {networkSocialCards.map((card) => (
+          {networkSocialCards.map((card, index) => (
             <StaggerItem as="li" key={card.id} className="min-w-0">
               <SocialCard
                 name={card.name}
-                action={card.action}
+                action={copy.actions[index]}
                 href={card.href}
                 icon={card.icon}
                 className={`social-card-${card.id}`}
@@ -89,7 +86,7 @@ export default function SectionNetwork() {
         className="section-cta-banner-slot relative z-[1] w-full"
       >
         <Link
-          href="/ticket"
+          href={getLocalizedHref(currentLocale, 'ticket')}
           className="section-looping-cta-banner marquee marquee-cta relative flex w-full items-center overflow-hidden"
           aria-label="Get Tickets · September 12, 2026 · Computer History Museum, Mountain View, CA"
           data-node-id="565:7850"

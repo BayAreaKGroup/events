@@ -1,6 +1,8 @@
 'use client'
 
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
+import { aboutCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 /** Figma section-team 562:6820 — viewport 1440, content 1160 (1200−40)
  *  Editorial list layout: typography + spacing, no profile cards.
@@ -10,44 +12,6 @@ type TeamMember = {
   name: string
   role?: string
 }
-
-type TeamGroup = {
-  caption: string
-  heading: string
-  members: TeamMember[]
-}
-
-const groups: TeamGroup[] = [
-  {
-    caption: 'Bay Area K-Group',
-    heading: 'Management Team',
-    members: [
-      { name: 'Jenny Lee', role: 'Co-President' },
-      { name: 'Sangho Eum', role: 'Co-President' },
-      { name: 'Taeho Kim', role: 'Vice President' },
-      { name: 'Seonyoung Son', role: 'Treasurer' },
-      { name: 'Joo Yeon Choe', role: 'Director' },
-      { name: 'Yonghee (Amy) Kim', role: 'Director' },
-      { name: 'Ji hoon Kim', role: 'Director' },
-      { name: 'Jinwon Choi', role: 'Communication Manager' },
-    ],
-  },
-  {
-    caption: 'K-Night 2026 Volunteer',
-    heading: 'Media Team',
-    members: [
-      { name: 'Eunhye Kim' },
-      { name: 'Minjun Byun' },
-      { name: 'Seyeong Yeon' },
-      { name: 'Hyunsu Song' },
-    ],
-  },
-  {
-    caption: 'K-Night 2026 Volunteer',
-    heading: 'Event Team',
-    members: [{ name: 'Coming Soon' }],
-  },
-]
 
 function TeamMemberRow({ member }: { member: TeamMember }) {
   return (
@@ -63,6 +27,7 @@ function TeamMemberRow({ member }: { member: TeamMember }) {
 }
 
 export default function SectionTeam() {
+  const copy = aboutCopy[useLocale()]
   return (
     <section
       id="team"
@@ -93,7 +58,7 @@ export default function SectionTeam() {
               className="type-h2 text-text md:whitespace-nowrap"
               data-node-id="562:6836"
             >
-              Our Team
+              {copy.teamTitle}
             </h2>
           </StaggerItem>
 
@@ -102,8 +67,7 @@ export default function SectionTeam() {
             data-node-id="562:6837"
           >
             <p className="type-body text-text-muted" data-node-id="562:6839">
-              K-Group is powered by dedicated volunteers who build community,
-              organize events, and keep our network connected year-round.
+              {copy.teamDescription}
             </p>
           </StaggerItem>
         </Stagger>
@@ -113,13 +77,13 @@ export default function SectionTeam() {
           delay={0.1}
           data-node-id="561:5316"
         >
-          {groups.map((group, groupIndex) => (
+          {copy.teamGroups.map((group, groupIndex) => (
             <div
               key={`${group.caption}-${group.heading}-${groupIndex}`}
               className={[
                 'flex w-full flex-col gap-2 py-10 md:py-12',
                 groupIndex === 0 ? 'pt-0 md:pt-0' : '',
-                groupIndex === groups.length - 1 ? 'pb-0 md:pb-0' : '',
+                groupIndex === copy.teamGroups.length - 1 ? 'pb-0 md:pb-0' : '',
               ]
                 .filter(Boolean)
                 .join(' ')}
