@@ -6,8 +6,7 @@ import SocialCard from '@/components/ui/SocialCard'
 import { fadeIn } from '@/lib/motion'
 import { networkSocialCards } from '@/lib/socialChannels'
 import { homeCopy, type Locale } from '@/content/siteContent'
-import { usePathname } from 'next/navigation'
-import { getCurrentLocale, getLocalizedHref } from '@/components/layout/LanguageSwitcher'
+import { getLocalizedHref, useLocale } from '@/lib/locale'
 
 /** Looping ticket CTA copy */
 const legacyBannerSegments = [
@@ -27,8 +26,7 @@ const makeBannerLoop = (segments: readonly string[]) => {
  * header → social grid → full-bleed ticker banner.
  */
 export default function SectionNetwork({ locale }: { locale?: Locale }) {
-  const pathname = usePathname()
-  const currentLocale = getCurrentLocale(pathname) ?? 'en'
+  const currentLocale = useLocale()
   const copy = locale ? homeCopy[locale].network : null
   const bannerLoop = makeBannerLoop(copy?.banner ?? legacyBannerSegments)
   return (
@@ -102,7 +100,7 @@ export default function SectionNetwork({ locale }: { locale?: Locale }) {
         className="section-cta-banner-slot relative z-[1] w-full"
       >
         <Link
-          href={getLocalizedHref(pathname, currentLocale, 'ticket')}
+          href={getLocalizedHref(currentLocale, 'ticket')}
           className="section-looping-cta-banner marquee marquee-cta relative flex w-full items-center overflow-hidden"
           aria-label="Get Tickets · September 12, 2026 · Computer History Museum, Mountain View, CA"
           data-node-id="565:7850"

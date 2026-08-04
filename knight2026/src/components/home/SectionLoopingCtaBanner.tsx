@@ -3,8 +3,7 @@
 import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
 import { fadeIn } from '@/lib/motion'
-import { usePathname } from 'next/navigation'
-import { getCurrentLocale, getLocalizedHref } from '@/components/layout/LanguageSwitcher'
+import { getLocalizedHref, useLocale } from '@/lib/locale'
 
 /** Standalone looping ticket CTA — prefer SectionNetwork in-flow banner on home/about */
 const segments = [
@@ -18,13 +17,12 @@ const phrase = `${segments.join('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A
 const loopItems = [phrase, phrase, phrase, phrase]
 
 export default function SectionLoopingCtaBanner() {
-  const pathname = usePathname()
-  const currentLocale = getCurrentLocale(pathname) ?? 'en'
+  const locale = useLocale()
 
   return (
     <Reveal variants={fadeIn} delay={0.08} className="section-cta-banner-slot w-full shrink-0">
       <Link
-        href={getLocalizedHref(pathname, currentLocale, 'ticket')}
+        href={getLocalizedHref(locale, 'ticket')}
         className="section-looping-cta-banner marquee marquee-cta relative flex w-full items-center overflow-hidden"
         aria-label="Get Tickets · September 12, 2026 · Computer History Museum, Mountain View, CA"
         data-node-id="565:7850"

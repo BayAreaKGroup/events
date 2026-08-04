@@ -5,8 +5,7 @@ import EventBadge from '@/components/ui/EventBadge'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpHero, fadeUpScale, staggerContainerSlow } from '@/lib/motion'
 import { socialChannels } from '@/lib/socialChannels'
-import { usePathname } from 'next/navigation'
-import { getCurrentLocale, getLocalizedHref } from '@/components/layout/LanguageSwitcher'
+import { getLocalizedHref, useLocale } from '@/lib/locale'
 
 type ComingSoonSectionProps = {
   id: string
@@ -21,8 +20,7 @@ export default function ComingSoonSection({
   headingLevel = 'h2',
 }: ComingSoonSectionProps) {
   const Heading = headingLevel
-  const pathname = usePathname()
-  const currentLocale = getCurrentLocale(pathname) ?? 'en'
+  const locale = useLocale()
 
   return (
     <section
@@ -65,14 +63,14 @@ export default function ComingSoonSection({
           className="flex w-full flex-wrap items-center justify-center gap-3 pt-12 max-md:flex-col max-md:items-stretch max-md:gap-2 max-md:pt-6"
         >
           <Button
-            href={getLocalizedHref(pathname, currentLocale, 'home')}
+            href={getLocalizedHref(locale)}
             variant="ghost"
             className="h-10 w-full whitespace-nowrap px-4 py-2 text-center text-sm md:h-11 md:w-[11rem] md:px-6 md:py-3 md:text-base"
           >
             Back to Home
           </Button>
           <Button
-            href={getLocalizedHref(pathname, currentLocale, 'ticket')}
+            href={getLocalizedHref(locale, 'ticket')}
             variant="accent"
             className="h-10 w-full whitespace-nowrap px-4 py-2 text-center text-sm md:h-11 md:w-[11rem] md:px-6 md:py-3 md:text-base"
           >

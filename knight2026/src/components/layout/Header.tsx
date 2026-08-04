@@ -7,11 +7,8 @@ import { useEffect, useId, useLayoutEffect, useState } from 'react'
 import logo from '@/assets/icons/logo-bay-area.png'
 import logoMark from '@/assets/icons/logo-bay-area-mark.png'
 import { easeOutExpo } from '@/lib/motion'
-import LanguageSwitcher, {
-  getCurrentLocale,
-  getLocalizedHref,
-  getRouteSegment,
-} from '@/components/layout/LanguageSwitcher'
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher'
+import { getCurrentLocale, getLocalizedHref, getRouteSegment } from '@/lib/locale'
 
 /** Figma nav-bar 561:6099 — follows page color tokens (cool on home, warm elsewhere) */
 const NAV = {
@@ -46,7 +43,7 @@ function isActivePath(pathname: string | null, href: string) {
 export default function Header() {
   const reduceMotion = useReducedMotion()
   const pathname = usePathname()
-  const currentLocale = getCurrentLocale(pathname) ?? 'en'
+  const currentLocale = getCurrentLocale(pathname)
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = useId()
 
@@ -104,7 +101,7 @@ export default function Header() {
           className="mx-auto flex h-full w-full items-center justify-end px-4 sm:px-6 md:px-8"
           style={{ maxWidth: NAV.container }}
         >
-          <LanguageSwitcher pathname={pathname} />
+          <LanguageSwitcher />
         </div>
       </div>
 
@@ -131,13 +128,13 @@ export default function Header() {
           data-node-id="561:6101"
         >
           <Link
-            href={`${getLocalizedHref(pathname, currentLocale, 'home')}#hero`}
+            href={`${getLocalizedHref(currentLocale)}#hero`}
             className="inline-flex h-11 w-11 shrink-0 items-center overflow-hidden transition-opacity hover:opacity-70 active:opacity-70 md:w-[132px]"
             aria-label="Bay Area Group — Home"
             data-node-id="561:6102"
             onClick={(event) => {
               closeMenu()
-              if (getRouteSegment(pathname) !== 'home') return
+              if (getRouteSegment(pathname) !== '') return
               event.preventDefault()
               document
                 .getElementById('hero')
@@ -168,7 +165,7 @@ export default function Header() {
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
-                    href={getLocalizedHref(pathname, currentLocale, item.href)}
+                    href={getLocalizedHref(currentLocale, item.href)}
                     className={[
                       navLinkClass,
                       isActivePath(pathname, item.href) ? 'opacity-100' : '',
@@ -181,7 +178,7 @@ export default function Header() {
             </ul>
 
             <Link
-              href={getLocalizedHref(pathname, currentLocale, 'ticket')}
+              href={getLocalizedHref(currentLocale, 'ticket')}
               className={`${ticketBtnClass} hidden md:inline-flex`}
               data-node-id="561:6113"
             >
@@ -189,7 +186,7 @@ export default function Header() {
             </Link>
 
             <Link
-              href={getLocalizedHref(pathname, currentLocale, 'ticket')}
+              href={getLocalizedHref(currentLocale, 'ticket')}
               className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
               onClick={closeMenu}
               aria-label="Get a Ticket"
@@ -265,7 +262,7 @@ export default function Header() {
                 {navItems.map((item) => (
                   <li key={item.href}>
                     <Link
-                      href={getLocalizedHref(pathname, currentLocale, item.href)}
+                      href={getLocalizedHref(currentLocale, item.href)}
                       onClick={closeMenu}
                       className={[
                         'type-button text-sm text-text transition-opacity hover:opacity-70 active:opacity-70 md:text-2xl',
@@ -282,7 +279,7 @@ export default function Header() {
 
               <div className="mt-auto flex flex-col gap-3 border-t border-line pt-6">
                 <p className="type-caption text-text">Language</p>
-                <LanguageSwitcher pathname={pathname} onNavigate={closeMenu} />
+                <LanguageSwitcher onNavigate={closeMenu} />
               </div>
 
             </motion.div>
