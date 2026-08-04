@@ -15,7 +15,10 @@ export default function LanguageSwitcher({
   const route = getRouteSegment(pathname)
 
   return (
-    <div className="flex items-center gap-1 text-xs text-text">
+    <nav
+      aria-label="Language selection"
+      className="flex items-center gap-1 text-xs text-text"
+    >
       <Link
         href={getLocalizedHref('en', route)}
         onClick={onNavigate}
@@ -41,6 +44,6 @@ export default function LanguageSwitcher({
       >
         한국어
       </Link>
-    </div>
+    </nav>
   )
 }

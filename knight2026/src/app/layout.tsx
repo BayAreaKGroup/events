@@ -32,7 +32,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ko">
+    <html lang="en">
       <head>
         <link
           rel="stylesheet"

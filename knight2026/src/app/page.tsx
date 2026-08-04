@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 export default function RootRedirect() {
   const router = useRouter()
   useEffect(() => {
-    router.replace('/en/')
+    router.replace(`/en/${window.location.hash}`)
   }, [router])
   return null
 }

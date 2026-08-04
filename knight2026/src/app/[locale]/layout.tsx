@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { homeCopy, locales, type Locale } from '@/content/siteContent'
+import HtmlLang from '@/components/layout/HtmlLang'
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -30,5 +31,10 @@ export async function generateMetadata({
 }
 
 export default function LocaleLayout({ children }: { children: ReactNode }) {
-  return children
+  return (
+    <>
+      <HtmlLang />
+      {children}
+    </>
+  )
 }

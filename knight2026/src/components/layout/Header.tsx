@@ -93,10 +93,7 @@ export default function Header() {
 
   return (
     <>
-      <div
-        className="fixed inset-x-0 top-0 z-50 hidden h-8 bg-line md:block"
-        aria-label="Language selection"
-      >
+      <div className="fixed inset-x-0 top-0 z-50 hidden h-8 bg-line md:block">
         <div
           className="mx-auto flex h-full w-full items-center justify-end px-4 sm:px-6 md:px-8"
           style={{ maxWidth: NAV.container }}

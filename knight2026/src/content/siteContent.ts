@@ -161,6 +161,19 @@ export const aboutCopy = {
   },
 } as const
 
+export const comingSoonCopy = {
+  en: {
+    intro: 'K-Night, K-Group’s flagship event,\nis coming back again this year.',
+    followIntro:
+      'Follow the channels below to get\nthe latest updates as soon as they’re announced.',
+  },
+  ko: {
+    intro: '올해에도 K-Group의 대표 행사인\nK-Night이 찾아옵니다.',
+    followIntro:
+      '아래 채널을 팔로우하시면 가장 빠르게\n업데이트 소식을 받아보실 수 있습니다.',
+  },
+} as const
+
 export const sponsorCopy = {
   en: {
     title: 'Thank you to our\nK-Night 2026 sponsors',
@@ -267,7 +280,7 @@ export const ticketCopy = {
     eventDetails: ['September 12, Saturday', 'Computer History Museum', 'Mountain View, CA'],
     prices: ['$70', '$80'],
     perPerson: 'PER PERSON',
-    button: 'Coming Soon',
+    openingSoon: 'Opening Soon',
     noticeTitle: 'Notice',
     noticeIntro: 'K-Night is a pre-registration only event. Please read the following information before purchasing your ticket.',
     noticeItems: [
@@ -282,6 +295,7 @@ export const ticketCopy = {
     ],
     carpoolTitle: 'Carpool',
     carpoolIntro: 'We’re helping K-Night attendees connect with others for carpooling to and from the venue. If you’d like to share a ride or offer a ride, please use the shared list below to connect with other attendees in your area.',
+    carpoolButton: 'Coming Soon',
   },
   ko: {
     badge: '8월 6일 오후 12시 오픈',
@@ -289,7 +303,7 @@ export const ticketCopy = {
     eventDetails: ['9월 12일 토요일', '컴퓨터 역사 박물관', '마운틴뷰, 캘리포니아'],
     prices: ['$70', '$80'],
     perPerson: '인당',
-    button: '오픈예정',
+    openingSoon: '오픈예정',
     noticeTitle: '안내사항',
     noticeIntro: '본 행사는 사전 예약제로 운영되며, 원활한 진행을 위해 아래 안내 사항을 반드시 확인해 주시기 바랍니다.',
     noticeItems: [
@@ -304,5 +318,6 @@ export const ticketCopy = {
     ],
     carpoolTitle: '교통안내',
     carpoolIntro: 'K-Night 행사장까지 교통편이 불편하신 분들을 위해 참가자 간 카풀을 지원합니다. 주변 참여자들과 매칭을 원하시는 분들은 아래 공유 리스트를 이용해 주세요.',
+    carpoolButton: '준비중',
   },
 } as const

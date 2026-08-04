@@ -150,7 +150,7 @@ export default function SectionTicketHeader() {
                           : 'btn-ghost',
                     ].join(' ')}
                   >
-                    {ticketsOpeningSoon ? copy.button : option.buttonLabel}
+                    {ticketsOpeningSoon ? copy.openingSoon : option.buttonLabel}
                   </a>
                 </div>
               </StaggerItem>
