@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "oxlint"
+    "lint": "oxlint",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "verify": "npm run format:check && npm run lint && npm run typecheck",
+    "prepare": "git config core.hooksPath .githooks || exit 0"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
@@ -21,6 +26,7 @@
     "autoprefixer": "^10.5.4",
     "oxlint": "^1.71.0",
     "postcss": "^8.5.19",
+    "prettier": "^3.9.6",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.2"
   }
