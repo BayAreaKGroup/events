@@ -99,7 +99,7 @@ export default function SectionTicket() {
             <button
               type="button"
               disabled
-              className="btn-ghost btn-muted type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:opacity-100 disabled:hover:border-[rgb(var(--color-muted-border))] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
+              className="btn-ghost btn-muted type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:opacity-100 disabled:hover:border-[rgb(var(--color-muted-border))] disabled:hover:bg-[rgb(var(--color-muted-surface))] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
               data-node-id="561:5145"
             >
               {copy.carpoolButton}
