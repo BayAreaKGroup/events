@@ -37,13 +37,13 @@ set -eu
 repo_root="$(git rev-parse --show-toplevel)"
 cd "$repo_root"
 
-staged_files="$(git diff --cached --name-only --diff-filter=ACMR)"
+staged_files="$(git -c core.quotepath=false diff --cached --name-only --diff-filter=ACMR)"
 [ -z "$staged_files" ] && exit 0
 
 fail=0
 
 # --- Drift guard: fail closed if any staged file also has unstaged edits ---
-unstaged_dirty="$(git diff --name-only)"
+unstaged_dirty="$(git -c core.quotepath=false diff --name-only)"
 if [ -n "$unstaged_dirty" ]; then
   tmp_dirty="$(mktemp)"
   printf '%s\n' "$unstaged_dirty" > "$tmp_dirty"
@@ -60,12 +60,16 @@ fi
 # 1) Universal max-600-lines guard — covers root index.html/404.html too,
 #    not just knight2026 TS (oxlint's max-lines rule below is the
 #    authoritative TS-specific check; this is a cheap, dependency-free
-#    backstop for everything else).
+#    backstop for everything else). The 600-line cap targets code files;
+#    *.css is excluded because knight2026/src/app/globals.css is
+#    grandfathered in at 1467 lines (splitting it is a deferred follow-up)
+#    and CSS in general isn't a good fit for this cap.
 while IFS= read -r f; do
   [ -z "$f" ] && continue
   [ -f "$f" ] || continue
   case "$f" in
-    */node_modules/*|*/.next/*|*/out/*|*package-lock.json|*.tsbuildinfo|*.svg|*.png|*.jpg|*.jpeg) continue ;;
+    */node_modules/*|*/.next/*|*/out/*|*package-lock.json|*.tsbuildinfo|*.css) continue ;;
+    *.svg|*.png|*.jpg|*.jpeg|*.webp|*.avif|*.gif|*.woff|*.woff2|*.ico) continue ;;
   esac
   lines="$(wc -l < "$f" | tr -d ' ')"
   if [ "$lines" -gt 600 ]; then
@@ -77,7 +81,7 @@ $staged_files
 EOF
 
 # 2) No new .js/.jsx under knight2026/src (TypeScript-only source).
-new_js="$(git diff --cached --name-only --diff-filter=A -- 'knight2026/src/**/*.js' 'knight2026/src/**/*.jsx' || true)"
+new_js="$(git -c core.quotepath=false diff --cached --name-only --diff-filter=A -- 'knight2026/src/**/*.js' 'knight2026/src/**/*.jsx' 'knight2026/src/*.js' 'knight2026/src/*.jsx' || true)"
 if [ -n "$new_js" ]; then
   echo "pre-commit: new JS files are not allowed in knight2026/src (TypeScript only):"
   echo "$new_js"

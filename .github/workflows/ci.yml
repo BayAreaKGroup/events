@@ -44,7 +44,7 @@ jobs:
 
       - name: Type check
         working-directory: knight2026
-        run: npx tsc --noEmit
+        run: npm run typecheck
 
       - name: Build (Next.js static export)
         working-directory: knight2026
