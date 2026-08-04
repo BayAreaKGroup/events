@@ -1,12 +1,12 @@
 export type SocialCardProps = {
-  name: string
-  action: string
-  href: string
-  icon: string
+  name: string;
+  action: string;
+  href: string;
+  icon: string;
   /** Accessible name; defaults to `${action} ${name}` */
-  ariaLabel?: string
-  className?: string
-}
+  ariaLabel?: string;
+  className?: string;
+};
 
 /**
  * Compact social channel CTA — icon, name, action, trailing arrow.
@@ -18,7 +18,7 @@ export default function SocialCard({
   href,
   icon,
   ariaLabel,
-  className = '',
+  className = "",
 }: SocialCardProps) {
   return (
     <a
@@ -26,7 +26,7 @@ export default function SocialCard({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel ?? `${action} ${name}`}
-      className={['social-card', className].filter(Boolean).join(' ')}
+      className={["social-card", className].filter(Boolean).join(" ")}
     >
       <span className="social-card-icon" aria-hidden>
         <img
@@ -63,5 +63,5 @@ export default function SocialCard({
         </svg>
       </span>
     </a>
-  )
+  );
 }

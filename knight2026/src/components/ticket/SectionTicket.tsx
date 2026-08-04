@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { fadeUpSubtle } from '@/lib/motion'
-import { ticketCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { fadeUpSubtle } from "@/lib/motion";
+import { ticketCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-ticket 562:6728 — viewport 1440, content 1160 (1200−40) */
 
 export default function SectionTicket() {
-  const copy = ticketCopy[useLocale()]
+  const copy = ticketCopy[useLocale()];
   return (
     <section
       id="ticket"
@@ -32,10 +32,7 @@ export default function SectionTicket() {
           className="section-notice flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="561:5111"
         >
-          <div
-            className="w-full shrink-0 lg:w-[371px]"
-            data-node-id="561:5112"
-          >
+          <div className="w-full shrink-0 lg:w-[371px]" data-node-id="561:5112">
             <h3
               id="ticket-notice-heading"
               className="type-h3 text-text"
@@ -75,10 +72,7 @@ export default function SectionTicket() {
           className="section-carpool flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="561:5137"
         >
-          <div
-            className="w-full shrink-0 lg:w-[371px]"
-            data-node-id="561:5138"
-          >
+          <div className="w-full shrink-0 lg:w-[371px]" data-node-id="561:5138">
             <h3
               id="ticket-carpool-heading"
               className="type-h3 text-text"
@@ -108,5 +102,5 @@ export default function SectionTicket() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }

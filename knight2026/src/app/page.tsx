@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function RootRedirect() {
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    router.replace(`/en/${window.location.hash}`)
-  }, [router])
-  return null
+    router.replace(`/en/${window.location.hash}`);
+  }, [router]);
+  return null;
 }

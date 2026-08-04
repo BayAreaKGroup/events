@@ -1,4 +1,4 @@
-import ComingSoonSection from '@/components/common/ComingSoonSection'
+import ComingSoonSection from "@/components/common/ComingSoonSection";
 
 export default function SectionSpeakersComing() {
   return (
@@ -7,5 +7,5 @@ export default function SectionSpeakersComing() {
       headingId="speakers-coming-heading"
       headingLevel="h1"
     />
-  )
+  );
 }

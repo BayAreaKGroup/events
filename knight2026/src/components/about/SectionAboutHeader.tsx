@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import Smooth3DSlideshow from '@/components/common/Smooth3DSlideshow'
-import EventBadge from '@/components/ui/EventBadge'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { fadeUpHero, fadeUpScale, staggerContainerSlow } from '@/lib/motion'
-import { aboutCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import Smooth3DSlideshow from "@/components/common/Smooth3DSlideshow";
+import EventBadge from "@/components/ui/EventBadge";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { fadeUpHero, fadeUpScale, staggerContainerSlow } from "@/lib/motion";
+import { aboutCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-about-header 562:6754 — viewport 1440, content 1160 (1200−40) */
 
 export default function SectionAboutHeader() {
-  const copy = aboutCopy[useLocale()]
+  const copy = aboutCopy[useLocale()];
   return (
     <section
       id="about-header"
@@ -84,12 +84,16 @@ export default function SectionAboutHeader() {
             autoplay
             autoplayDirection="rightToLeft"
             mobileSideTilt={0}
-            transition={{ duration: 0.45, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.45,
+              delay: 1.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             fitContainer
             className="mx-auto w-full"
           />
         </StaggerItem>
       </Stagger>
     </section>
-  )
+  );
 }

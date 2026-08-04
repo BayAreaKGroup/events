@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import Button from '@/components/ui/Button'
-import EventBadge from '@/components/ui/EventBadge'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { fadeUpHero, fadeUpScale, staggerContainerSlow } from '@/lib/motion'
-import { socialChannels } from '@/lib/socialChannels'
-import { comingSoonCopy } from '@/content/siteContent'
-import { getLocalizedHref, useLocale } from '@/lib/locale'
+import Button from "@/components/ui/Button";
+import EventBadge from "@/components/ui/EventBadge";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { fadeUpHero, fadeUpScale, staggerContainerSlow } from "@/lib/motion";
+import { socialChannels } from "@/lib/socialChannels";
+import { comingSoonCopy } from "@/content/siteContent";
+import { getLocalizedHref, useLocale } from "@/lib/locale";
 
 type ComingSoonSectionProps = {
-  id: string
-  headingId: string
-  headingLevel?: 'h1' | 'h2'
-}
+  id: string;
+  headingId: string;
+  headingLevel?: "h1" | "h2";
+};
 
 /** Figma 508:2058 — section fills 100svh; footer sits outside */
 export default function ComingSoonSection({
   id,
   headingId,
-  headingLevel = 'h2',
+  headingLevel = "h2",
 }: ComingSoonSectionProps) {
-  const Heading = headingLevel
-  const locale = useLocale()
-  const copy = comingSoonCopy[locale]
+  const Heading = headingLevel;
+  const locale = useLocale();
+  const copy = comingSoonCopy[locale];
 
   return (
     <section
@@ -54,9 +54,7 @@ export default function ComingSoonSection({
         </StaggerItem>
 
         <StaggerItem className="w-full pt-6 max-md:pt-2">
-          <p className="type-h5 whitespace-pre-line text-text">
-            {copy.intro}
-          </p>
+          <p className="type-h5 whitespace-pre-line text-text">{copy.intro}</p>
         </StaggerItem>
 
         <StaggerItem
@@ -71,7 +69,7 @@ export default function ComingSoonSection({
             Back to Home
           </Button>
           <Button
-            href={getLocalizedHref(locale, 'ticket')}
+            href={getLocalizedHref(locale, "ticket")}
             variant="accent"
             className="h-10 w-full whitespace-nowrap px-4 py-2 text-center text-sm md:h-11 md:w-[11rem] md:px-6 md:py-3 md:text-base"
           >
@@ -80,9 +78,7 @@ export default function ComingSoonSection({
         </StaggerItem>
 
         <StaggerItem className="flex w-full flex-col items-center pt-16 max-md:pt-8">
-          <p className="type-body whitespace-pre-line">
-            {copy.followIntro}
-          </p>
+          <p className="type-body whitespace-pre-line">{copy.followIntro}</p>
           <ul className="mt-0 flex max-w-full flex-wrap items-center justify-center gap-1 sm:gap-[6.5px]">
             {socialChannels.map((social) => (
               <li key={social.label}>
@@ -109,5 +105,5 @@ export default function ComingSoonSection({
         </StaggerItem>
       </Stagger>
     </section>
-  )
+  );
 }

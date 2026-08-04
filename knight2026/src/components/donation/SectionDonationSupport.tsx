@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import IconInfo from '@/assets/icons/icon-info.svg'
-import ctaGraphicRight from '@/assets/donation/cta-graphic-right.png'
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { fadeUpScale, staggerContainerSlow } from '@/lib/motion'
-import { DONATION_LINKS } from '@/lib/donationLinks'
-import { donationSupportCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import IconInfo from "@/assets/icons/icon-info.svg";
+import ctaGraphicRight from "@/assets/donation/cta-graphic-right.png";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { fadeUpScale, staggerContainerSlow } from "@/lib/motion";
+import { DONATION_LINKS } from "@/lib/donationLinks";
+import { donationSupportCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-donation-support 562:7233 — viewport 1440, content 1160 (1200−40) */
 export default function SectionDonationSupport() {
-  const copy = donationSupportCopy[useLocale()]
+  const copy = donationSupportCopy[useLocale()];
   return (
     <section
       id="donation-support"
@@ -54,16 +54,10 @@ export default function SectionDonationSupport() {
                 className="flex flex-col gap-2 border-b border-line py-6 lg:pt-0"
                 data-node-id="562:7324"
               >
-                <h3
-                  className="type-h4 text-text"
-                  data-node-id="562:7325"
-                >
+                <h3 className="type-h4 text-text" data-node-id="562:7325">
                   {copy.onlineTitle}
                 </h3>
-                <div
-                  className="type-body"
-                  data-node-id="562:7326"
-                >
+                <div className="type-body" data-node-id="562:7326">
                   <p>{copy.onlineBody}</p>
                   <p>{copy.onlineNote}</p>
                 </div>
@@ -98,16 +92,10 @@ export default function SectionDonationSupport() {
                 className="flex flex-col gap-2 border-b border-line py-6 text-text"
                 data-node-id="562:7332"
               >
-                <h3
-                  className="type-h4"
-                  data-node-id="562:7333"
-                >
+                <h3 className="type-h4" data-node-id="562:7333">
                   {copy.checkTitle}
                 </h3>
-                <div
-                  className="type-body"
-                  data-node-id="562:7334"
-                >
+                <div className="type-body" data-node-id="562:7334">
                   <p>{copy.checkBody}</p>
                   <ul className="list-disc space-y-0 pl-[27px]">
                     <li>{copy.payee}</li>
@@ -122,10 +110,7 @@ export default function SectionDonationSupport() {
                 className="flex flex-col gap-6 border-b border-line py-6 text-text"
                 data-node-id="562:7335"
               >
-                <h3
-                  className="type-h4"
-                  data-node-id="562:7336"
-                >
+                <h3 className="type-h4" data-node-id="562:7336">
                   {copy.matchingTitle}
                 </h3>
 
@@ -133,24 +118,15 @@ export default function SectionDonationSupport() {
                   className="flex flex-col gap-3 rounded-[12px] border border-line bg-white p-6"
                   data-node-id="562:7337"
                 >
-                  <h4
-                    className="type-h4"
-                    data-node-id="562:7338"
-                  >
+                  <h4 className="type-h4" data-node-id="562:7338">
                     {copy.matchingHighlight}
                   </h4>
-                  <p
-                  className="type-body"
-                  data-node-id="562:7339"
-                >
+                  <p className="type-body" data-node-id="562:7339">
                     {copy.matchingHighlightBody}
                   </p>
                 </div>
 
-                <div
-                  className="type-body"
-                  data-node-id="562:7340"
-                >
+                <div className="type-body" data-node-id="562:7340">
                   <p>{copy.matchingBody}</p>
                   <ul className="list-disc space-y-0 pl-[27px]">
                     <li>{copy.matchingExample}</li>
@@ -165,16 +141,10 @@ export default function SectionDonationSupport() {
                 className="flex flex-col gap-2 border-b border-line py-6 text-text"
                 data-node-id="562:7341"
               >
-                <h3
-                  className="type-h4"
-                  data-node-id="562:7342"
-                >
+                <h3 className="type-h4" data-node-id="562:7342">
                   {copy.volunteerTitle}
                 </h3>
-                <p
-                  className="type-body"
-                  data-node-id="562:7343"
-                >
+                <p className="type-body" data-node-id="562:7343">
                   {copy.volunteerBody}
                 </p>
               </div>
@@ -223,10 +193,7 @@ export default function SectionDonationSupport() {
             />
 
             <div className="relative z-10 flex w-full max-w-[578px] flex-col items-start gap-8 px-5 py-10 text-left sm:gap-12 sm:px-8 sm:py-12 md:gap-12 md:px-[97px] md:py-[49px]">
-              <div
-                className="type-body w-full"
-                data-node-id="561:5257"
-              >
+              <div className="type-body w-full" data-node-id="561:5257">
                 <p>{copy.ctaBody[0]}</p>
                 <p className="mt-4">{copy.ctaBody[1]}</p>
               </div>
@@ -245,5 +212,5 @@ export default function SectionDonationSupport() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }

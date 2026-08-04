@@ -1,17 +1,21 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import logo from '@/assets/icons/logo-bay-area.png'
-import { Reveal } from '@/components/motion/Reveal'
-import { footerFade } from '@/lib/motion'
-import { socialChannels } from '@/lib/socialChannels'
-import { getCurrentLocale, getLocalizedHref, getRouteSegment } from '@/lib/locale'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import logo from "@/assets/icons/logo-bay-area.png";
+import { Reveal } from "@/components/motion/Reveal";
+import { footerFade } from "@/lib/motion";
+import { socialChannels } from "@/lib/socialChannels";
+import {
+  getCurrentLocale,
+  getLocalizedHref,
+  getRouteSegment,
+} from "@/lib/locale";
 
 /** Figma Footer 386:283 — aligns with page content width; top stroke only */
 export default function Footer() {
-  const pathname = usePathname()
-  const currentLocale = getCurrentLocale(pathname)
+  const pathname = usePathname();
+  const currentLocale = getCurrentLocale(pathname);
 
   return (
     <Reveal
@@ -27,11 +31,11 @@ export default function Footer() {
             className="inline-flex h-6 w-auto shrink-0 items-center justify-center transition-opacity hover:opacity-70 md:size-[73px]"
             aria-label="Bay Area Group home"
             onClick={(event) => {
-              if (getRouteSegment(pathname) !== '') return
-              event.preventDefault()
+              if (getRouteSegment(pathname) !== "") return;
+              event.preventDefault();
               document
-                .getElementById('hero')
-                ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                .getElementById("hero")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
           >
             <img
@@ -75,5 +79,5 @@ export default function Footer() {
         </div>
       </div>
     </Reveal>
-  )
+  );
 }

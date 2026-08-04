@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { Reveal } from '@/components/motion/Reveal'
-import { sponsorCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import { Reveal } from "@/components/motion/Reveal";
+import { sponsorCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-sponsor 562:6869 — viewport 1440, content 1160 */
 
-const inquiryEmail = 'info@bayareakgroup.org'
+const inquiryEmail = "info@bayareakgroup.org";
 
 export default function SectionSponsor() {
-  const copy = sponsorCopy[useLocale()]
+  const copy = sponsorCopy[useLocale()];
   return (
     <section
       id="sponsor"
@@ -40,9 +40,7 @@ export default function SectionSponsor() {
         <Reveal delay={0.16}>
           <div className="card-ui bg-surface-muted flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
-              <h3 className="type-h5 text-text">
-                {copy.subtitle}
-              </h3>
+              <h3 className="type-h5 text-text">{copy.subtitle}</h3>
               <p className="type-body max-w-[42rem] text-pretty text-text-muted">
                 {copy.body}
               </p>
@@ -58,5 +56,5 @@ export default function SectionSponsor() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }
