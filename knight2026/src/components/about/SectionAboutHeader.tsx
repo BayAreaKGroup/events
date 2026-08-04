@@ -4,15 +4,13 @@ import Smooth3DSlideshow from '@/components/common/Smooth3DSlideshow'
 import EventBadge from '@/components/ui/EventBadge'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpHero, fadeUpScale, staggerContainerSlow } from '@/lib/motion'
-import { aboutCopy, type Locale } from '@/content/siteContent'
+import { aboutCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 /** Figma section-about-header 562:6754 — viewport 1440, content 1160 (1200−40) */
 
-const tags = ['Founded 2007', 'Non-Profit'] as const
-
-export default function SectionAboutHeader({ locale }: { locale?: Locale }) {
-  const copy = locale ? aboutCopy[locale] : null
-  const displayTags = copy?.tags ?? tags
+export default function SectionAboutHeader() {
+  const copy = aboutCopy[useLocale()]
   return (
     <section
       id="about-header"
@@ -42,7 +40,7 @@ export default function SectionAboutHeader({ locale }: { locale?: Locale }) {
               className="flex flex-wrap items-start justify-center gap-4"
               data-node-id="561:5858"
             >
-              {displayTags.map((tag) => (
+              {copy.tags.map((tag) => (
                 <EventBadge key={tag} label={tag} />
               ))}
             </div>
@@ -54,7 +52,7 @@ export default function SectionAboutHeader({ locale }: { locale?: Locale }) {
               className="type-h2 text-text md:whitespace-nowrap"
               data-node-id="561:5867"
             >
-              {copy?.body ? 'Bay Area K-Group' : 'Bay Area K-Group'}
+              Bay Area K-Group
             </h2>
           </StaggerItem>
 
@@ -63,15 +61,7 @@ export default function SectionAboutHeader({ locale }: { locale?: Locale }) {
               className="type-body mx-auto w-full max-w-[654px] whitespace-pre-line text-center"
               data-node-id="561:5868"
             >
-              {copy?.body ?? (
-                <>
-                  Bay Area K-Group(BAKG)은 실리콘밸리 지역에서 테크 분야에 종사하는
-                  한인들의 자발적 조직입니다. 정기적으로 컨퍼런스와 네트워킹 행사를
-                  통해 회원들간의 기술 교류와 친목도모를 돕고 있으며, 다양한
-                  기술분야와 취미에 따라 여러 소모임들이 자율적으로 운영되고
-                  있습니다.
-                </>
-              )}
+              {copy.body}
             </p>
           </StaggerItem>
         </div>

@@ -5,20 +5,10 @@ import ticketEarly from '@/assets/ticket/ticket-early.png'
 import ticketRegular from '@/assets/ticket/ticket-regular.png'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
 import EventBadge from '@/components/ui/EventBadge'
-import { ticketCopy, type Locale } from '@/content/siteContent'
+import { ticketCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 /** Figma section-ticket-header 562:6586 — viewport 1440, content 1160 (1200−40) */
-
-const eventDetails = (
-  <>
-    <span className="block">September 12, Saturday</span>
-    <span className="mt-2 block md:mt-4">
-      Computer History Museum
-      <br />
-      Mountain View, CA
-    </span>
-  </>
-)
 
 type TicketOption = {
   id: string
@@ -50,8 +40,8 @@ const ticketOptions: TicketOption[] = [
 
 const ticketsOpeningSoon = true
 
-export default function SectionTicketHeader({ locale }: { locale?: Locale }) {
-  const copy = locale ? ticketCopy[locale] : null
+export default function SectionTicketHeader() {
+  const copy = ticketCopy[useLocale()]
   return (
     <section
       id="ticket-header"
@@ -80,13 +70,13 @@ export default function SectionTicketHeader({ locale }: { locale?: Locale }) {
             data-node-id="562:6699"
           >
             <div className="flex flex-col gap-4">
-              <EventBadge label={copy?.badge ?? 'OPENS AUG 6, 12:00 PM PDT'} />
+              <EventBadge label={copy.badge} />
               <h2
                 id="ticket-header-heading"
                 className="type-h2 text-text md:whitespace-nowrap"
                 data-node-id="562:6700"
               >
-                {copy?.title ?? 'Ticket'}
+                {copy.title}
               </h2>
             </div>
           </StaggerItem>
@@ -96,16 +86,12 @@ export default function SectionTicketHeader({ locale }: { locale?: Locale }) {
             data-node-id="562:6701"
           >
             <p className="type-body" data-node-id="562:6703">
-              {copy ? (
-                <>
-                  <span className="block">{copy.eventDetails[0]}</span>
-                  <span className="mt-2 block md:mt-4">
-                    {copy.eventDetails[1]}
-                    <br />
-                    {copy.eventDetails[2]}
-                  </span>
-                </>
-              ) : eventDetails}
+              <span className="block">{copy.eventDetails[0]}</span>
+              <span className="mt-2 block md:mt-4">
+                {copy.eventDetails[1]}
+                <br />
+                {copy.eventDetails[2]}
+              </span>
             </p>
           </StaggerItem>
         </Stagger>
@@ -146,11 +132,9 @@ export default function SectionTicketHeader({ locale }: { locale?: Locale }) {
 
                   <div className="flex w-full shrink-0 items-end justify-center gap-2 pb-4 md:pb-6">
                     <p className="type-h3 text-text">
-                      {copy?.prices[index] ?? option.price}
+                      {copy.prices[index]}
                     </p>
-                    <p className="type-caption">
-                      {copy?.perPerson ?? 'Per person'}
-                    </p>
+                    <p className="type-caption">{copy.perPerson}</p>
                   </div>
 
                   <a
@@ -166,9 +150,7 @@ export default function SectionTicketHeader({ locale }: { locale?: Locale }) {
                           : 'btn-ghost',
                     ].join(' ')}
                   >
-                    {ticketsOpeningSoon
-                      ? copy?.button ?? 'Opening Soon'
-                      : option.buttonLabel}
+                    {ticketsOpeningSoon ? copy.button : option.buttonLabel}
                   </a>
                 </div>
               </StaggerItem>

@@ -88,6 +88,37 @@ export const aboutCopy = {
     teamTitle: 'Our Team',
     teamDescription:
       'K-Group is powered by dedicated volunteers who build community, organize events, and keep our network connected year-round.',
+    teamGroups: [
+      {
+        caption: 'Bay Area K-Group',
+        heading: 'Management Team',
+        members: [
+          { name: 'Jenny Lee', role: 'Co-President' },
+          { name: 'Sangho Eum', role: 'Co-President' },
+          { name: 'Taeho Kim', role: 'Vice President' },
+          { name: 'Seonyoung Son', role: 'Treasurer' },
+          { name: 'Joo Yeon Choe', role: 'Director' },
+          { name: 'Yonghee (Amy) Kim', role: 'Director' },
+          { name: 'Ji hoon Kim', role: 'Director' },
+          { name: 'Jinwon Choi', role: 'Communication Manager' },
+        ],
+      },
+      {
+        caption: 'K-Night 2026 Volunteer',
+        heading: 'Media Team',
+        members: [
+          { name: 'Eunhye Kim' },
+          { name: 'Minjun Byun' },
+          { name: 'Seyeong Yeon' },
+          { name: 'Hyunsu Song' },
+        ],
+      },
+      {
+        caption: 'K-Night 2026 Volunteer',
+        heading: 'Event Team',
+        members: [{ name: 'Coming Soon' }],
+      },
+    ],
   },
   ko: {
     tags: ['설립 2007년', '비영리 단체'],
@@ -96,6 +127,37 @@ export const aboutCopy = {
     teamTitle: '팀소개',
     teamDescription:
       'K-Group은 커뮤니티를 발전시키고 다양한 행사를 기획하며, 회원과 네트워크를 지속적으로 연결해 나가는 운영진과 자원봉사자들로 함께 만들어갑니다.',
+    teamGroups: [
+      {
+        caption: 'Bay Area K-Group',
+        heading: '회장단',
+        members: [
+          { name: '이제니', role: '공동 회장' },
+          { name: '엄상호', role: '공동 회장' },
+          { name: '김태호', role: '부회장' },
+          { name: '손선영', role: '재무 담당' },
+          { name: '최주연', role: '이사' },
+          { name: '김용희', role: '이사' },
+          { name: '김지훈', role: '이사' },
+          { name: '최진원', role: '커뮤니케이션 매니저' },
+        ],
+      },
+      {
+        caption: 'K-Night 2026 Volunteer',
+        heading: '미디어팀',
+        members: [
+          { name: '김은혜' },
+          { name: '변민준' },
+          { name: '연세영' },
+          { name: '송현수' },
+        ],
+      },
+      {
+        caption: 'K-Night 2026 Volunteer',
+        heading: '행사팀',
+        members: [{ name: '추후 공개' }],
+      },
+    ],
   },
 } as const
 
@@ -149,7 +211,7 @@ export const donationCopy = {
 
 export const donationSupportCopy = {
   en: {
-    heading: 'How to Support',
+    heading: 'How to Support\nBay Area K-Group',
     onlineTitle: 'Online Donation',
     onlineBody: 'Select a platform below to go directly to the donation page.',
     onlineNote: '(Zeffy platform with no processing fees)',
@@ -170,7 +232,7 @@ export const donationSupportCopy = {
       'If K-Group has helped you meet good people and grow together, please pass that opportunity on to someone else.',
       'Your small contribution can create more connections and opportunities for growth in Silicon Valley.',
     ],
-    ctaButton: 'Support K-Grgoup',
+    ctaButton: 'Support K-Group',
   },
   ko: {
     heading: '후원 방법',
@@ -224,7 +286,7 @@ export const ticketCopy = {
   ko: {
     badge: '8월 6일 오후 12시 오픈',
     title: '티켓',
-    eventDetails: ['9월 12일 토요일', '컴퓨터 역사 박물관, 마운틴뷰, 캘리포니아'],
+    eventDetails: ['9월 12일 토요일', '컴퓨터 역사 박물관', '마운틴뷰, 캘리포니아'],
     prices: ['$70', '$80'],
     perPerson: '인당',
     button: '오픈예정',

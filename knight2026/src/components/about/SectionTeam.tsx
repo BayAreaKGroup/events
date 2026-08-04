@@ -1,7 +1,8 @@
 'use client'
 
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { aboutCopy, type Locale } from '@/content/siteContent'
+import { aboutCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 /** Figma section-team 562:6820 — viewport 1440, content 1160 (1200−40)
  *  Editorial list layout: typography + spacing, no profile cards.
@@ -11,76 +12,6 @@ type TeamMember = {
   name: string
   role?: string
 }
-
-type TeamGroup = {
-  caption: string
-  heading: string
-  members: TeamMember[]
-}
-
-const groups: TeamGroup[] = [
-  {
-    caption: 'Bay Area K-Group',
-    heading: 'Management Team',
-    members: [
-      { name: 'Jenny Lee', role: 'Co-President' },
-      { name: 'Sangho Eum', role: 'Co-President' },
-      { name: 'Taeho Kim', role: 'Vice President' },
-      { name: 'Seonyoung Son', role: 'Treasurer' },
-      { name: 'Joo Yeon Choe', role: 'Director' },
-      { name: 'Yonghee (Amy) Kim', role: 'Director' },
-      { name: 'Ji hoon Kim', role: 'Director' },
-      { name: 'Jinwon Choi', role: 'Communication Manager' },
-    ],
-  },
-  {
-    caption: 'K-Night 2026 Volunteer',
-    heading: 'Media Team',
-    members: [
-      { name: 'Eunhye Kim' },
-      { name: 'Minjun Byun' },
-      { name: 'Seyeong Yeon' },
-      { name: 'Hyunsu Song' },
-    ],
-  },
-  {
-    caption: 'K-Night 2026 Volunteer',
-    heading: 'Event Team',
-    members: [{ name: 'Coming Soon' }],
-  },
-]
-
-const koreanGroups: TeamGroup[] = [
-  {
-    caption: 'Bay Area K-Group',
-    heading: '회장단',
-    members: [
-      { name: '이제니', role: '공동 회장' },
-      { name: '엄상호', role: '공동 회장' },
-      { name: '김태호', role: '부회장' },
-      { name: '손선영', role: '재무 담당' },
-      { name: '최주연', role: '이사' },
-      { name: '김용희' ,role: '이사' },
-      { name: '김지훈' ,role: '이사' },
-      { name: '최진원', role: '커뮤니케이션 매니저' },
-    ],
-  },
-  {
-    caption: 'K-Night 2026 Volunteer',
-    heading: '미디어팀',
-    members: [
-      { name: '김은혜' },
-      { name: '변민준'},
-      { name: '연세영' },
-      { name: '송현수'},
-    ],
-  },
-  {
-    caption: 'K-Night 2026 Volunteer',
-    heading: '행사팀',
-    members: [{ name: '추후 공개' }],
-  },
-]
 
 function TeamMemberRow({ member }: { member: TeamMember }) {
   return (
@@ -95,9 +26,8 @@ function TeamMemberRow({ member }: { member: TeamMember }) {
   )
 }
 
-export default function SectionTeam({ locale }: { locale?: Locale }) {
-  const copy = locale ? aboutCopy[locale] : null
-  const displayGroups = locale === 'ko' ? koreanGroups : groups
+export default function SectionTeam() {
+  const copy = aboutCopy[useLocale()]
   return (
     <section
       id="team"
@@ -128,7 +58,7 @@ export default function SectionTeam({ locale }: { locale?: Locale }) {
               className="type-h2 text-text md:whitespace-nowrap"
               data-node-id="562:6836"
             >
-              {copy?.teamTitle ?? 'Our Team'}
+              {copy.teamTitle}
             </h2>
           </StaggerItem>
 
@@ -137,12 +67,7 @@ export default function SectionTeam({ locale }: { locale?: Locale }) {
             data-node-id="562:6837"
           >
             <p className="type-body text-text-muted" data-node-id="562:6839">
-              {copy?.teamDescription ?? (
-                <>
-                  K-Group is powered by dedicated volunteers who build community,
-                  organize events, and keep our network connected year-round.
-                </>
-              )}
+              {copy.teamDescription}
             </p>
           </StaggerItem>
         </Stagger>
@@ -152,13 +77,13 @@ export default function SectionTeam({ locale }: { locale?: Locale }) {
           delay={0.1}
           data-node-id="561:5316"
         >
-          {displayGroups.map((group, groupIndex) => (
+          {copy.teamGroups.map((group, groupIndex) => (
             <div
               key={`${group.caption}-${group.heading}-${groupIndex}`}
               className={[
                 'flex w-full flex-col gap-2 py-10 md:py-12',
                 groupIndex === 0 ? 'pt-0 md:pt-0' : '',
-                groupIndex === displayGroups.length - 1 ? 'pb-0 md:pb-0' : '',
+                groupIndex === copy.teamGroups.length - 1 ? 'pb-0 md:pb-0' : '',
               ]
                 .filter(Boolean)
                 .join(' ')}

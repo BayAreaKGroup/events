@@ -6,9 +6,8 @@ import SectionNetwork from '@/components/home/SectionNetwork'
 import SectionKNight from '@/components/home/SectionKNight'
 import SectionOverview from '@/components/home/SectionOverview'
 import SectionPastKNight from '@/components/home/SectionPastKNight'
-import type { Locale } from '@/content/siteContent'
 
-export default function HomePage({ locale = 'en' }: { locale?: Locale } = {}) {
+export default function HomePage() {
   useEffect(() => {
     const scrollToHash = () => {
       const { hash } = window.location
@@ -29,10 +28,10 @@ export default function HomePage({ locale = 'en' }: { locale?: Locale } = {}) {
 
   return (
     <main className="home-page">
-      <SectionOverview locale={locale} />
-      <SectionKNight locale={locale} />
-      <SectionPastKNight locale={locale} />
-      <SectionNetwork locale={locale} />
+      <SectionOverview />
+      <SectionKNight />
+      <SectionPastKNight />
+      <SectionNetwork />
       <Footer />
     </main>
   )

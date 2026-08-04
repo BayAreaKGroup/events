@@ -2,18 +2,12 @@
 
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
 import AnimatedStats from '@/components/home/AnimatedStats'
-import { homeCopy, type Locale } from '@/content/siteContent'
-
-const stats = [
-  { end: 14, suffix: 'th', label: 'Years of K-Night' },
-  { end: 400, suffix: '+', label: 'Annual Attendees' },
-  { end: 7000, suffix: '+', label: 'K-GROUP MEMBERS' },
-] as const
+import { homeCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 /** Figma section-k-night 565:7852 — viewport 1440, content 1160 (1200−40) */
-export default function SectionKNight({ locale }: { locale?: Locale }) {
-  const copy = locale ? homeCopy[locale].kNight : null
-  const localizedStats = copy?.stats ?? stats
+export default function SectionKNight() {
+  const copy = homeCopy[useLocale()].kNight
   return (
     <section
       id="k-night"
@@ -41,16 +35,7 @@ export default function SectionKNight({ locale }: { locale?: Locale }) {
             className="type-h3 w-full max-w-[740px] text-text"
             data-node-id="565:7876"
           >
-            {copy ? (
-              <span className="whitespace-pre-line">{copy.description}</span>
-            ) : (
-              <>
-                K-Night brings Bay Area professionals together beyond work and
-                technology.
-                <br />
-                Meet new people, exchange ideas, and build meaningful connections.
-              </>
-            )}
+            <span className="whitespace-pre-line">{copy.description}</span>
           </h2>
         </StaggerItem>
       </Stagger>
@@ -61,7 +46,7 @@ export default function SectionKNight({ locale }: { locale?: Locale }) {
         data-node-id="565:7854"
       >
         <AnimatedStats
-          stats={localizedStats}
+          stats={copy.stats}
           className="mx-auto flex w-full max-w-[1200px] flex-col divide-y divide-line px-5 md:h-[220px] md:flex-row md:justify-between md:divide-x md:divide-y-0"
           durationMs={800}
           staggerMs={100}

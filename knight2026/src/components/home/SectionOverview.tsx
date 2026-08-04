@@ -7,7 +7,8 @@ import mobileOverviewTopRight from '@/assets/overview/mobile-overview-top-right-
 import EventBadge from '@/components/ui/EventBadge'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
 import { fadeUpSubtle } from '@/lib/motion'
-import { homeCopy, type Locale } from '@/content/siteContent'
+import { homeCopy } from '@/content/siteContent'
+import { useLocale } from '@/lib/locale'
 
 const eventTime = new Date('2026-09-12T16:00:00-07:00').getTime()
 
@@ -23,23 +24,14 @@ function getCountdown() {
 }
 
 const details = [
-  {
-    label: 'Date',
-    value: 'September 12, Saturday',
-  },
-  {
-    label: 'Time',
-    value: '4:00 – 8:30 PM',
-  },
-  {
-    label: 'Location',
-    value: 'Computer History Museum',
-  },
+  { label: 'Date' },
+  { label: 'Time' },
+  { label: 'Location' },
 ] as const
 
 /** Figma section-overview 566:8030 — viewport 1440, content ~1000 (608 / 48 / 304) */
-export default function SectionOverview({ locale }: { locale?: Locale }) {
-  const copy = locale ? homeCopy[locale].overview : null
+export default function SectionOverview() {
+  const copy = homeCopy[useLocale()].overview
   const [countdown, setCountdown] = useState(getCountdown)
 
   useEffect(() => {
@@ -126,13 +118,11 @@ export default function SectionOverview({ locale }: { locale?: Locale }) {
                 data-node-id="566:8121"
               >
                 <span className="md:hidden">
-                  {copy ? 'K-NIGHT' : 'K-Night'}
+                  K-NIGHT
                   <br />
                   2026
                 </span>
-                <span className="hidden md:inline">
-                  {copy ? 'K-NIGHT 2026' : 'K-Night 2026'}
-                </span>
+                <span className="hidden md:inline">K-NIGHT 2026</span>
               </h1>
             </div>
 
@@ -141,23 +131,13 @@ export default function SectionOverview({ locale }: { locale?: Locale }) {
               data-node-id="566:8122"
             >
               <h3 className="overview-aside-title type-h4 uppercase text-text">
-                {copy?.subtitle ?? 'Beyond Tech'}
+                {copy.subtitle}
               </h3>
               <p
                 className="type-body max-w-[344px] whitespace-pre-line text-pretty max-md:hidden"
                 data-node-id="566:8124"
               >
-                {copy ? (
-                  copy.description
-                ) : (
-                  <>
-                    Connecting people beyond technology in
-                    <br />
-                    the age of AI, where human connection
-                    <br />
-                    and goodwill inspire growth.
-                  </>
-                )}
+                {copy.description}
               </p>
             </div>
           </StaggerItem>
@@ -174,20 +154,20 @@ export default function SectionOverview({ locale }: { locale?: Locale }) {
                 className={`flex w-full flex-col gap-3 max-md:items-end max-md:gap-0 max-md:text-right lg:max-w-[344px] lg:flex-1 ${detail.label === 'Time' ? 'max-md:hidden' : ''}`}
               >
                 <dt className="type-caption max-md:hidden">
-                  {copy?.labels[detail.label.toLowerCase() as 'date' | 'time' | 'location'] ?? detail.label}
+                  {copy.labels[detail.label.toLowerCase() as 'date' | 'time' | 'location']}
                 </dt>
                 <dd className="type-body text-text">
                   <span className="md:hidden">
                     {detail.label === 'Date'
-                      ? copy?.mobileDate ?? 'September 12, Sat'
-                      : copy?.[detail.label.toLowerCase() as 'time' | 'location'] ?? detail.value}
+                      ? copy.mobileDate
+                      : copy[detail.label.toLowerCase() as 'time' | 'location']}
                   </span>
                   <span className="hidden md:inline">
                     {detail.label === 'Date'
-                      ? copy?.date ?? detail.value
+                      ? copy.date
                       : detail.label === 'Time'
-                        ? copy?.time ?? detail.value
-                        : copy?.location ?? detail.value}
+                        ? copy.time
+                        : copy.location}
                   </span>
                 </dd>
               </StaggerItem>

@@ -4,9 +4,8 @@ import { useEffect } from 'react'
 import Footer from '@/components/layout/Footer'
 import SectionDonation from '@/components/donation/SectionDonation'
 import SectionDonationSupport from '@/components/donation/SectionDonationSupport'
-import type { Locale } from '@/content/siteContent'
 
-export default function DonationPage({ locale = 'en' }: { locale?: Locale } = {}) {
+export default function DonationPage() {
   useEffect(() => {
     const scrollToHash = () => {
       const { hash } = window.location
@@ -27,8 +26,8 @@ export default function DonationPage({ locale = 'en' }: { locale?: Locale } = {}
 
   return (
     <main className="donation-page">
-      <SectionDonation locale={locale} />
-      <SectionDonationSupport locale={locale} />
+      <SectionDonation />
+      <SectionDonationSupport />
       <Footer />
     </main>
   )
