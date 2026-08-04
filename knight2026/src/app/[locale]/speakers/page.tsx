@@ -1,3 +1,11 @@
-import SpeakersPage from '@/app/speakers/page'
+import Footer from '@/components/layout/Footer'
+import SectionSpeakersComing from '@/components/speakers/SectionSpeakersComing'
 
-export default SpeakersPage
+export default function SpeakersPage() {
+  return (
+    <main className="speakers-page">
+      <SectionSpeakersComing />
+      <Footer />
+    </main>
+  )
+}

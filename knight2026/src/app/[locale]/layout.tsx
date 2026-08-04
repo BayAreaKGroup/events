@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
-import { homeCopy, type Locale } from '@/content/siteContent'
-
-const locales = ['en', 'ko'] as const
+import { homeCopy, locales, type Locale } from '@/content/siteContent'
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))

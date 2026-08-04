@@ -1,3 +1,11 @@
-import AgendaPage from '@/app/agenda/page'
+import Footer from '@/components/layout/Footer'
+import SectionAgendaComing from '@/components/agenda/SectionAgendaComing'
 
-export default AgendaPage
+export default function AgendaPage() {
+  return (
+    <main className="agenda-page">
+      <SectionAgendaComing />
+      <Footer />
+    </main>
+  )
+}
