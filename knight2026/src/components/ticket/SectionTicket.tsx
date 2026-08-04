@@ -12,7 +12,7 @@ export default function SectionTicket() {
   return (
     <section
       id="ticket"
-      className="section-ticket section-viewport section-viewport-auto relative bg-[#FAFAFA]"
+      className="section-ticket section-viewport section-viewport-auto relative bg-surface-elevated"
       aria-labelledby="ticket-notice-heading"
       data-node-id="562:6728"
     >
@@ -99,7 +99,7 @@ export default function SectionTicket() {
             <button
               type="button"
               disabled
-              className="btn-ghost type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:border-[#B8B8B8] disabled:bg-[#F3F3F3] disabled:text-[#8A8A8A] disabled:opacity-100 disabled:hover:border-[#B8B8B8] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
+              className="btn-ghost btn-muted type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:opacity-100 disabled:hover:border-[rgb(var(--color-muted-border))] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
               data-node-id="561:5145"
             >
               {copy.carpoolButton}

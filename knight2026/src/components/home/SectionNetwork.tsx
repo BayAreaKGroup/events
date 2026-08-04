@@ -24,7 +24,7 @@ export default function SectionNetwork() {
   return (
     <section
       id="network"
-      className="section-network relative w-full bg-[#FAFAFA]"
+      className="section-network relative w-full bg-surface-elevated"
       aria-labelledby="network-heading"
       data-node-id="561:6411"
     >

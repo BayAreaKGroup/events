@@ -27,6 +27,7 @@ import mobileSlide12 from '@/assets/about/mobile/12.jpg'
 import mobileSlide13 from '@/assets/about/mobile/13.jpg'
 import mobileSlide14 from '@/assets/about/mobile/14.jpg'
 import mobileSlide15 from '@/assets/about/mobile/15.jpg'
+import { useIsMobile } from '@/hooks/useMediaQuery'
 
 type AutoplayDir = 'leftToRight' | 'rightToLeft'
 type TitleCorner = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
@@ -76,7 +77,6 @@ const MAX_VISIBLE = 3
 const DEPTH = 240
 /** fitContainer: compact fan below 1280px; desktop uses original wide spread */
 const FIT_COMPACT_MAX_WIDTH = 1280
-const MOBILE_MAX_WIDTH = 768
 const FIT_FAN_OFFSET = 0.18
 const FIT_FAN_OFFSET_BUDGET = 0.22
 const FIT_FAN_DEPTH = 1.2
@@ -195,9 +195,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
       ? window.innerWidth < FIT_COMPACT_MAX_WIDTH
       : true,
   )
-  const [isMobileViewport, setIsMobileViewport] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth < MOBILE_MAX_WIDTH : true,
-  )
+  const isMobileViewport = useIsMobile()
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
@@ -248,13 +246,8 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
     const update = () => setIsCompactViewport(!mq.matches)
     update()
     mq.addEventListener('change', update)
-    const mobileMq = window.matchMedia(`(min-width: ${MOBILE_MAX_WIDTH}px)`)
-    const updateMobile = () => setIsMobileViewport(!mobileMq.matches)
-    updateMobile()
-    mobileMq.addEventListener('change', updateMobile)
     return () => {
       mq.removeEventListener('change', update)
-      mobileMq.removeEventListener('change', updateMobile)
     }
   }, [])
 

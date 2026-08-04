@@ -14,7 +14,7 @@ export default function SectionDonationSupport() {
   return (
     <section
       id="donation-support"
-      className="section-donation-support section-viewport section-viewport-auto relative bg-[#FAFAFA]"
+      className="section-donation-support section-viewport section-viewport-auto relative bg-surface-elevated"
       aria-labelledby="donation-support-heading"
       data-node-id="562:7233"
     >

@@ -31,6 +31,7 @@ import { fadeUpSubtle } from '@/lib/motion'
 import { useRef, useState, type PointerEvent } from 'react'
 import { homeCopy } from '@/content/siteContent'
 import { useLocale } from '@/lib/locale'
+import { useIsMobile } from '@/hooks/useMediaQuery'
 
 /** Figma 561:5619 — landscape ~462×347, portrait ~347×462 / 355×462 */
 const images = [
@@ -83,13 +84,14 @@ const loopImages = [...imagesWithMobileSources, ...imagesWithMobileSources]
 /** Figma section-past-k-night 561:6267 — viewport 1440, content 1160 (1200−40) */
 export default function SectionPastKNight() {
   const copy = homeCopy[useLocale()].past
+  const isMobile = useIsMobile()
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const dragStart = useRef({ pointerId: -1, x: 0, offset: 0 })
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     if (
-      window.matchMedia('(min-width: 768px)').matches ||
+      !isMobile ||
       (event.pointerType === 'mouse' && event.button !== 0)
     ) {
       return
@@ -98,7 +100,7 @@ export default function SectionPastKNight() {
     dragStart.current = {
       pointerId: event.pointerId,
       x: event.clientX,
-      offset: dragOffset,
+      offset: 0,
     }
     event.currentTarget.setPointerCapture(event.pointerId)
     setIsDragging(true)
@@ -117,6 +119,7 @@ export default function SectionPastKNight() {
 
     dragStart.current.pointerId = -1
     setIsDragging(false)
+    setDragOffset(0)
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId)
     }
@@ -125,7 +128,7 @@ export default function SectionPastKNight() {
   return (
     <section
       id="past-k-night"
-      className="section-past-k-night section-viewport relative bg-[#ffffff]"
+      className="section-past-k-night section-viewport relative bg-surface"
       aria-labelledby="past-k-night-heading"
       data-node-id="561:6267"
     >

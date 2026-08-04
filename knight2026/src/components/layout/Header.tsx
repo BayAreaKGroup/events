@@ -13,9 +13,6 @@ import { getCurrentLocale, getLocalizedHref, getRouteSegment } from '@/lib/local
 /** Figma nav-bar 561:6099 — follows page color tokens (cool on home, warm elsewhere) */
 const NAV = {
   container: '1200px',
-  buttonBg: '#F03466',
-  buttonBgHover: '#D92D58',
-  buttonBgActive: '#C4284F',
   linkGap: '24px',
   logoW: 132,
   logoH: 44,

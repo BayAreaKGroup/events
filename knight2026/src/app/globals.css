@@ -993,16 +993,6 @@
       left: 0;
       width: 100%;
     }
-
-    .section-overview .container-graphic {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      max-width: none;
-      margin-top: 0;
-    }
   }
 
   /* K-Night intro — Figma 565:7852; #FAFAFA, H4 copy + 320px stats */
@@ -1241,6 +1231,13 @@
 
   .donation-page .btn-ghost {
     background-color: rgb(var(--color-surface));
+  }
+
+  /* Muted control fill — disabled ticket CTA / "opening soon" state */
+  .btn-muted {
+    border-color: rgb(var(--color-muted-border));
+    background-color: rgb(var(--color-muted-surface));
+    color: rgb(var(--color-muted-text));
   }
 
   .btn-ghost img {

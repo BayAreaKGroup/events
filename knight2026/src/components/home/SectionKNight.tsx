@@ -11,7 +11,7 @@ export default function SectionKNight() {
   return (
     <section
       id="k-night"
-      className="section-k-night section-viewport section-viewport-auto relative flex min-h-[min(100svh,900px)] flex-col bg-[#FAFAFA]"
+      className="section-k-night section-viewport section-viewport-auto relative flex min-h-[min(100svh,900px)] flex-col bg-surface-elevated"
       aria-labelledby="k-night-heading"
       data-node-id="565:7852"
       data-name="section-k-night"
