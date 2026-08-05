@@ -102,7 +102,7 @@ $ts_staged
 EOF
 
   missing=""
-  for tool in prettier oxlint tsc; do
+  for tool in prettier oxlint tsc next; do
     [ -x "knight2026/node_modules/.bin/$tool" ] || missing="$missing $tool"
   done
   if [ -n "$missing" ]; then
@@ -121,12 +121,12 @@ EOF
     fail=1
   fi
 
-  if ! (cd knight2026 && ./node_modules/.bin/tsc --noEmit); then
+  if ! (cd knight2026 && ./node_modules/.bin/next typegen && ./node_modules/.bin/tsc --noEmit); then
     echo "pre-commit: tsc --noEmit failed."
     fail=1
   fi
 else
-  if [ ! -x knight2026/node_modules/.bin/prettier ] || [ ! -x knight2026/node_modules/.bin/oxlint ] || [ ! -x knight2026/node_modules/.bin/tsc ]; then
+  if [ ! -x knight2026/node_modules/.bin/prettier ] || [ ! -x knight2026/node_modules/.bin/oxlint ] || [ ! -x knight2026/node_modules/.bin/tsc ] || [ ! -x knight2026/node_modules/.bin/next ]; then
     echo "pre-commit: note — knight2026 tooling not installed; skipping (no staged TS/TSX in this commit)."
   fi
 fi
