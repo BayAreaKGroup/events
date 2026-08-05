@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
 type UseCountUpOptions = {
-  end: number
-  durationMs?: number
-  delayMs?: number
-  enabled?: boolean
-}
+  end: number;
+  durationMs?: number;
+  delayMs?: number;
+  enabled?: boolean;
+};
 
 function easeOutCubic(t: number) {
-  return 1 - (1 - t) ** 3
+  return 1 - (1 - t) ** 3;
 }
 
 /**
@@ -21,47 +21,47 @@ export function useCountUp({
   delayMs = 0,
   enabled = false,
 }: UseCountUpOptions) {
-  const [value, setValue] = useState(0)
-  const startedRef = useRef(false)
-  const rafRef = useRef<number | null>(null)
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [value, setValue] = useState(0);
+  const startedRef = useRef(false);
+  const rafRef = useRef<number | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!enabled || startedRef.current) return
-    startedRef.current = true
+    if (!enabled || startedRef.current) return;
+    startedRef.current = true;
 
     if (durationMs <= 0) {
-      setValue(end)
-      return
+      setValue(end);
+      return;
     }
 
     const start = () => {
-      const t0 = performance.now()
+      const t0 = performance.now();
 
       const tick = (now: number) => {
-        const progress = Math.min(1, (now - t0) / durationMs)
-        setValue(Math.round(end * easeOutCubic(progress)))
+        const progress = Math.min(1, (now - t0) / durationMs);
+        setValue(Math.round(end * easeOutCubic(progress)));
         if (progress < 1) {
-          rafRef.current = requestAnimationFrame(tick)
+          rafRef.current = requestAnimationFrame(tick);
         } else {
-          setValue(end)
+          setValue(end);
         }
-      }
+      };
 
-      rafRef.current = requestAnimationFrame(tick)
-    }
+      rafRef.current = requestAnimationFrame(tick);
+    };
 
     if (delayMs > 0) {
-      timeoutRef.current = setTimeout(start, delayMs)
+      timeoutRef.current = setTimeout(start, delayMs);
     } else {
-      start()
+      start();
     }
 
     return () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-      if (timeoutRef.current !== null) clearTimeout(timeoutRef.current)
-    }
-  }, [enabled, end, durationMs, delayMs])
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
+    };
+  }, [enabled, end, durationMs, delayMs]);
 
-  return value
+  return value;
 }

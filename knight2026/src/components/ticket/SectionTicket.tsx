@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { fadeUpSubtle } from '@/lib/motion'
-import { ticketCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { fadeUpSubtle } from "@/lib/motion";
+import { ticketCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-ticket 562:6728 — viewport 1440, content 1160 (1200−40) */
 
 export default function SectionTicket() {
-  const copy = ticketCopy[useLocale()]
+  const copy = ticketCopy[useLocale()];
   return (
     <section
       id="ticket"
-      className="section-ticket section-viewport section-viewport-auto relative bg-[#FAFAFA]"
+      className="section-ticket section-viewport section-viewport-auto relative bg-surface-elevated"
       aria-labelledby="ticket-notice-heading"
       data-node-id="562:6728"
     >
@@ -32,10 +32,7 @@ export default function SectionTicket() {
           className="section-notice flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="561:5111"
         >
-          <div
-            className="w-full shrink-0 lg:w-[371px]"
-            data-node-id="561:5112"
-          >
+          <div className="w-full shrink-0 lg:w-[371px]" data-node-id="561:5112">
             <h3
               id="ticket-notice-heading"
               className="type-h3 text-text"
@@ -75,10 +72,7 @@ export default function SectionTicket() {
           className="section-carpool flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="561:5137"
         >
-          <div
-            className="w-full shrink-0 lg:w-[371px]"
-            data-node-id="561:5138"
-          >
+          <div className="w-full shrink-0 lg:w-[371px]" data-node-id="561:5138">
             <h3
               id="ticket-carpool-heading"
               className="type-h3 text-text"
@@ -99,7 +93,7 @@ export default function SectionTicket() {
             <button
               type="button"
               disabled
-              className="btn-ghost type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:border-[#B8B8B8] disabled:bg-[#F3F3F3] disabled:text-[#8A8A8A] disabled:opacity-100 disabled:hover:border-[#B8B8B8] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
+              className="btn-ghost btn-muted type-button inline-flex h-10 w-fit max-md:w-full items-center justify-center gap-2 px-4 py-2 text-center text-sm disabled:cursor-not-allowed disabled:opacity-100 disabled:hover:border-[rgb(var(--color-muted-border))] disabled:hover:bg-[rgb(var(--color-muted-surface))] disabled:hover:transform-none disabled:hover:shadow-none md:h-11 md:px-5 md:text-base"
               data-node-id="561:5145"
             >
               {copy.carpoolButton}
@@ -108,5 +102,5 @@ export default function SectionTicket() {
         </Reveal>
       </div>
     </section>
-  )
+  );
 }

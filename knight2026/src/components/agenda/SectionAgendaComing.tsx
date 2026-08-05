@@ -1,4 +1,4 @@
-import ComingSoonSection from '@/components/common/ComingSoonSection'
+import ComingSoonSection from "@/components/common/ComingSoonSection";
 
 export default function SectionAgendaComing() {
   return (
@@ -7,5 +7,5 @@ export default function SectionAgendaComing() {
       headingId="agenda-coming-heading"
       headingLevel="h1"
     />
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import Footer from '@/components/layout/Footer'
-import SectionAgendaComing from '@/components/agenda/SectionAgendaComing'
+import Footer from "@/components/layout/Footer";
+import SectionAgendaComing from "@/components/agenda/SectionAgendaComing";
 
 export default function AgendaPage() {
   return (
@@ -7,5 +7,5 @@ export default function AgendaPage() {
       <SectionAgendaComing />
       <Footer />
     </main>
-  )
+  );
 }

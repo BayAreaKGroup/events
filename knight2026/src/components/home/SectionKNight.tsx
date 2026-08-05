@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import AnimatedStats from '@/components/home/AnimatedStats'
-import { homeCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import AnimatedStats from "@/components/home/AnimatedStats";
+import { homeCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-k-night 565:7852 — viewport 1440, content 1160 (1200−40) */
 export default function SectionKNight() {
-  const copy = homeCopy[useLocale()].kNight
+  const copy = homeCopy[useLocale()].kNight;
   return (
     <section
       id="k-night"
-      className="section-k-night section-viewport section-viewport-auto relative flex min-h-[min(100svh,900px)] flex-col bg-[#FAFAFA]"
+      className="section-k-night section-viewport section-viewport-auto relative flex min-h-[min(100svh,900px)] flex-col bg-surface-elevated"
       aria-labelledby="k-night-heading"
       data-node-id="565:7852"
       data-name="section-k-night"
@@ -53,5 +53,5 @@ export default function SectionKNight() {
         />
       </div>
     </section>
-  )
+  );
 }

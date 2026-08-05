@@ -1,95 +1,96 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useEffect, useId, useLayoutEffect, useState } from 'react'
-import logo from '@/assets/icons/logo-bay-area.png'
-import logoMark from '@/assets/icons/logo-bay-area-mark.png'
-import { easeOutExpo } from '@/lib/motion'
-import LanguageSwitcher from '@/components/layout/LanguageSwitcher'
-import { getCurrentLocale, getLocalizedHref, getRouteSegment } from '@/lib/locale'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useId, useLayoutEffect, useState } from "react";
+import logo from "@/assets/icons/logo-bay-area.png";
+import logoMark from "@/assets/icons/logo-bay-area-mark.png";
+import { easeOutExpo } from "@/lib/motion";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import {
+  getCurrentLocale,
+  getLocalizedHref,
+  getRouteSegment,
+} from "@/lib/locale";
 
 /** Figma nav-bar 561:6099 — follows page color tokens (cool on home, warm elsewhere) */
 const NAV = {
-  container: '1200px',
-  buttonBg: '#F03466',
-  buttonBgHover: '#D92D58',
-  buttonBgActive: '#C4284F',
-  linkGap: '24px',
+  container: "1200px",
+  linkGap: "24px",
   logoW: 132,
   logoH: 44,
-} as const
+} as const;
 
 const navItems = [
-  { href: 'agenda', label: 'Agenda' },
-  { href: 'speakers', label: 'Speakers' },
-  { href: 'sponsors', label: 'Sponsors' },
-  { href: 'about', label: 'About' },
-  { href: 'donation', label: 'Donation' },
-] as const
+  { href: "agenda", label: "Agenda" },
+  { href: "speakers", label: "Speakers" },
+  { href: "sponsors", label: "Sponsors" },
+  { href: "about", label: "About" },
+  { href: "donation", label: "Donation" },
+] as const;
 
 const navLinkClass =
-  'type-button text-text transition-opacity hover:opacity-70 active:opacity-70'
+  "type-button text-text transition-opacity hover:opacity-70 active:opacity-70";
 
 const ticketBtnClass =
-  'btn-home-cta type-button inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-[12px] px-6 py-3'
+  "btn-home-cta type-button inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-[12px] px-6 py-3";
 
 /** trailingSlash-safe active check for flat routes */
 function isActivePath(pathname: string | null, href: string) {
-  return getRouteSegment(pathname) === href
+  return getRouteSegment(pathname) === href;
 }
 
 export default function Header() {
-  const reduceMotion = useReducedMotion()
-  const pathname = usePathname()
-  const currentLocale = getCurrentLocale(pathname)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const menuId = useId()
+  const reduceMotion = useReducedMotion();
+  const pathname = usePathname();
+  const currentLocale = getCurrentLocale(pathname);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = useId();
 
   useEffect(() => {
-    const previousScrollRestoration = window.history.scrollRestoration
-    window.history.scrollRestoration = 'manual'
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
 
     return () => {
-      window.history.scrollRestoration = previousScrollRestoration
-    }
-  }, [])
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
 
   useLayoutEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
-    if (!window.matchMedia('(max-width: 767px)').matches) return
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
 
     const frame = window.requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-      document.documentElement.scrollTop = 0
-      document.body.scrollTop = 0
-    })
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
 
-    return () => window.cancelAnimationFrame(frame)
-  }, [pathname])
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname]);
 
   useEffect(() => {
-    if (!menuOpen) return
+    if (!menuOpen) return;
 
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMenuOpen(false)
-    }
+      if (event.key === "Escape") setMenuOpen(false);
+    };
 
-    window.addEventListener('keydown', onKeyDown)
+    window.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', onKeyDown)
-    }
-  }, [menuOpen])
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false)
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -111,7 +112,7 @@ export default function Header() {
           reduceMotion
             ? { duration: 0 }
             : {
-                type: 'spring',
+                type: "spring",
                 stiffness: 320,
                 damping: 36,
                 mass: 0.8,
@@ -130,12 +131,12 @@ export default function Header() {
             aria-label="Bay Area Group — Home"
             data-node-id="561:6102"
             onClick={(event) => {
-              closeMenu()
-              if (getRouteSegment(pathname) !== '') return
-              event.preventDefault()
+              closeMenu();
+              if (getRouteSegment(pathname) !== "") return;
+              event.preventDefault();
               document
-                .getElementById('hero')
-                ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                .getElementById("hero")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
           >
             <img
@@ -165,8 +166,8 @@ export default function Header() {
                     href={getLocalizedHref(currentLocale, item.href)}
                     className={[
                       navLinkClass,
-                      isActivePath(pathname, item.href) ? 'opacity-100' : '',
-                    ].join(' ')}
+                      isActivePath(pathname, item.href) ? "opacity-100" : "",
+                    ].join(" ")}
                   >
                     {item.label}
                   </Link>
@@ -175,7 +176,7 @@ export default function Header() {
             </ul>
 
             <Link
-              href={getLocalizedHref(currentLocale, 'ticket')}
+              href={getLocalizedHref(currentLocale, "ticket")}
               className={`${ticketBtnClass} hidden md:inline-flex`}
               data-node-id="561:6113"
             >
@@ -183,7 +184,7 @@ export default function Header() {
             </Link>
 
             <Link
-              href={getLocalizedHref(currentLocale, 'ticket')}
+              href={getLocalizedHref(currentLocale, "ticket")}
               className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
               onClick={closeMenu}
               aria-label="Get a Ticket"
@@ -194,31 +195,31 @@ export default function Header() {
             <button
               type="button"
               className="relative flex size-10 items-center justify-center md:hidden"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls={menuId}
               onClick={() => setMenuOpen((open) => !open)}
             >
               <span className="sr-only">
-                {menuOpen ? 'Close menu' : 'Open menu'}
+                {menuOpen ? "Close menu" : "Open menu"}
               </span>
               <span
                 className={[
-                  'absolute h-px w-5 bg-text transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-                  menuOpen ? 'translate-y-0 rotate-45' : '-translate-y-1.5',
-                ].join(' ')}
+                  "absolute h-px w-5 bg-text transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  menuOpen ? "translate-y-0 rotate-45" : "-translate-y-1.5",
+                ].join(" ")}
               />
               <span
                 className={[
-                  'absolute h-px w-5 bg-text transition-opacity duration-200',
-                  menuOpen ? 'opacity-0' : 'opacity-100',
-                ].join(' ')}
+                  "absolute h-px w-5 bg-text transition-opacity duration-200",
+                  menuOpen ? "opacity-0" : "opacity-100",
+                ].join(" ")}
               />
               <span
                 className={[
-                  'absolute h-px w-5 bg-text transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-                  menuOpen ? 'translate-y-0 -rotate-45' : 'translate-y-1.5',
-                ].join(' ')}
+                  "absolute h-px w-5 bg-text transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  menuOpen ? "translate-y-0 -rotate-45" : "translate-y-1.5",
+                ].join(" ")}
               />
             </button>
           </div>
@@ -262,11 +263,11 @@ export default function Header() {
                       href={getLocalizedHref(currentLocale, item.href)}
                       onClick={closeMenu}
                       className={[
-                        'type-button text-sm text-text transition-opacity hover:opacity-70 active:opacity-70 md:text-2xl',
+                        "type-button text-sm text-text transition-opacity hover:opacity-70 active:opacity-70 md:text-2xl",
                         isActivePath(pathname, item.href)
-                          ? 'opacity-100'
-                          : 'opacity-80',
-                      ].join(' ')}
+                          ? "opacity-100"
+                          : "opacity-80",
+                      ].join(" ")}
                     >
                       {item.label}
                     </Link>
@@ -278,11 +279,10 @@ export default function Header() {
                 <p className="type-caption text-text">Language</p>
                 <LanguageSwitcher onNavigate={closeMenu} />
               </div>
-
             </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>
     </>
-  )
+  );
 }

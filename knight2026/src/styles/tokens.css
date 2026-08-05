@@ -35,6 +35,10 @@
     rgb(var(--color-primary-hover)) 100%
   );
   --color-line: 232 234 237;
+  /* Muted/disabled control (e.g. ticket buttons not yet open) */
+  --color-muted-border: 184 184 184;
+  --color-muted-surface: 243 243 243;
+  --color-muted-text: 138 138 138;
   --color-chip-pink: 216 148 168;
   --color-chip-lavender: 176 184 216;
   --color-chip-lilac: 208 196 232;

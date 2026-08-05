@@ -1,0 +1,134 @@
+#!/bin/sh
+# Repo-wide pre-commit gate: max-600-lines (all staged files), no new JS in
+# knight2026/src, prettier format check + oxlint + tsc for staged TS/TSX.
+# Bootstrapped via `knight2026/package.json`'s "prepare" script:
+#   git config core.hooksPath .githooks
+#
+# Design notes:
+# - This hook reads WORKING-TREE file contents (wc -l, prettier --check,
+#   oxlint, tsc) rather than git index blobs. To guarantee that what gets
+#   checked is what will actually be committed, it fails closed up front
+#   (the "drift guard" below) if any staged file also has unstaged
+#   working-tree edits (git diff --name-only intersected with the staged
+#   list) — in that case content on disk may not match what's staged in
+#   either direction (a compliant staged file edited to be non-compliant
+#   on disk, or vice versa), so no working-tree-based check can be trusted.
+#   This is simpler than checking index blobs directly (e.g. `git show
+#   :<path> | prettier --check --stdin-filepath`) and it also covers
+#   oxlint/tsc, neither of which supports checking a single index blob in
+#   isolation the way prettier's stdin mode does.
+# - tsc is a whole-program check; the drift guard only proves the STAGED
+#   files match the working tree, not every file tsc's compile touches.
+#   Other uncommitted, non-staged files elsewhere in the program could
+#   still affect the type-check result — tsc here reflects the working
+#   tree, not strictly the isolated commit. Documented limitation.
+# - Filenames with spaces are handled by accumulating them into positional
+#   parameters (set -- "$@" "$f") instead of joining them into a
+#   space-separated string and letting the shell word-split it. Filenames
+#   containing literal newlines are not specially handled — git's default
+#   (non -z) --name-only output quotes such names as escaped C-strings
+#   rather than emitting a raw newline, so they won't corrupt the
+#   line-oriented loops below, but they also won't be lint-checked
+#   correctly (they'd be skipped as unreadable paths). Full NUL-safety
+#   (-z + read -d '') needs bash; this hook stays POSIX sh because the
+#   space bug is fully fixed without it, per project convention.
+set -eu
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root"
+
+staged_files="$(git -c core.quotepath=false diff --cached --name-only --diff-filter=ACMR)"
+[ -z "$staged_files" ] && exit 0
+
+fail=0
+
+# --- Drift guard: fail closed if any staged file also has unstaged edits ---
+unstaged_dirty="$(git -c core.quotepath=false diff --name-only)"
+if [ -n "$unstaged_dirty" ]; then
+  tmp_dirty="$(mktemp)"
+  printf '%s\n' "$unstaged_dirty" > "$tmp_dirty"
+  drift="$(printf '%s\n' "$staged_files" | grep -Fxf "$tmp_dirty" || true)"
+  rm -f "$tmp_dirty"
+  if [ -n "$drift" ]; then
+    echo "pre-commit: these staged files also have UNSTAGED changes in the working tree:"
+    echo "$drift"
+    echo "pre-commit: this hook checks working-tree content, so it can't guarantee that's what's being committed. Stage or stash the unstaged changes first (e.g. 'git add -p' or 'git stash push --keep-index'), then retry."
+    exit 1
+  fi
+fi
+
+# 1) Universal max-600-lines guard — covers root index.html/404.html too,
+#    not just knight2026 TS (oxlint's max-lines rule below is the
+#    authoritative TS-specific check; this is a cheap, dependency-free
+#    backstop for everything else). The 600-line cap targets code files;
+#    *.css is excluded because knight2026/src/app/globals.css is
+#    grandfathered in at 1467 lines (splitting it is a deferred follow-up)
+#    and CSS in general isn't a good fit for this cap.
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  [ -f "$f" ] || continue
+  case "$f" in
+    */node_modules/*|*/.next/*|*/out/*|*package-lock.json|*.tsbuildinfo|*.css) continue ;;
+    *.svg|*.png|*.jpg|*.jpeg|*.webp|*.avif|*.gif|*.woff|*.woff2|*.ico) continue ;;
+  esac
+  lines="$(wc -l < "$f" | tr -d ' ')"
+  if [ "$lines" -gt 600 ]; then
+    echo "pre-commit: $f has $lines lines (max 600)"
+    fail=1
+  fi
+done <<EOF
+$staged_files
+EOF
+
+# 2) No new .js/.jsx under knight2026/src (TypeScript-only source).
+new_js="$(git -c core.quotepath=false diff --cached --name-only --diff-filter=A -- 'knight2026/src/**/*.js' 'knight2026/src/**/*.jsx' 'knight2026/src/*.js' 'knight2026/src/*.jsx' || true)"
+if [ -n "$new_js" ]; then
+  echo "pre-commit: new JS files are not allowed in knight2026/src (TypeScript only):"
+  echo "$new_js"
+  fail=1
+fi
+
+# 3) knight2026 TS/TSX: prettier format check + oxlint + tsc, staged files only.
+ts_staged="$(printf '%s\n' "$staged_files" | grep -E '^knight2026/src/.*\.(ts|tsx)$' || true)"
+if [ -n "$ts_staged" ]; then
+  # Accumulate relative paths as positional params (not a joined string)
+  # so filenames with spaces survive intact through the tool invocations.
+  set --
+  while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    set -- "$@" "${f#knight2026/}"
+  done <<EOF
+$ts_staged
+EOF
+
+  missing=""
+  for tool in prettier oxlint tsc next; do
+    [ -x "knight2026/node_modules/.bin/$tool" ] || missing="$missing $tool"
+  done
+  if [ -n "$missing" ]; then
+    echo "pre-commit: staged TypeScript changes but missing tooling in knight2026/node_modules/.bin:$missing"
+    echo "pre-commit: run 'npm install' in knight2026/ first."
+    exit 1
+  fi
+
+  if ! (cd knight2026 && ./node_modules/.bin/prettier --check "$@"); then
+    echo "pre-commit: prettier check failed — run: (cd knight2026 && npm run format)"
+    fail=1
+  fi
+
+  if ! (cd knight2026 && ./node_modules/.bin/oxlint "$@"); then
+    echo "pre-commit: oxlint failed."
+    fail=1
+  fi
+
+  if ! (cd knight2026 && ./node_modules/.bin/next typegen && ./node_modules/.bin/tsc --noEmit); then
+    echo "pre-commit: tsc --noEmit failed."
+    fail=1
+  fi
+else
+  if [ ! -x knight2026/node_modules/.bin/prettier ] || [ ! -x knight2026/node_modules/.bin/oxlint ] || [ ! -x knight2026/node_modules/.bin/tsc ] || [ ! -x knight2026/node_modules/.bin/next ]; then
+    echo "pre-commit: note — knight2026 tooling not installed; skipping (no staged TS/TSX in this commit)."
+  fi
+fi
+
+exit "$fail"

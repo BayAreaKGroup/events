@@ -1,47 +1,47 @@
-'use client'
+"use client";
 
-import type { StaticImageData } from 'next/image'
-import ticketEarly from '@/assets/ticket/ticket-early.png'
-import ticketRegular from '@/assets/ticket/ticket-regular.png'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import EventBadge from '@/components/ui/EventBadge'
-import { ticketCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import type { StaticImageData } from "next/image";
+import ticketEarly from "@/assets/ticket/ticket-early.png";
+import ticketRegular from "@/assets/ticket/ticket-regular.png";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import EventBadge from "@/components/ui/EventBadge";
+import { ticketCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-ticket-header 562:6586 — viewport 1440, content 1160 (1200−40) */
 
 type TicketOption = {
-  id: string
-  image: StaticImageData
-  imageAlt: string
-  price: string
-  buttonLabel: string
-  variant: 'regular' | 'early'
-}
+  id: string;
+  image: StaticImageData;
+  imageAlt: string;
+  price: string;
+  buttonLabel: string;
+  variant: "regular" | "early";
+};
 
 const ticketOptions: TicketOption[] = [
   {
-    id: 'early-bird',
+    id: "early-bird",
     image: ticketEarly,
-    imageAlt: 'K-Night 2026 Early Bird Ticket',
-    price: '$70',
-    buttonLabel: 'Buy Early Bird Ticket',
-    variant: 'early',
+    imageAlt: "K-Night 2026 Early Bird Ticket",
+    price: "$70",
+    buttonLabel: "Buy Early Bird Ticket",
+    variant: "early",
   },
   {
-    id: 'regular',
+    id: "regular",
     image: ticketRegular,
-    imageAlt: 'K-Night 2026 Regular Ticket',
-    price: '$80',
-    buttonLabel: 'Buy regular Ticket',
-    variant: 'regular',
+    imageAlt: "K-Night 2026 Regular Ticket",
+    price: "$80",
+    buttonLabel: "Buy regular Ticket",
+    variant: "regular",
   },
-]
+];
 
-const ticketsOpeningSoon = true
+const ticketsOpeningSoon = true;
 
 export default function SectionTicketHeader() {
-  const copy = ticketCopy[useLocale()]
+  const copy = ticketCopy[useLocale()];
   return (
     <section
       id="ticket-header"
@@ -103,19 +103,19 @@ export default function SectionTicketHeader() {
           data-node-id="562:6710"
         >
           {ticketOptions.map((option, index) => {
-            const isEarly = option.variant === 'early'
+            const isEarly = option.variant === "early";
 
             return (
               <StaggerItem
                 key={option.id}
                 className="min-h-0 min-w-0 flex-1"
-                data-node-id={isEarly ? '562:6719' : '562:6711'}
+                data-node-id={isEarly ? "562:6719" : "562:6711"}
               >
                 <div
                   className={[
-                    'surface-card flex h-full min-h-0 flex-col items-center gap-5 px-5 py-8 sm:gap-6 sm:px-8 sm:py-10 md:px-[33px] md:py-[49px]',
-                    isEarly ? 'bg-[#FAFAFA]' : 'bg-white',
-                  ].join(' ')}
+                    "surface-card flex h-full min-h-0 flex-col items-center gap-5 px-5 py-8 sm:gap-6 sm:px-8 sm:py-10 md:px-[33px] md:py-[49px]",
+                    isEarly ? "bg-surface-elevated" : "bg-white",
+                  ].join(" ")}
                 >
                   <div className="relative h-[120px] w-full max-w-[500px] shrink overflow-hidden sm:h-[160px] md:h-[220px]">
                     <img
@@ -124,16 +124,14 @@ export default function SectionTicketHeader() {
                       width={500}
                       height={220}
                       className="absolute left-1/2 top-1/2 h-auto w-full max-w-[500px] -translate-x-1/2 -translate-y-1/2"
-                      loading={index === 0 ? 'eager' : 'lazy'}
+                      loading={index === 0 ? "eager" : "lazy"}
                       decoding="async"
-                      fetchPriority={index === 0 ? 'high' : 'low'}
+                      fetchPriority={index === 0 ? "high" : "low"}
                     />
                   </div>
 
                   <div className="flex w-full shrink-0 items-end justify-center gap-2 pb-4 md:pb-6">
-                    <p className="type-h3 text-text">
-                      {copy.prices[index]}
-                    </p>
+                    <p className="type-h3 text-text">{copy.prices[index]}</p>
                     <p className="type-caption">{copy.perPerson}</p>
                   </div>
 
@@ -142,22 +140,22 @@ export default function SectionTicketHeader() {
                     target="_blank"
                     rel="noreferrer"
                     className={[
-                      'type-button inline-flex h-10 max-md:w-full shrink-0 items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-5 md:py-0 md:text-base',
+                      "type-button inline-flex h-10 max-md:w-full shrink-0 items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-5 md:py-0 md:text-base",
                       ticketsOpeningSoon
-                        ? 'cursor-pointer rounded-[12px] border border-[#B8B8B8] bg-[#F3F3F3] text-[#8A8A8A]'
+                        ? "cursor-pointer rounded-[12px] border btn-muted"
                         : isEarly
-                          ? 'btn-home-cta'
-                          : 'btn-ghost',
-                    ].join(' ')}
+                          ? "btn-home-cta"
+                          : "btn-ghost",
+                    ].join(" ")}
                   >
                     {ticketsOpeningSoon ? copy.openingSoon : option.buttonLabel}
                   </a>
                 </div>
               </StaggerItem>
-            )
+            );
           })}
         </Stagger>
       </div>
     </section>
-  )
+  );
 }

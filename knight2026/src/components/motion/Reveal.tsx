@@ -1,21 +1,22 @@
-'use client'
+"use client";
 
 import {
   motion,
   useReducedMotion,
   type HTMLMotionProps,
   type Variants,
-} from 'framer-motion'
-import type { ElementType, ReactNode } from 'react'
-import { useIsMobile } from '@/hooks/useMediaQuery'
+} from "framer-motion";
+import type { ElementType, ReactNode } from "react";
+import { useIsMobile } from "@/hooks/useMediaQuery";
 import {
   fadeUp,
   staggerContainer,
   staggerItem,
   viewportOnce,
-} from '@/lib/motion'
+} from "@/lib/motion";
 
-type MotionTag = 'div' | 'section' | 'dl' | 'ul' | 'ol' | 'li' | 'footer' | 'header'
+type MotionTag =
+  "div" | "section" | "dl" | "ul" | "ol" | "li" | "footer" | "header";
 
 const motionTags: Record<MotionTag, ElementType> = {
   div: motion.div,
@@ -26,42 +27,42 @@ const motionTags: Record<MotionTag, ElementType> = {
   li: motion.li,
   footer: motion.footer,
   header: motion.header,
-}
+};
 
 type CommonProps = {
-  as?: MotionTag
-  children: ReactNode
-  className?: string
-  variants?: Variants
+  as?: MotionTag;
+  children: ReactNode;
+  className?: string;
+  variants?: Variants;
 } & Omit<
-  HTMLMotionProps<'div'>,
-  | 'children'
-  | 'variants'
-  | 'initial'
-  | 'animate'
-  | 'whileInView'
-  | 'viewport'
-  | 'transition'
->
+  HTMLMotionProps<"div">,
+  | "children"
+  | "variants"
+  | "initial"
+  | "animate"
+  | "whileInView"
+  | "viewport"
+  | "transition"
+>;
 
 type RevealProps = CommonProps & {
-  delay?: number
-  amount?: number
-}
+  delay?: number;
+  amount?: number;
+};
 
 function withDelay(variants: Variants, delay: number): Variants {
-  if (delay <= 0) return variants
+  if (delay <= 0) return variants;
 
-  const visible = variants.visible
+  const visible = variants.visible;
   const base =
-    typeof visible === 'object' && visible !== null ? visible : { opacity: 1 }
+    typeof visible === "object" && visible !== null ? visible : { opacity: 1 };
   const existingTransition =
-    typeof visible === 'object' &&
+    typeof visible === "object" &&
     visible !== null &&
-    'transition' in visible &&
+    "transition" in visible &&
     visible.transition
       ? visible.transition
-      : {}
+      : {};
 
   return {
     ...variants,
@@ -69,11 +70,11 @@ function withDelay(variants: Variants, delay: number): Variants {
       ...base,
       transition: { ...existingTransition, delay },
     },
-  }
+  };
 }
 
 export function Reveal({
-  as = 'div',
+  as = "div",
   children,
   className,
   variants = fadeUp,
@@ -81,17 +82,17 @@ export function Reveal({
   amount = viewportOnce.amount,
   ...rest
 }: RevealProps) {
-  const reduceMotion = useReducedMotion()
-  const isMobile = useIsMobile()
-  const Component = motionTags[as]
+  const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const Component = motionTags[as];
 
   if (reduceMotion || isMobile) {
-    const StaticTag = as
+    const StaticTag = as;
     return (
       <StaticTag className={className} {...(rest as object)}>
         {children}
       </StaticTag>
-    )
+    );
   }
 
   return (
@@ -105,32 +106,32 @@ export function Reveal({
     >
       {children}
     </Component>
-  )
+  );
 }
 
 type StaggerProps = CommonProps & {
-  amount?: number
-}
+  amount?: number;
+};
 
 export function Stagger({
-  as = 'div',
+  as = "div",
   children,
   className,
   variants = staggerContainer,
   amount = viewportOnce.amount,
   ...rest
 }: StaggerProps) {
-  const reduceMotion = useReducedMotion()
-  const isMobile = useIsMobile()
-  const Component = motionTags[as]
+  const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const Component = motionTags[as];
 
   if (reduceMotion || isMobile) {
-    const StaticTag = as
+    const StaticTag = as;
     return (
       <StaticTag className={className} {...(rest as object)}>
         {children}
       </StaticTag>
-    )
+    );
   }
 
   return (
@@ -144,34 +145,34 @@ export function Stagger({
     >
       {children}
     </Component>
-  )
+  );
 }
 
-type StaggerItemProps = CommonProps
+type StaggerItemProps = CommonProps;
 
 export function StaggerItem({
-  as = 'div',
+  as = "div",
   children,
   className,
   variants = staggerItem,
   ...rest
 }: StaggerItemProps) {
-  const reduceMotion = useReducedMotion()
-  const isMobile = useIsMobile()
-  const Component = motionTags[as]
+  const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const Component = motionTags[as];
 
   if (reduceMotion || isMobile) {
-    const StaticTag = as
+    const StaticTag = as;
     return (
       <StaticTag className={className} {...(rest as object)}>
         {children}
       </StaticTag>
-    )
+    );
   }
 
   return (
     <Component className={className} variants={variants} {...rest}>
       {children}
     </Component>
-  )
+  );
 }

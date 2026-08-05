@@ -1,30 +1,30 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import SocialCard from '@/components/ui/SocialCard'
-import { fadeIn } from '@/lib/motion'
-import { networkSocialCards } from '@/lib/socialChannels'
-import { homeCopy } from '@/content/siteContent'
-import { getLocalizedHref, useLocale } from '@/lib/locale'
+import Link from "next/link";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import SocialCard from "@/components/ui/SocialCard";
+import { fadeIn } from "@/lib/motion";
+import { networkSocialCards } from "@/lib/socialChannels";
+import { homeCopy } from "@/content/siteContent";
+import { getLocalizedHref, useLocale } from "@/lib/locale";
 
 const makeBannerLoop = (segments: readonly string[]) => {
-  const phrase = `${segments.join('\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0')}\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`
-  return [phrase, phrase, phrase, phrase]
-}
+  const phrase = `${segments.join("\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0")}\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`;
+  return [phrase, phrase, phrase, phrase];
+};
 
 /**
  * Join Our Network — compact content-driven layout:
  * header → social grid → full-bleed ticker banner.
  */
 export default function SectionNetwork() {
-  const currentLocale = useLocale()
-  const copy = homeCopy[currentLocale].network
-  const bannerLoop = makeBannerLoop(copy.banner)
+  const currentLocale = useLocale();
+  const copy = homeCopy[currentLocale].network;
+  const bannerLoop = makeBannerLoop(copy.banner);
   return (
     <section
       id="network"
-      className="section-network relative w-full bg-[#FAFAFA]"
+      className="section-network relative w-full bg-surface-elevated"
       aria-labelledby="network-heading"
       data-node-id="561:6411"
     >
@@ -39,7 +39,10 @@ export default function SectionNetwork() {
           className="section-network-header flex w-full flex-col gap-4 sm:gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-12"
           data-node-id="561:6412"
         >
-          <StaggerItem className="w-full min-w-0 lg:flex-1" data-node-id="561:6413">
+          <StaggerItem
+            className="w-full min-w-0 lg:flex-1"
+            data-node-id="561:6413"
+          >
             <h2
               id="network-heading"
               className="type-h2 text-text md:whitespace-nowrap"
@@ -86,19 +89,19 @@ export default function SectionNetwork() {
         className="section-cta-banner-slot relative z-[1] w-full"
       >
         <Link
-          href={getLocalizedHref(currentLocale, 'ticket')}
+          href={getLocalizedHref(currentLocale, "ticket")}
           className="section-looping-cta-banner marquee marquee-cta relative flex w-full items-center overflow-hidden"
           aria-label="Get Tickets · September 12, 2026 · Computer History Museum, Mountain View, CA"
           data-node-id="565:7850"
           data-name="section-looping-cta-banner"
           onClick={() => {
-            window.scrollTo(0, 0)
+            window.scrollTo(0, 0);
           }}
         >
           <div className="relative z-[1] flex h-full w-full items-center overflow-hidden">
             <div
               className="marquee-track items-center"
-              style={{ ['--marquee-duration' as string]: '40s' }}
+              style={{ ["--marquee-duration" as string]: "40s" }}
             >
               {bannerLoop.map((item, i) => (
                 <span
@@ -113,5 +116,5 @@ export default function SectionNetwork() {
         </Link>
       </Reveal>
     </section>
-  )
+  );
 }

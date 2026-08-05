@@ -27,9 +27,10 @@ events/
 
 - **Never commit build output** (`out/`, `dist/`, `.next/`, `node_modules/`).
   CI builds everything on push to `main`.
-- All builds and site assembly happen ONLY in
-  `.github/workflows/deploy-pages.yml`. Do not add per-event workflow files,
-  and do not add a second workflow that deploys Pages.
+- Per-event deploy steps live ONLY in `.github/workflows/deploy-pages.yml`.
+  Do not add per-event deploy workflow files, and do not add a second
+  workflow that deploys Pages. Non-deploying CI check workflows (e.g.
+  `ci.yml` for lint/typecheck) are allowed.
 - A Next.js event app must use `output: 'export'`, `trailingSlash: true`,
   `images.unoptimized: true`, and `basePath: '/events/<folder>'`
   (see `knight2026/next.config.mjs` as the reference).
@@ -70,10 +71,48 @@ events/
 - One card per event in the grid; keep the `N°00X` index sequence and the
   dashed "next year" placeholder tile.
 
+## Code quality principles
+
+Applies to all code in this repo — root `index.html` and every event app.
+
+- **Minimum diff.** Change only what the task requires. No drive-by
+  refactors, renames, or reformatting of untouched code in the same change.
+- **No dead code.** Delete unused functions, components, and imports before
+  committing. Never leave commented-out code blocks — git history is the
+  record, not the file.
+- **No duplicated logic within an event folder.** If the same logic block
+  appears repeatedly inside one event's codebase, extract it. Copying logic
+  *across* event folders is still allowed (see Repo layout above) — this
+  rule applies per-folder only.
+- **No speculative abstractions.** Don't add config options, props, or
+  interfaces "for future flexibility" without a concrete current use. Build
+  for the event you're shipping, not a hypothetical next one.
+- **File size cap: 600 lines.** Split a file that grows past that into
+  smaller, single-purpose files.
+- **In event apps, single-purpose components.** A component does one
+  visual/behavioral job. If it needs a "mode" prop to switch between
+  unrelated renders, split it into separate components. (Not applicable to
+  the componentless root `index.html`.)
+- **In event apps, content lives in the content dictionary, not
+  components.** Copy/text strings belong in the event's data/content
+  module (see the knight2026 pattern), not hardcoded inline in JSX. (Root
+  `index.html` keeps its copy inline per "Root archive page" above.)
+
+### Formatting & linting
+
+- Prettier (double quotes, semicolons) + oxlint (`max-lines: 600`) + `tsc
+  --noEmit`, TypeScript for all new code in app folders (e.g. knight2026's
+  `src/`).
+- Enforced by the committed `.githooks/pre-commit` hook (bootstrapped via
+  `npm install` in knight2026, which sets `core.hooksPath`) and the
+  non-deploying `ci.yml` workflow on PRs.
+
 ## Git
 
 - Work happens on `main` via normal pushes (small team). Never force-push.
 - Do not commit as, or impersonate, another contributor.
+- Commits must be authored with the contributor's real, GitHub-linked
+  email — no placeholder emails — so work is attributed correctly.
 - AI attribution in commits is forbidden: never add
   `Co-Authored-By: Claude <noreply@anthropic.com>` or any other
   `Co-Authored-By:` / "Generated with" trailer crediting an AI tool.

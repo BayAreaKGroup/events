@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import card01 from '@/assets/donation/card-01.png'
-import card02 from '@/assets/donation/card-02.png'
-import card03 from '@/assets/donation/card-03.png'
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { staggerContainerSlow } from '@/lib/motion'
-import { DONATION_LINKS } from '@/lib/donationLinks'
-import { donationCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import card01 from "@/assets/donation/card-01.png";
+import card02 from "@/assets/donation/card-02.png";
+import card03 from "@/assets/donation/card-03.png";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { staggerContainerSlow } from "@/lib/motion";
+import { DONATION_LINKS } from "@/lib/donationLinks";
+import { donationCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
 
 /** Figma section-donation 570:89 / cards 570:117 — viewport 1440, content 1160 */
 const benefits = [
-  { image: card01, artBg: '#F2F6F3', nodeId: '570:118' },
-  { image: card02, artBg: '#F3F6FF', nodeId: '570:137' },
-  { image: card03, artBg: '#F9F5FF', nodeId: '570:159' },
-] as const
+  { image: card01, artBg: "#F2F6F3", nodeId: "570:118" },
+  { image: card02, artBg: "#F3F6FF", nodeId: "570:137" },
+  { image: card03, artBg: "#F9F5FF", nodeId: "570:159" },
+] as const;
 
 export default function SectionDonation() {
-  const locale = useLocale()
-  const copy = donationCopy[locale]
+  const locale = useLocale();
+  const copy = donationCopy[locale];
   return (
     <section
       id="donation"
@@ -86,7 +86,7 @@ export default function SectionDonation() {
                 {copy.supportSubtitle}
               </p>
               <div className="type-body space-y-4" data-node-id="570:106">
-                {copy.body.split('\n').map((paragraph) => (
+                {copy.body.split("\n").map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
@@ -130,7 +130,10 @@ export default function SectionDonation() {
           className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="570:179"
         >
-          <Reveal className="w-full shrink-0 lg:w-[371px]" data-node-id="570:180">
+          <Reveal
+            className="w-full shrink-0 lg:w-[371px]"
+            data-node-id="570:180"
+          >
             <h3 className="type-h3 text-text" data-node-id="570:182">
               {copy.impactTitle}
             </h3>
@@ -143,53 +146,57 @@ export default function SectionDonation() {
             data-node-id="570:117"
           >
             {benefits.map((benefit, index) => {
-              const benefitCopy = copy.benefits[index]
+              const benefitCopy = copy.benefits[index];
               return (
-              <StaggerItem as="li" key={benefit.nodeId} className="h-full min-w-0">
-                <article
-                  className="flex h-full flex-col gap-6 overflow-hidden rounded-[12px] border border-line bg-white p-4 md:gap-6 md:px-4 md:py-6"
-                  data-node-id={benefit.nodeId}
+                <StaggerItem
+                  as="li"
+                  key={benefit.nodeId}
+                  className="h-full min-w-0"
                 >
-                  <div
-                    className="relative h-[92px] w-full shrink-0 overflow-hidden rounded-[12px] md:aspect-[705/277] md:h-auto"
-                    style={{ backgroundColor: benefit.artBg }}
-                    data-node-id={`${benefit.nodeId}-art`}
+                  <article
+                    className="flex h-full flex-col gap-6 overflow-hidden rounded-[12px] border border-line bg-white p-4 md:gap-6 md:px-4 md:py-6"
+                    data-node-id={benefit.nodeId}
                   >
-                    <img
-                      src={benefit.image.src}
-                      alt=""
-                      width={705}
-                      height={277}
-                      className="size-full object-cover object-bottom md:scale-[1.015] md:object-contain"
-                      loading="lazy"
-                      decoding="async"
-                      sizes="(min-width: 1024px) 235px, (min-width: 640px) 50vw, 100vw"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col gap-3 p-0">
-                    <span className="type-h4 text-text">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <div className="flex flex-col gap-1.5">
-                      <h4
-                        className={`type-body font-normal text-text ${locale === 'en' ? 'text-balance' : ''}`}
-                      >
-                        {benefitCopy[0]}
-                      </h4>
-                      <p
-                        className={`type-body text-sm leading-[1.4] text-text ${locale === 'en' ? 'text-balance' : ''}`}
-                      >
-                        {benefitCopy[1]}
-                      </p>
+                    <div
+                      className="relative h-[92px] w-full shrink-0 overflow-hidden rounded-[12px] md:aspect-[705/277] md:h-auto"
+                      style={{ backgroundColor: benefit.artBg }}
+                      data-node-id={`${benefit.nodeId}-art`}
+                    >
+                      <img
+                        src={benefit.image.src}
+                        alt=""
+                        width={705}
+                        height={277}
+                        className="size-full object-cover object-bottom md:scale-[1.015] md:object-contain"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(min-width: 1024px) 235px, (min-width: 640px) 50vw, 100vw"
+                      />
                     </div>
-                  </div>
-                </article>
-              </StaggerItem>
-              )
+                    <div className="flex flex-1 flex-col gap-3 p-0">
+                      <span className="type-h4 text-text">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div className="flex flex-col gap-1.5">
+                        <h4
+                          className={`type-body font-normal text-text ${locale === "en" ? "text-balance" : ""}`}
+                        >
+                          {benefitCopy[0]}
+                        </h4>
+                        <p
+                          className={`type-body text-sm leading-[1.4] text-text ${locale === "en" ? "text-balance" : ""}`}
+                        >
+                          {benefitCopy[1]}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </StaggerItem>
+              );
             })}
           </Stagger>
         </div>
       </div>
     </section>
-  )
+  );
 }

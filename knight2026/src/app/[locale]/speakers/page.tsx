@@ -1,5 +1,5 @@
-import Footer from '@/components/layout/Footer'
-import SectionSpeakersComing from '@/components/speakers/SectionSpeakersComing'
+import Footer from "@/components/layout/Footer";
+import SectionSpeakersComing from "@/components/speakers/SectionSpeakersComing";
 
 export default function SpeakersPage() {
   return (
@@ -7,5 +7,5 @@ export default function SpeakersPage() {
       <SectionSpeakersComing />
       <Footer />
     </main>
-  )
+  );
 }

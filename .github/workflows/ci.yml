@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'knight2026/**'
+      - '.github/workflows/ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-check:
+    name: build-and-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: knight2026/package-lock.json
+
+      - name: Install knight2026
+        working-directory: knight2026
+        run: npm ci
+
+      - name: Format check (prettier)
+        working-directory: knight2026
+        run: npm run format:check
+
+      - name: Lint (oxlint)
+        working-directory: knight2026
+        run: npm run lint
+
+      - name: Type check
+        working-directory: knight2026
+        run: npm run typecheck
+
+      - name: Build (Next.js static export)
+        working-directory: knight2026
+        run: npm run build

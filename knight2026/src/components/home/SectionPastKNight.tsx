@@ -1,61 +1,119 @@
-'use client'
+"use client";
 
-import img4 from '@/assets/past-knight/new/k-night-4.jpg'
-import img7 from '@/assets/past-knight/new/k-night-7.jpg'
-import img8 from '@/assets/past-knight/new/k-night-8.jpg'
-import img2 from '@/assets/past-knight/new/k-night-2.jpg'
-import img1 from '@/assets/past-knight/new/k-night-1.jpg'
-import img5 from '@/assets/past-knight/new/k-night-5.jpg'
-import img3 from '@/assets/past-knight/new/k-night-3.jpg'
-import event7 from '@/assets/past-knight/new/events/event-7.jpg'
-import event2 from '@/assets/past-knight/new/events/event-2.jpg'
-import event1 from '@/assets/past-knight/new/events/event-1.jpg'
-import event6 from '@/assets/past-knight/new/events/event-6.jpg'
-import event3 from '@/assets/past-knight/new/events/event-3.jpg'
-import event4 from '@/assets/past-knight/new/events/event-4.jpg'
-import mobileImg4 from '@/assets/past-knight/mobile/k-night-4.jpg'
-import mobileImg7 from '@/assets/past-knight/mobile/k-night-7.jpg'
-import mobileImg8 from '@/assets/past-knight/mobile/k-night-8.jpg'
-import mobileImg2 from '@/assets/past-knight/mobile/k-night-2.jpg'
-import mobileImg1 from '@/assets/past-knight/mobile/k-night-1.jpg'
-import mobileImg5 from '@/assets/past-knight/mobile/k-night-5.jpg'
-import mobileImg3 from '@/assets/past-knight/mobile/k-night-3.jpg'
-import mobileEvent2 from '@/assets/past-knight/mobile/event-2.jpg'
-import mobileEvent7 from '@/assets/past-knight/mobile/event-7.jpg'
-import mobileEvent1 from '@/assets/past-knight/mobile/event-1.jpg'
-import mobileEvent6 from '@/assets/past-knight/mobile/event-6.jpg'
-import mobileEvent3 from '@/assets/past-knight/mobile/event-3.jpg'
-import mobileEvent4 from '@/assets/past-knight/mobile/event-4.jpg'
-import { Reveal, Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { fadeUpSubtle } from '@/lib/motion'
-import { useRef, useState, type PointerEvent } from 'react'
-import { homeCopy } from '@/content/siteContent'
-import { useLocale } from '@/lib/locale'
+import img4 from "@/assets/past-knight/new/k-night-4.jpg";
+import img7 from "@/assets/past-knight/new/k-night-7.jpg";
+import img8 from "@/assets/past-knight/new/k-night-8.jpg";
+import img2 from "@/assets/past-knight/new/k-night-2.jpg";
+import img1 from "@/assets/past-knight/new/k-night-1.jpg";
+import img5 from "@/assets/past-knight/new/k-night-5.jpg";
+import img3 from "@/assets/past-knight/new/k-night-3.jpg";
+import event7 from "@/assets/past-knight/new/events/event-7.jpg";
+import event2 from "@/assets/past-knight/new/events/event-2.jpg";
+import event1 from "@/assets/past-knight/new/events/event-1.jpg";
+import event6 from "@/assets/past-knight/new/events/event-6.jpg";
+import event3 from "@/assets/past-knight/new/events/event-3.jpg";
+import event4 from "@/assets/past-knight/new/events/event-4.jpg";
+import mobileImg4 from "@/assets/past-knight/mobile/k-night-4.jpg";
+import mobileImg7 from "@/assets/past-knight/mobile/k-night-7.jpg";
+import mobileImg8 from "@/assets/past-knight/mobile/k-night-8.jpg";
+import mobileImg2 from "@/assets/past-knight/mobile/k-night-2.jpg";
+import mobileImg1 from "@/assets/past-knight/mobile/k-night-1.jpg";
+import mobileImg5 from "@/assets/past-knight/mobile/k-night-5.jpg";
+import mobileImg3 from "@/assets/past-knight/mobile/k-night-3.jpg";
+import mobileEvent2 from "@/assets/past-knight/mobile/event-2.jpg";
+import mobileEvent7 from "@/assets/past-knight/mobile/event-7.jpg";
+import mobileEvent1 from "@/assets/past-knight/mobile/event-1.jpg";
+import mobileEvent6 from "@/assets/past-knight/mobile/event-6.jpg";
+import mobileEvent3 from "@/assets/past-knight/mobile/event-3.jpg";
+import mobileEvent4 from "@/assets/past-knight/mobile/event-4.jpg";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { fadeUpSubtle } from "@/lib/motion";
+import { useRef, useState, type PointerEvent } from "react";
+import { homeCopy } from "@/content/siteContent";
+import { useLocale } from "@/lib/locale";
+import { useIsMobile } from "@/hooks/useMediaQuery";
 
 /** Figma 561:5619 — landscape ~462×347, portrait ~347×462 / 355×462 */
 const images = [
-  { src: img4, className: 'h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]', imageClassName: '' },
-  { src: img7, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  {
+    src: img4,
+    className:
+      "h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]",
+    imageClassName: "",
+  },
+  {
+    src: img7,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
   {
     src: img8,
-    className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]',
-    imageClassName: 'origin-bottom scale-[1.15] object-bottom',
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "origin-bottom scale-[1.15] object-bottom",
   },
-  { src: img2, className: 'h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]', imageClassName: '' },
-  { src: img1, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: img5, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
+  {
+    src: img2,
+    className:
+      "h-[266px] w-[200px] sm:h-[370px] sm:w-[280px] md:h-[462px] md:w-[347px]",
+    imageClassName: "",
+  },
+  {
+    src: img1,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+  {
+    src: img5,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
   {
     src: img3,
-    className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]',
-    imageClassName: 'origin-bottom scale-[1.15] object-bottom',
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "origin-bottom scale-[1.15] object-bottom",
   },
-  { src: event2, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: event7, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: event1, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: event6, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: event3, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-  { src: event4, className: 'h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]', imageClassName: '' },
-] as const
+  {
+    src: event2,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+  {
+    src: event7,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+  {
+    src: event1,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+  {
+    src: event6,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+  {
+    src: event3,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+  {
+    src: event4,
+    className:
+      "h-[200px] w-[266px] sm:h-[280px] sm:w-[370px] md:h-[347px] md:w-[462px]",
+    imageClassName: "",
+  },
+] as const;
 
 const mobileImages = [
   mobileImg4,
@@ -71,61 +129,60 @@ const mobileImages = [
   mobileEvent6,
   mobileEvent3,
   mobileEvent4,
-] as const
+] as const;
 
 const imagesWithMobileSources = images.map((image, index) => ({
   ...image,
   mobileSrc: mobileImages[index],
-}))
+}));
 
-const loopImages = [...imagesWithMobileSources, ...imagesWithMobileSources]
+const loopImages = [...imagesWithMobileSources, ...imagesWithMobileSources];
 
 /** Figma section-past-k-night 561:6267 — viewport 1440, content 1160 (1200−40) */
 export default function SectionPastKNight() {
-  const copy = homeCopy[useLocale()].past
-  const [dragOffset, setDragOffset] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const dragStart = useRef({ pointerId: -1, x: 0, offset: 0 })
+  const copy = homeCopy[useLocale()].past;
+  const isMobile = useIsMobile();
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStart = useRef({ pointerId: -1, x: 0, offset: 0 });
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    if (
-      window.matchMedia('(min-width: 768px)').matches ||
-      (event.pointerType === 'mouse' && event.button !== 0)
-    ) {
-      return
+    if (!isMobile || (event.pointerType === "mouse" && event.button !== 0)) {
+      return;
     }
 
     dragStart.current = {
       pointerId: event.pointerId,
       x: event.clientX,
-      offset: dragOffset,
-    }
-    event.currentTarget.setPointerCapture(event.pointerId)
-    setIsDragging(true)
-  }
+      offset: 0,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsDragging(true);
+  };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (dragStart.current.pointerId !== event.pointerId) return
+    if (dragStart.current.pointerId !== event.pointerId) return;
 
     setDragOffset(
       dragStart.current.offset + event.clientX - dragStart.current.x,
-    )
-  }
+    );
+  };
 
   const handlePointerEnd = (event: PointerEvent<HTMLDivElement>) => {
-    if (dragStart.current.pointerId !== event.pointerId) return
+    if (dragStart.current.pointerId !== event.pointerId) return;
 
-    dragStart.current.pointerId = -1
-    setIsDragging(false)
+    dragStart.current.pointerId = -1;
+    setIsDragging(false);
+    setDragOffset(0);
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId)
+      event.currentTarget.releasePointerCapture(event.pointerId);
     }
-  }
+  };
 
   return (
     <section
       id="past-k-night"
-      className="section-past-k-night section-viewport relative bg-[#ffffff]"
+      className="section-past-k-night section-viewport relative bg-surface"
       aria-labelledby="past-k-night-heading"
       data-node-id="561:6267"
     >
@@ -181,17 +238,17 @@ export default function SectionPastKNight() {
         className="section-past-k-night-gallery container-img marquee relative z-[1] flex w-full shrink-0 md:mt-0"
         variants={fadeUpSubtle}
         delay={0.1}
-        style={{ ['--marquee-duration' as string]: '36s' }}
+        style={{ ["--marquee-duration" as string]: "36s" }}
         aria-hidden="true"
         data-node-id="561:5619"
       >
         <div
           className={[
-            'marquee-track last-knight-track items-end gap-6',
-            isDragging ? 'is-dragging' : '',
+            "marquee-track last-knight-track items-end gap-6",
+            isDragging ? "is-dragging" : "",
           ]
             .filter(Boolean)
-            .join(' ')}
+            .join(" ")}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerEnd}
@@ -205,9 +262,9 @@ export default function SectionPastKNight() {
               <div
                 key={`${image.src.src}-${i}`}
                 className={[
-                  'visual-lift relative shrink-0 overflow-hidden bg-text',
+                  "visual-lift relative shrink-0 overflow-hidden bg-text",
                   image.className,
-                ].join(' ')}
+                ].join(" ")}
               >
                 <picture>
                   <source
@@ -218,15 +275,16 @@ export default function SectionPastKNight() {
                     src={image.src.src}
                     alt=""
                     className={[
-                      'absolute inset-0 size-full object-cover',
+                      "absolute inset-0 size-full object-cover",
                       image.imageClassName,
                     ]
                       .filter(Boolean)
-                      .join(' ')}
+                      .join(" ")}
                     width={image.src.width}
                     height={image.src.height}
                     style={{
-                      filter: 'saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)',
+                      filter:
+                        "saturate(0.92) sepia(0.1) brightness(1.04) contrast(0.96)",
                     }}
                     loading="lazy"
                     decoding="async"
@@ -243,5 +301,5 @@ export default function SectionPastKNight() {
         </div>
       </Reveal>
     </section>
-  )
+  );
 }
