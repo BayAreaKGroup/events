@@ -22,6 +22,10 @@ export const homeCopy = {
         { end: 7000, suffix: "+", label: "K-Group Members" },
       ],
     },
+    video: {
+      turnSoundOn: "Turn sound on",
+      turnSoundOff: "Turn sound off",
+    },
     past: {
       title: "K-Night Highlights",
       description: "Explore highlights from previous K-Nights.",
@@ -59,6 +63,10 @@ export const homeCopy = {
         { end: 400, suffix: "+", label: "매회 참석자" },
         { end: 7000, suffix: "+", label: "K-Group 회원 수" },
       ],
+    },
+    video: {
+      turnSoundOn: "소리 켜기",
+      turnSoundOff: "소리 끄기",
     },
     past: {
       title: "K-Night 하이라이트",

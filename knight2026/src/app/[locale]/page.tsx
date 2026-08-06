@@ -6,6 +6,7 @@ import SectionNetwork from "@/components/home/SectionNetwork";
 import SectionKNight from "@/components/home/SectionKNight";
 import SectionOverview from "@/components/home/SectionOverview";
 import SectionPastKNight from "@/components/home/SectionPastKNight";
+import VideoSection from "@/components/home/VideoSection";
 
 export default function HomePage() {
   useEffect(() => {
@@ -29,6 +30,7 @@ export default function HomePage() {
   return (
     <main className="home-page">
       <SectionOverview />
+      <VideoSection />
       <SectionKNight />
       <SectionPastKNight />
       <SectionNetwork />
