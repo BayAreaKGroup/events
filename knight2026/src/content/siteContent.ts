@@ -356,7 +356,9 @@ export const ticketCopy = {
     carpoolTitle: "Carpool",
     carpoolIntro:
       "We’re helping K-Night attendees connect with others for carpooling to and from the venue. If you’d like to share a ride or offer a ride, please use the shared list below to connect with other attendees in your area.",
-    carpoolButton: "Coming Soon",
+    carpoolButton: "Sign Up",
+    carpoolHref:
+      "https://docs.google.com/spreadsheets/d/1jhQ-Dt11dvtQSTn9dTUfujp33NrAEzdQaE91O1CDJPY/edit?usp=sharing",
   },
   ko: {
     badge: "8월 6일 오후 12시 오픈",
@@ -400,6 +402,8 @@ export const ticketCopy = {
     carpoolTitle: "교통안내",
     carpoolIntro:
       "K-Night 행사장까지 교통편이 불편하신 분들을 위해 참가자 간 카풀을 지원합니다. 주변 참여자들과 매칭을 원하시는 분들은 아래 공유 리스트를 이용해 주세요.",
-    carpoolButton: "준비중",
+    carpoolButton: "신청하기",
+    carpoolHref:
+      "https://docs.google.com/spreadsheets/d/1jhQ-Dt11dvtQSTn9dTUfujp33NrAEzdQaE91O1CDJPY/edit?usp=sharing",
   },
 } as const;
