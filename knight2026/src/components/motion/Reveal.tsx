@@ -6,7 +6,7 @@ import {
   type HTMLMotionProps,
   type Variants,
 } from "framer-motion";
-import type { ElementType, ReactNode } from "react";
+import { useEffect, useState, type ElementType, type ReactNode } from "react";
 import { useIsMobile } from "@/hooks/useMediaQuery";
 import {
   fadeUp,
@@ -73,6 +73,16 @@ function withDelay(variants: Variants, delay: number): Variants {
   };
 }
 
+function useHydrated() {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+  return hydrated;
+}
+
 export function Reveal({
   as = "div",
   children,
@@ -84,6 +94,7 @@ export function Reveal({
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const hydrated = useHydrated();
   const Component = motionTags[as];
 
   if (reduceMotion || isMobile) {
@@ -99,7 +110,7 @@ export function Reveal({
     <Component
       className={className}
       variants={withDelay(variants, delay)}
-      initial="hidden"
+      initial={hydrated ? "hidden" : false}
       whileInView="visible"
       viewport={{ once: true, amount }}
       {...rest}
@@ -123,6 +134,7 @@ export function Stagger({
 }: StaggerProps) {
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const hydrated = useHydrated();
   const Component = motionTags[as];
 
   if (reduceMotion || isMobile) {
@@ -138,7 +150,7 @@ export function Stagger({
     <Component
       className={className}
       variants={variants}
-      initial="hidden"
+      initial={hydrated ? "hidden" : false}
       whileInView="visible"
       viewport={{ once: true, amount }}
       {...rest}

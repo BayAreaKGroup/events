@@ -11,6 +11,7 @@ import { homeCopy } from "@/content/siteContent";
 import { useLocale } from "@/lib/locale";
 
 const eventTime = new Date("2026-09-12T16:00:00-07:00").getTime();
+const initialCountdown = "D-00 00:00:00";
 
 function getCountdown() {
   const remaining = Math.max(0, eventTime - Date.now());
@@ -32,9 +33,10 @@ const details = [
 /** Figma section-overview 566:8030 — viewport 1440, content ~1000 (608 / 48 / 304) */
 export default function SectionOverview() {
   const copy = homeCopy[useLocale()].overview;
-  const [countdown, setCountdown] = useState(getCountdown);
+  const [countdown, setCountdown] = useState(initialCountdown);
 
   useEffect(() => {
+    setCountdown(getCountdown());
     const interval = window.setInterval(() => {
       setCountdown(getCountdown());
     }, 1000);
@@ -117,11 +119,11 @@ export default function SectionOverview() {
                   data-node-id="566:8121"
                 >
                   <span className="md:hidden">
-                    K-NIGHT
+                    K-Night
                     <br />
                     2026
                   </span>
-                  <span className="hidden md:inline">K-NIGHT 2026</span>
+                  <span className="hidden md:inline">K-Night 2026</span>
                 </h1>
               </div>
 
@@ -129,7 +131,7 @@ export default function SectionOverview() {
                 className="flex w-full shrink-0 flex-col gap-2 max-md:items-end max-md:text-right lg:w-[min(344px,100%)]"
                 data-node-id="566:8122"
               >
-                <h3 className="overview-aside-title type-h4 uppercase text-text">
+                <h3 className="overview-aside-title type-h4 text-text">
                   {copy.subtitle}
                 </h3>
                 <p

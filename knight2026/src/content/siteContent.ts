@@ -315,7 +315,8 @@ export const donationSupportCopy = {
 
 export const ticketCopy = {
   en: {
-    badge: "OPENS AUG 6, 12:00 PM PDT",
+    badge: "EARLY BIRD TICKETS NOW AVAILABLE",
+    earlyBirdButton: "GET EARLY BIRD TICKETS",
     title: "Ticket",
     eventDetails: [
       "September 12, Saturday",
@@ -361,7 +362,8 @@ export const ticketCopy = {
       "https://docs.google.com/spreadsheets/d/1jhQ-Dt11dvtQSTn9dTUfujp33NrAEzdQaE91O1CDJPY/edit?usp=sharing",
   },
   ko: {
-    badge: "8월 6일 오후 12시 오픈",
+    badge: "얼리버드 티켓 판매 중",
+    earlyBirdButton: "얼리버드 티켓 구매하기",
     title: "티켓",
     eventDetails: [
       "9월 12일 토요일",

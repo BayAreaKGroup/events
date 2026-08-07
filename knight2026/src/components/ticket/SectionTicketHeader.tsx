@@ -25,7 +25,7 @@ const ticketOptions: TicketOption[] = [
     image: ticketEarly,
     imageAlt: "K-Night 2026 Early Bird Ticket",
     price: "$70",
-    buttonLabel: "Buy Early Bird Ticket",
+    buttonLabel: "GET EARLY BIRD TICKETS",
     variant: "early",
   },
   {
@@ -82,7 +82,7 @@ export default function SectionTicketHeader() {
           </StaggerItem>
 
           <StaggerItem
-            className="flex w-full shrink-0 flex-col justify-end lg:ml-auto lg:w-[371px]"
+            className="flex w-full shrink-0 flex-col justify-end lg:ml-auto lg:w-[371px] lg:pt-11"
             data-node-id="562:6701"
           >
             <p className="type-body" data-node-id="562:6703">
@@ -141,14 +141,18 @@ export default function SectionTicketHeader() {
                     rel="noreferrer"
                     className={[
                       "type-button inline-flex h-10 max-md:w-full shrink-0 items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-5 md:py-0 md:text-base",
-                      ticketsOpeningSoon
+                      ticketsOpeningSoon && !isEarly
                         ? "cursor-pointer rounded-[12px] border btn-muted"
                         : isEarly
                           ? "btn-home-cta"
                           : "btn-ghost",
                     ].join(" ")}
                   >
-                    {ticketsOpeningSoon ? copy.openingSoon : option.buttonLabel}
+                    {isEarly
+                      ? copy.earlyBirdButton
+                      : ticketsOpeningSoon
+                        ? copy.openingSoon
+                        : option.buttonLabel}
                   </a>
                 </div>
               </StaggerItem>
