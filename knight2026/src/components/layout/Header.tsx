@@ -180,16 +180,16 @@ export default function Header() {
               className={`${ticketBtnClass} hidden md:inline-flex`}
               data-node-id="561:6113"
             >
-              Get a Ticket
+              GET TICKETS
             </Link>
 
             <Link
               href={getLocalizedHref(currentLocale, "ticket")}
               className="btn-home-cta type-button inline-flex h-10 items-center justify-center gap-2 rounded-[12px] px-4 py-1.5 text-sm md:hidden"
               onClick={closeMenu}
-              aria-label="Get a Ticket"
+              aria-label="GET TICKETS"
             >
-              Get a Ticket
+              GET TICKETS
             </Link>
 
             <button
