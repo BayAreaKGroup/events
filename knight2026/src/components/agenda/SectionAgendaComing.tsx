@@ -6,6 +6,7 @@ export default function SectionAgendaComing() {
       id="agenda-coming"
       headingId="agenda-coming-heading"
       headingLevel="h1"
+      videoSrc="/events/knight2026/videos/knight2025-review.mp4"
     />
   );
 }
