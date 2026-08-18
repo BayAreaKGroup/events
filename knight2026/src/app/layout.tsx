@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Script from "next/script";
 import ogImage from "@/assets/metadata/og-img.jpg";
 import Header from "@/components/layout/Header";
 import "./globals.css";
@@ -56,6 +57,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Header />
           <div className="flex-1">{children}</div>
         </div>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F0PWHHTJ52"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-F0PWHHTJ52');
+          `}
+        </Script>
       </body>
     </html>
   );
