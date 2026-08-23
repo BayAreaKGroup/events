@@ -33,7 +33,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
       "SWE · AI/ML · Data Science & Engineering · PM · HW/Semicon · Design · Cybersecurity · Bio/Healthcare · Robotics · Marketing · Sales · Startup · VC · Research/Academia · HR · Finance · Legal · Students & More",
     attendeeDescription:
       "K-Night brings together people from a wide range of fields.",
-    groupsTitle: "Meet K-Group’s Small Groups",
+    groupsTitle: "Meet K-Group’s Subgroups",
     groupsDescription:
       "K-Night hosts booths for K-Group’s diverse communities, giving you an opportunity to meet the people behind them.",
     groupsList:
