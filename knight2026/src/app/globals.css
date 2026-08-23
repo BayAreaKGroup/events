@@ -138,6 +138,46 @@
     padding-bottom: var(--section-pad-bottom);
   }
 
+  /* Shared page header rhythm — content may grow beyond these minimums. */
+  .section-page-header {
+    min-height: 220px;
+  }
+
+  @media (min-width: 768px) {
+    .section-page-header {
+      min-height: 220px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-page-header {
+      min-height: 240px;
+    }
+  }
+
+  /* Compact rhythm for the Agenda and Speakers page headers. */
+  .section-compact-page-header {
+    min-height: 150px;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .section-compact-page-header {
+      min-height: 170px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-compact-page-header {
+      min-height: 190px;
+    }
+  }
+
+  /* Keep the compact header copy centered in the available vertical space. */
+  .section-compact-page-header-content {
+    flex: 0 1 auto;
+  }
+
   .section-viewport-network {
     @apply relative flex w-full flex-col;
     background-color: #fafafa;

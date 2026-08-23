@@ -79,6 +79,8 @@ const DEPTH = 240;
 const FIT_COMPACT_MAX_WIDTH = 1280;
 const FIT_FAN_OFFSET = 0.18;
 const FIT_FAN_OFFSET_BUDGET = 0.22;
+const MOBILE_FIT_CARD_RATIO = 0.52;
+const MOBILE_FIT_FAN_OFFSET = 0.34;
 const FIT_FAN_DEPTH = 1.2;
 const DESKTOP_FAN_GAP_MULTIPLIER = 30;
 const SWIPE_THRESHOLD = 40;
@@ -260,7 +262,8 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
       const sideScale = 1 - SCALE_STEP;
       const maxFromSpread =
         containerW / (2 * (FIT_FAN_OFFSET_BUDGET + sideScale / 2));
-      maxW = Math.min(cardWidth, containerW * 0.88, maxFromSpread);
+      const containerRatio = isMobileViewport ? MOBILE_FIT_CARD_RATIO : 0.88;
+      maxW = Math.min(cardWidth, containerW * containerRatio, maxFromSpread);
     } else {
       maxW = Math.min(cardWidth, containerW);
     }
@@ -270,7 +273,13 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
       width: Math.max(1, Math.round(cardWidth * scale)),
       height: Math.max(1, Math.round(cardHeight * scale)),
     });
-  }, [cardWidth, cardHeight, fitContainer, isCompactViewport]);
+  }, [
+    cardWidth,
+    cardHeight,
+    fitContainer,
+    isCompactViewport,
+    isMobileViewport,
+  ]);
 
   useLayoutEffect(() => {
     measureSize();
@@ -386,7 +395,7 @@ export default function Smooth3DSlideshow(props: Smooth3DSlideshowProps) {
   const sizeScale = size.width / cardWidth;
   const isCompactFit = fitContainer && isCompactViewport;
   const offsetStep = isCompactFit
-    ? size.width * FIT_FAN_OFFSET
+    ? size.width * (isMobileViewport ? MOBILE_FIT_FAN_OFFSET : FIT_FAN_OFFSET)
     : gap * DESKTOP_FAN_GAP_MULTIPLIER * sizeScale;
   const depthStep = isCompactFit ? DEPTH * sizeScale * FIT_FAN_DEPTH : DEPTH;
   const resolvedSideTilt =

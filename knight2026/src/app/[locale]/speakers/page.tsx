@@ -1,10 +1,14 @@
 import Footer from "@/components/layout/Footer";
-import SectionSpeakersComing from "@/components/speakers/SectionSpeakersComing";
+import SectionAgendaCTA from "@/components/agenda/SectionAgendaCTA";
+import SectionSpeakerList from "@/components/speakers/SectionSpeakerList";
+import SectionSpeakersHeader from "@/components/speakers/SectionSpeakersHeader";
 
 export default function SpeakersPage() {
   return (
     <main className="speakers-page">
-      <SectionSpeakersComing />
+      <SectionSpeakersHeader />
+      <SectionSpeakerList />
+      <SectionAgendaCTA />
       <Footer />
     </main>
   );

@@ -39,7 +39,7 @@ export default function SectionDonation() {
       >
         {/* Header — title 741 / gap 48 / aside 371 */}
         <Stagger
-          className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
+          className="section-page-header flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="570:92"
         >
           <StaggerItem
