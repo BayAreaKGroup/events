@@ -1,15 +1,15 @@
 import type { StaticImageData } from "next/image";
-import chanheeLee from "@/assets/speakers/chanhee-lee.jpg";
-import hyunahJung from "@/assets/speakers/hyunah-jung.jpg";
-import jihyeMoon from "@/assets/speakers/jihye-moon.jpg";
-import jooYeonChae from "@/assets/speakers/joo-yeon-chae.jpg";
-import jungYeonKim from "@/assets/speakers/jung-yeon-kim.jpg";
-import junyongSuh from "@/assets/speakers/junyong-suh.jpg";
-import kathyKu from "@/assets/speakers/kathy-ku.jpg";
-import kristyKim from "@/assets/speakers/kristy-kim.jpg";
-import samJang from "@/assets/speakers/sam-jang.jpg";
-import uriLee from "@/assets/speakers/uri-lee.jpg";
-import yuSeungKim from "@/assets/speakers/yu-seung-kim.jpg";
+import chanheeLee from "@/assets/speakers/chanhee-lee.webp";
+import hyunahJung from "@/assets/speakers/hyunah-jung.webp";
+import jihyeMoon from "@/assets/speakers/jihye-moon.webp";
+import jooYeonChae from "@/assets/speakers/joo-yeon-chae.webp";
+import jungYeonKim from "@/assets/speakers/jung-yeon-kim.webp";
+import junyongSuh from "@/assets/speakers/junyong-suh.webp";
+import kathyKu from "@/assets/speakers/kathy-ku.webp";
+import kristyKim from "@/assets/speakers/kristy-kim.webp";
+import samJang from "@/assets/speakers/sam-jang.webp";
+import uriLee from "@/assets/speakers/uri-lee.webp";
+import yuSeungKim from "@/assets/speakers/yu-seung-kim.webp";
 
 export type SpeakerProfile = {
   id: string;
