@@ -29,33 +29,43 @@ function SpeakerProfile({ speaker }: { speaker: SpeakerProfile }) {
         </a>
         <div className="flex flex-col gap-1">
           <p className="type-h4 text-text">{speaker.name}</p>
-          {speaker.bakgRole ? (
-            <p className="type-body text-text-muted">{speaker.bakgRole}</p>
-          ) : null}
-          <p className="type-body text-text-muted">{speaker.role}</p>
-          <p className="type-body text-text-subtle">{speaker.company}</p>
-          <a
-            href={speaker.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex w-fit items-center gap-1.5 type-caption text-text-subtle transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line"
-          >
-            <span
-              aria-hidden="true"
-              className="size-3 shrink-0 bg-text-subtle transition-colors group-hover:bg-text"
-              style={{
-                WebkitMaskImage: `url(${linkedinIcon.src})`,
-                maskImage: `url(${linkedinIcon.src})`,
-                WebkitMaskRepeat: "no-repeat",
-                maskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                maskPosition: "center",
-                WebkitMaskSize: "contain",
-                maskSize: "contain",
-              }}
-            />
-            <span>LinkedIn</span>
-          </a>
+          <div className="flex flex-col gap-0.5">
+            {speaker.bakgRole ? (
+              <p className="type-body leading-tight text-text-muted">
+                {speaker.bakgRole}
+              </p>
+            ) : null}
+            <p className="type-body whitespace-pre-line leading-tight text-text-muted">
+              {speaker.role}
+            </p>
+            <p
+              className={`type-body ${speaker.id === "jung-yeon-kim" ? "text-text-muted" : "text-text-subtle"}`}
+            >
+              {speaker.company}
+            </p>
+            <a
+              href={speaker.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex w-fit items-center gap-1.5 type-caption text-text-subtle transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line"
+            >
+              <span
+                aria-hidden="true"
+                className="size-3 shrink-0 bg-text-subtle transition-colors group-hover:bg-text"
+                style={{
+                  WebkitMaskImage: `url(${linkedinIcon.src})`,
+                  maskImage: `url(${linkedinIcon.src})`,
+                  WebkitMaskRepeat: "no-repeat",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                  maskPosition: "center",
+                  WebkitMaskSize: "contain",
+                  maskSize: "contain",
+                }}
+              />
+              <span>LinkedIn</span>
+            </a>
+          </div>
         </div>
       </div>
     </li>

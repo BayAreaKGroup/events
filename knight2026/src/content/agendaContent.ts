@@ -37,7 +37,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
     groupsDescription:
       "K-Night hosts booths for K-Group’s diverse communities, giving you an opportunity to meet the people behind them.",
     groupsList:
-      "Bio AI, SV Money Book Club, Study Club++, Boardgame, Between Jobs, WiNG, and ESKAPE will be there. Stop by the booths of groups you are interested in to learn more about what they do and chat with the organizers.",
+      "Bio AI, SV Money Book Club, Study Club++, Boardgame, Between Jobs, WiNG, ESKAPE, and AI/ML groups will be there. Stop by the booths of groups you are interested in to learn more about what they do and chat with the organizers.",
     items: [
       {
         startTime: "4:00 PM",
@@ -81,8 +81,8 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         speakers: [
           "Jihye Moon, Research Scientist @ Meta",
           "Chanhee Lee, Co-Founder @ Aside",
-          "Hyunah Jung, CEO & Founder @ Mindwise AI",
-          "Jung Yeon Kim, SW Engineer & Musical Producer",
+          "Hyunah Jung, CEO & Founder @ Meoster",
+          "Jung Yeon Kim, Software Engineer, Musical Producer",
           "Sam Jang, Staff Product Designer @ Rivian",
         ],
         type: "TALKS",
@@ -108,7 +108,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
     groupsDescription:
       "K-Night에서는 K-Group의 다양한 소그룹을 직접 만나볼 수 있는 소그룹 부스가 운영됩니다.",
     groupsList:
-      "Bio AI, SV머니북클럽, Study Club++, Boardgame, Between Jobs, WiNG, ESKAPE가 함께합니다.\n평소 관심 있었던 소그룹의 부스에 들러 어떤 활동을 하고 있는지 알아보고, 운영진과 이야기도 나누어 보세요.",
+      "Bio AI, SV머니북클럽, Study Club++, Boardgame, Between Jobs, WiNG, ESKAPE, 그리고 AI/ML 그룹이 함께합니다. 평소 관심 있었던 소그룹의 부스에 들러 어떤 활동을 하고 있는지 알아보고, 운영진과 이야기도 나누어 보세요.",
     items: [
       {
         startTime: "4:00 PM",
@@ -125,7 +125,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         title: "Keynote Session",
         speakers: [
           "크리스티 김, Co-Founder & CEO, Tomo Credit",
-          "케시 쿠, Partner, Sazze",
+          "케시 구, Partner, Sazze",
         ],
         type: "KEYNOTE",
       },
@@ -152,8 +152,8 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         speakers: [
           "문지혜, Research Scientist @ Meta",
           "이찬희, Co-Founder @ Aside",
-          "정현아, CEO & Founder @ Mindwise AI",
-          "김정연, SW Engineer & Musical Producer",
+          "정현아, CEO & Founder @ Meoster",
+          "김정연, Software Engineer, Musical Producer",
           "샘 장, Staff Product Designer @ Rivian",
         ],
         type: "TALKS",
