@@ -20,7 +20,6 @@ type TicketOption = {
   image: StaticImageData;
   imageAlt: string;
   price: string;
-  buttonLabel: string;
   variant: "regular" | "early";
 };
 
@@ -30,7 +29,6 @@ const ticketOptions: TicketOption[] = [
     image: ticketEarly,
     imageAlt: "K-Night 2026 Early Bird Ticket",
     price: "$70",
-    buttonLabel: "GET EARLY BIRD TICKETS",
     variant: "early",
   },
   {
@@ -38,12 +36,10 @@ const ticketOptions: TicketOption[] = [
     image: ticketRegular,
     imageAlt: "K-Night 2026 Regular Ticket",
     price: "$80",
-    buttonLabel: "Buy regular Ticket",
     variant: "regular",
   },
 ];
 
-const ticketsOpeningSoon = true;
 const ticketDestinationUrl =
   "https://www.zeffy.com/en-US/ticketing/k-night--2026";
 
@@ -51,10 +47,12 @@ function TicketLink({
   analytics,
   children,
   className,
+  disabled = false,
 }: {
   analytics: TicketAnalyticsParams;
   children: string;
   className: string;
+  disabled?: boolean;
 }) {
   const linkRef = useRef<HTMLAnchorElement>(null);
   const hasImpressedRef = useRef(false);
@@ -83,11 +81,19 @@ function TicketLink({
   return (
     <a
       ref={linkRef}
-      href={ticketDestinationUrl}
+      href={disabled ? undefined : ticketDestinationUrl}
       target="_blank"
       rel="noreferrer"
+      aria-disabled={disabled || undefined}
+      tabIndex={disabled ? -1 : undefined}
       className={className}
-      onClick={() => trackTicketEvent("ticket_click", analytics)}
+      onClick={(event) => {
+        if (disabled) {
+          event.preventDefault();
+          return;
+        }
+        trackTicketEvent("ticket_click", analytics);
+      }}
     >
       {children}
     </a>
@@ -197,25 +203,18 @@ export default function SectionTicketHeader() {
                       language: locale,
                       button_text: isEarly
                         ? copy.earlyBirdButton
-                        : ticketsOpeningSoon
-                          ? copy.openingSoon
-                          : option.buttonLabel,
+                        : copy.regularButton,
                       destination_url: ticketDestinationUrl,
                     }}
+                    disabled={isEarly}
                     className={[
                       "type-button inline-flex h-10 max-md:w-full shrink-0 items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-5 md:py-0 md:text-base",
-                      ticketsOpeningSoon && !isEarly
-                        ? "cursor-pointer rounded-[12px] border btn-muted"
-                        : isEarly
-                          ? "btn-home-cta"
-                          : "btn-ghost",
+                      isEarly
+                        ? "pointer-events-none cursor-not-allowed rounded-[12px] border btn-muted"
+                        : "cursor-pointer rounded-[12px] border btn-home-cta",
                     ].join(" ")}
                   >
-                    {isEarly
-                      ? copy.earlyBirdButton
-                      : ticketsOpeningSoon
-                        ? copy.openingSoon
-                        : option.buttonLabel}
+                    {isEarly ? copy.earlyBirdButton : copy.regularButton}
                   </TicketLink>
                 </div>
               </StaggerItem>

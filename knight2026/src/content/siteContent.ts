@@ -316,7 +316,8 @@ export const donationSupportCopy = {
 export const ticketCopy = {
   en: {
     badge: "EARLY BIRD TICKETS NOW AVAILABLE",
-    earlyBirdButton: "GET EARLY BIRD TICKETS",
+    earlyBirdButton: "SOLD OUT",
+    regularButton: "GET REGULAR TICKETS",
     title: "Ticket",
     eventDetails: [
       "September 12, Saturday",
@@ -325,7 +326,6 @@ export const ticketCopy = {
     ],
     prices: ["$70", "$80"],
     perPerson: "PER PERSON",
-    openingSoon: "Opening Soon",
     noticeTitle: "Notice",
     noticeIntro:
       "K-Night is a pre-registration only event. Please read the following information before purchasing your ticket.",
@@ -363,7 +363,8 @@ export const ticketCopy = {
   },
   ko: {
     badge: "얼리버드 티켓 판매 중",
-    earlyBirdButton: "얼리버드 티켓 구매하기",
+    earlyBirdButton: "매진",
+    regularButton: "티켓 구매하기",
     title: "티켓",
     eventDetails: [
       "9월 12일 토요일",
@@ -372,7 +373,6 @@ export const ticketCopy = {
     ],
     prices: ["$70", "$80"],
     perPerson: "인당",
-    openingSoon: "오픈예정",
     noticeTitle: "안내사항",
     noticeIntro:
       "본 행사는 사전 예약제로 운영되며, 원활한 진행을 위해 아래 안내 사항을 반드시 확인해 주시기 바랍니다.",
