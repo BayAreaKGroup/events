@@ -315,7 +315,7 @@ export const donationSupportCopy = {
 
 export const ticketCopy = {
   en: {
-    badge: "EARLY BIRD TICKETS NOW AVAILABLE",
+    badge: "TICKETS NOW AVAILABLE",
     earlyBirdButton: "SOLD OUT",
     regularButton: "GET REGULAR TICKETS",
     title: "Ticket",
@@ -362,7 +362,7 @@ export const ticketCopy = {
       "https://docs.google.com/spreadsheets/d/1jhQ-Dt11dvtQSTn9dTUfujp33NrAEzdQaE91O1CDJPY/edit?usp=sharing",
   },
   ko: {
-    badge: "얼리버드 티켓 판매 중",
+    badge: "티켓 판매 중",
     earlyBirdButton: "매진",
     regularButton: "티켓 구매하기",
     title: "티켓",
