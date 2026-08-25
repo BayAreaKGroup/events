@@ -250,7 +250,7 @@ export const speakersCopy = {
           ),
           makeProfile(
             "sam-jang",
-            "샘 장",
+            "장현석",
             "Staff Product Designer",
             "@ Rivian",
             samJang,

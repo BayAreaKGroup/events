@@ -154,7 +154,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
           "이찬희, Co-Founder @ Aside",
           "정현아, CEO & Founder @ Meoster",
           "김정연, Software Engineer, Musical Producer",
-          "샘 장, Staff Product Designer @ Rivian",
+          "장현석, Staff Product Designer @ Rivian",
         ],
         type: "TALKS",
       },
