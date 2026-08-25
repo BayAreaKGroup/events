@@ -64,7 +64,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         speakers: [
           "Yu Seung Kim, Corporate Vice President, Head of Security Lab @ Samsung Electronics",
           "Junyong Suh, Senior Member of Technical Staff @ Nutanix",
-          "Joo Yeon Chae, BAKG Director, Senior Engineer @ AMD",
+          "Joo Yeon Chae, K-Group Director, Senior Engineer @ AMD",
         ],
         type: "CONVERSATION",
       },
@@ -125,7 +125,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         title: "Keynote Session",
         speakers: [
           "크리스티 김, Co-Founder & CEO, Tomo Credit",
-          "케시 구, Partner, Sazze",
+          "구 슬, Partner, Sazze",
         ],
         type: "KEYNOTE",
       },
@@ -135,7 +135,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         speakers: [
           "김유승, Corporate Vice President, Head of Security Lab @ Samsung Electronics",
           "서준용, Senior Member of Technical Staff @ Nutanix",
-          "채주연, BAKG Director, Senior Engineer @ AMD",
+          "채주연, K-Group Director, Senior Engineer @ AMD",
         ],
         type: "CONVERSATION",
       },
