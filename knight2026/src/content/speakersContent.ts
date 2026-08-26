@@ -132,7 +132,7 @@ export const speakersCopy = {
             "hyunah-jung",
             "Hyunah Jung",
             "CEO & Founder",
-            "@ Meoster",
+            "@ Meostar",
             hyunahJung,
           ),
           makeProfile(
@@ -237,7 +237,7 @@ export const speakersCopy = {
             "hyunah-jung",
             "정현아",
             "CEO & Founder",
-            "@ Meoster",
+            "@ Meostar",
             hyunahJung,
           ),
           makeProfile(

@@ -81,7 +81,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         speakers: [
           "Jihye Moon, Research Scientist @ Meta",
           "Chanhee Lee, Co-Founder @ Aside",
-          "Hyunah Jung, CEO & Founder @ Meoster",
+          "Hyunah Jung, CEO & Founder @ Meostar",
           "Jung Yeon Kim, Software Engineer, Musical Producer",
           "Sam Jang, Staff Product Designer @ Rivian",
         ],
@@ -152,7 +152,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         speakers: [
           "문지혜, Research Scientist @ Meta",
           "이찬희, Co-Founder @ Aside",
-          "정현아, CEO & Founder @ Meoster",
+          "정현아, CEO & Founder @ Meostar",
           "김정연, Software Engineer, Musical Producer",
           "장현석, Staff Product Designer @ Rivian",
         ],
