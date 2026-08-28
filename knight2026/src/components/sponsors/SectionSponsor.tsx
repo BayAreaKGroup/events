@@ -1,40 +1,87 @@
 "use client";
 
 import { Reveal } from "@/components/motion/Reveal";
+import asanLogo from "@/assets/sponsors/asan-nanum-foundation.png";
+import fastcampusLogo from "@/assets/sponsors/fastcampus.png";
+import kcgsfEnLogo from "@/assets/sponsors/kcgsf-en.png";
+import kcgsfKoLogo from "@/assets/sponsors/kcgsf-ko.png";
+import kicLogo from "@/assets/sponsors/kic-silicon-valley.jpg";
+import kdbLogo from "@/assets/sponsors/kdb-silicon-valley.png";
+import likeLionLogo from "@/assets/sponsors/like-lion.jpeg";
 import { sponsorCopy } from "@/content/siteContent";
 import { useLocale } from "@/lib/locale";
 
-/** Figma section-sponsor 562:6869 — viewport 1440, content 1160 */
-
 const inquiryEmail = "info@bayareakgroup.org";
+const sponsorLogos = {
+  kic: kicLogo,
+  asan: asanLogo,
+  fastcampus: fastcampusLogo,
+  "kdb-sv": kdbLogo,
+  "like-lion": likeLionLogo,
+} as const;
 
 export default function SectionSponsor() {
-  const copy = sponsorCopy[useLocale()];
+  const locale = useLocale();
+  const copy = sponsorCopy[locale];
   return (
     <section
-      id="sponsor"
-      className="section-sponsor section-viewport relative h-[100svh] min-h-[100svh] overflow-x-clip bg-white"
-      aria-labelledby="sponsor-heading"
-      data-node-id="562:6869"
+      id="sponsor-list"
+      className="section-sponsor section-viewport section-viewport-auto !py-0 relative bg-white"
+      aria-label="Sponsor categories"
     >
       <div
-        className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-[min(1200px,100%)] -translate-x-1/2 border-x border-line lg:block"
+        className="pointer-events-none absolute inset-y-0 left-1/2 z-[2] hidden w-[min(1200px,100%)] -translate-x-1/2 border-x border-line lg:block"
         aria-hidden
         data-node-id="562:6870"
       />
 
-      <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-1 flex-col justify-center gap-6 px-5 py-8 md:gap-16 md:py-20 lg:gap-20 lg:py-[100px]"
-        data-node-id="562:6871"
-      >
-        <Reveal className="shrink-0" data-node-id="562:6872">
-          <h2
-            id="sponsor-heading"
-            className="type-h2 max-w-[741px] whitespace-pre-line text-text"
-            data-node-id="562:6874"
-          >
-            {copy.title}
-          </h2>
+      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-8 md:py-12 lg:py-16">
+        <Reveal className="flex w-full flex-col">
+          {copy.tiers.map((tier, index) => (
+            <div
+              key={tier.id}
+              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-white" : "after:bg-surface-elevated"}`}
+            >
+              <h2 className="relative z-[1] type-h3 text-text lg:col-span-1">
+                {tier.title}
+              </h2>
+              <ul className="relative z-[1] grid w-full list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-2 lg:gap-6">
+                {tier.sponsors.map((sponsor) => {
+                  const logo =
+                    sponsor.id === "kcgsf"
+                      ? locale === "ko"
+                        ? kcgsfKoLogo
+                        : kcgsfEnLogo
+                      : sponsorLogos[sponsor.id as keyof typeof sponsorLogos];
+
+                  return (
+                    <li key={sponsor.id} className="min-w-0">
+                      <a
+                        href={sponsor.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-white px-4 sm:h-[140px] sm:px-8 lg:h-[153px]"
+                      >
+                        {logo ? (
+                          <img
+                            src={logo.src}
+                            alt={sponsor.name}
+                            className="max-h-full max-w-full object-contain"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <span className="type-body text-center font-medium text-text">
+                            {sponsor.name}
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
         </Reveal>
 
         <Reveal delay={0.16}>

@@ -183,13 +183,127 @@ export const comingSoonCopy = {
 
 export const sponsorCopy = {
   en: {
-    title: "Thank you to our\nK-Night 2026 sponsors",
+    headerTitle: "Thank you to\nour K-Night 2026 sponsors",
+    tiers: [
+      {
+        id: "diamond",
+        title: "Diamond",
+        sponsors: [
+          {
+            id: "kic",
+            name: "KIC Silicon Valley",
+            href: "https://www.kicsv.org/",
+          },
+        ],
+      },
+      {
+        id: "gold",
+        title: "Gold",
+        sponsors: [
+          {
+            id: "naver-d2sf",
+            name: "Naver D2SF",
+            href: "https://d2sf.naver.com/ko",
+          },
+        ],
+      },
+      {
+        id: "silver",
+        title: "Silver",
+        sponsors: [
+          {
+            id: "kcgsf",
+            name: "Consulate General of the Republic of Korea in San Francisco",
+            href: "https://overseas.mofa.go.kr/us-sanfrancisco-ko",
+          },
+          {
+            id: "asan",
+            name: "Asan Nanum Foundation",
+            href: "https://asan-nanum.org/",
+          },
+          {
+            id: "fastcampus",
+            name: "Fastcampus",
+            href: "https://fastcampus.co.kr/",
+          },
+        ],
+      },
+      {
+        id: "bronze",
+        title: "Bronze",
+        sponsors: [
+          {
+            id: "kdb-sv",
+            name: "KDB SV",
+            href: "https://www.kdb.co.kr/BZCOWS00N01.act?wcmsPath=/hmp/ch/gm/sv/CHGMSV1101.html&GmBrnId=SV&_mnuId=IHIHGM2127&GmMlngTc=en&jobNotice=Y",
+          },
+          { id: "like-lion", name: "Like Lion", href: "https://likelion.net/" },
+        ],
+      },
+    ],
     subtitle: "Partnership & Sponsorship Inquiries",
     body: "Bay Area K-Group welcomes support from individuals and organizations of all sizes. Every contribution helps us create meaningful connections and bring the K-Night community together.",
     cta: "GET IN TOUCH",
   },
   ko: {
-    title: "K-Night 2026을 후원해주신\n모든 분들께 감사드립니다",
+    headerTitle: "K-Night 2026을 후원해주신\n모든 분들께 감사드립니다",
+    tiers: [
+      {
+        id: "diamond",
+        title: "다이아몬드",
+        sponsors: [
+          {
+            id: "kic",
+            name: "KIC Silicon Valley",
+            href: "https://www.kicsv.org/",
+          },
+        ],
+      },
+      {
+        id: "gold",
+        title: "골드",
+        sponsors: [
+          {
+            id: "naver-d2sf",
+            name: "Naver D2SF",
+            href: "https://d2sf.naver.com/ko",
+          },
+        ],
+      },
+      {
+        id: "silver",
+        title: "실버",
+        sponsors: [
+          {
+            id: "kcgsf",
+            name: "샌프란시스코 총영사관",
+            href: "https://overseas.mofa.go.kr/us-sanfrancisco-ko",
+          },
+          { id: "asan", name: "아산나눔재단", href: "https://asan-nanum.org/" },
+          {
+            id: "fastcampus",
+            name: "Fastcampus",
+            href: "https://fastcampus.co.kr/",
+          },
+        ],
+      },
+      {
+        id: "bronze",
+        title: "브론즈",
+        sponsors: [
+          {
+            id: "kdb-sv",
+            name: "KDB SV",
+            href: "https://www.kdb.co.kr/BZCOWS00N01.act?wcmsPath=/hmp/ch/gm/sv/CHGMSV1101.html&GmBrnId=SV&_mnuId=IHIHGM2127&GmMlngTc=en&jobNotice=Y",
+          },
+          {
+            id: "like-lion",
+            name: "멋쟁이 사자처럼",
+            href: "https://likelion.net/",
+          },
+        ],
+      },
+    ],
     subtitle: "파트너십 및 후원 문의",
     body: "Bay Area K-Group은 후원 규모와 관계없이 개인 및 기업 여러분의 소중한 후원을 언제나 환영합니다.",
     cta: "문의하기",
