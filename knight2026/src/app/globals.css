@@ -1362,6 +1362,11 @@
       border-color: rgb(218 220 224);
       box-shadow: var(--shadow-sm);
     }
+
+    .card-ui.sponsor-inquiry-card:hover {
+      border-color: rgb(var(--color-line));
+      box-shadow: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

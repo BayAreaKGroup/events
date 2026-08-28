@@ -214,7 +214,7 @@ export const sponsorCopy = {
           {
             id: "kcgsf",
             name: "Consulate General of the Republic of Korea in San Francisco",
-            href: "https://overseas.mofa.go.kr/us-sanfrancisco-ko",
+            href: "https://www.mofa.go.kr/us-sanfrancisco-ko/index.do",
           },
           {
             id: "asan",
@@ -277,7 +277,7 @@ export const sponsorCopy = {
           {
             id: "kcgsf",
             name: "샌프란시스코 총영사관",
-            href: "https://overseas.mofa.go.kr/us-sanfrancisco-ko",
+            href: "https://www.mofa.go.kr/us-sanfrancisco-ko/index.do",
           },
           { id: "asan", name: "아산나눔재단", href: "https://asan-nanum.org/" },
           {

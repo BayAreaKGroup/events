@@ -5,9 +5,10 @@ import asanLogo from "@/assets/sponsors/asan-nanum-foundation.png";
 import fastcampusLogo from "@/assets/sponsors/fastcampus.png";
 import kcgsfEnLogo from "@/assets/sponsors/kcgsf-en.png";
 import kcgsfKoLogo from "@/assets/sponsors/kcgsf-ko.png";
-import kicLogo from "@/assets/sponsors/kic-silicon-valley.jpg";
+import kicLogo from "@/assets/sponsors/kic-silicon-valley.png";
 import kdbLogo from "@/assets/sponsors/kdb-silicon-valley.png";
-import likeLionLogo from "@/assets/sponsors/like-lion.jpeg";
+import likeLionLogo from "@/assets/sponsors/like-lion.png";
+import naverD2sfLogo from "@/assets/sponsors/naver-d2sf.png";
 import { sponsorCopy } from "@/content/siteContent";
 import { useLocale } from "@/lib/locale";
 
@@ -18,6 +19,7 @@ const sponsorLogos = {
   fastcampus: fastcampusLogo,
   "kdb-sv": kdbLogo,
   "like-lion": likeLionLogo,
+  "naver-d2sf": naverD2sfLogo,
 } as const;
 
 export default function SectionSponsor() {
@@ -37,10 +39,10 @@ export default function SectionSponsor() {
 
       <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-8 md:py-12 lg:py-16">
         <Reveal className="flex w-full flex-col">
-          {copy.tiers.map((tier, index) => (
+          {copy.tiers.map((tier) => (
             <div
               key={tier.id}
-              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-white" : "after:bg-surface-elevated"}`}
+              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-[''] after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-white" : "after:bg-surface-elevated"}`}
             >
               <h2 className="relative z-[1] type-h3 text-text lg:col-span-1">
                 {tier.title}
@@ -60,7 +62,7 @@ export default function SectionSponsor() {
                         href={sponsor.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-white px-4 sm:h-[140px] sm:px-8 lg:h-[153px]"
+                        className="flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-white px-4 shadow-none transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line focus-visible:ring-offset-2 sm:h-[140px] sm:px-8 lg:h-[153px]"
                       >
                         {logo ? (
                           <img
@@ -85,7 +87,7 @@ export default function SectionSponsor() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <div className="card-ui bg-surface-muted flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
+          <div className="card-ui sponsor-inquiry-card bg-surface-muted flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <h3 className="type-h5 text-text">{copy.subtitle}</h3>
               <p className="type-body max-w-[42rem] text-pretty text-text-muted">
