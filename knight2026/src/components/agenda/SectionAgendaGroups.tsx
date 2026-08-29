@@ -9,7 +9,7 @@ export default function SectionAgendaGroups() {
   return (
     <section
       id="agenda-groups"
-      className="section-agenda-groups relative bg-white"
+      className="section-agenda-groups relative bg-surface-elevated"
       aria-labelledby="agenda-groups-heading"
     >
       <div

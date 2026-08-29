@@ -31,7 +31,7 @@ export default function SectionTeam() {
   return (
     <section
       id="team"
-      className="section-team section-viewport section-viewport-auto relative overflow-x-clip bg-[#FAFAF8]"
+      className="section-team section-viewport section-viewport-auto relative !py-0 overflow-x-clip bg-[#FAFAF8]"
       aria-labelledby="team-heading"
       data-node-id="562:6820"
     >
@@ -42,7 +42,7 @@ export default function SectionTeam() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-14 px-5 py-8 md:gap-20 md:py-20 lg:gap-24 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-14 px-5 py-8 md:gap-20 md:py-12 lg:gap-24 lg:py-16"
         data-node-id="562:6822"
       >
         <Stagger

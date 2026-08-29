@@ -313,8 +313,8 @@ export const sponsorCopy = {
 export const donationCopy = {
   en: {
     title: "Donation",
-    description:
-      "K-Group is a nonprofit organization supported by our community. Your contribution helps us continue creating opportunities for connection, learning, and professional growth.",
+    supportTitle: "Support K-Group",
+    description: "",
     subtitle: "Together, We Grow",
     supportSubtitle: "Every Contribution Helps Us Grow Our Community",
     body: "Since 2007, Bay Area K-Group has grown through the participation, support, and Goodwill of our members. To continue organizing K-Night and other programs for Korean professionals in the Silicon Valley tech community, we're always grateful for the support of both individual donors and corporate sponsors. Your support goes beyond helping us host an event. It helps create more opportunities for people to connect, learn, and grow together. We'd love to have you be part of that journey.",
@@ -337,11 +337,11 @@ export const donationCopy = {
   },
   ko: {
     title: "후원",
-    description:
-      "K-Group은 여러분의 후원으로 운영되는 비영리 단체입니다. 편리하신 방법으로 따뜻한 마음을 전해 주세요.",
+    supportTitle: "K-Group 후원하기",
+    description: "",
     subtitle: "Together, We Grow",
     supportSubtitle:
-      "Bay Area K-Group은 후원 규모와 관계없이 개인 및 기업 여러분의 소중한 후원을 언제나 환영합니다.",
+      "K-Group은 여러분의 후원으로 운영되는 비영리 단체입니다. 편리하신 방법으로 따뜻한 마음을 전해 주세요.",
     body: "Bay Area K-Group(BAKG)은 2007년부터 회원들의 자발적인 참여와 선의(Goodwill)로 성장해 온 501(c)(3) 비영리 단체입니다. 가입비 없이 운영되는 K-Group이 지난 19년간 실리콘밸리 한인 테크 관련 분야 종사자들을 위한 다양한 세미나와 네트워킹 모임은 물론 AI, 반도체, 바이오, 모빌리티, 디자인 등 직군별 소모임을 이어올 수 있었던 것은 모두 여러분의 후원 덕분이었습니다.\n여러분의 후원은 단순한 기부가 아닙니다. 오늘 K-Group 또는 K-Night에서 나눈 인사와 영감이 내일의 기회로 이어지도록 '단단한 테크 생태계'를 만드는 일입니다.",
     impactTitle: "여러분의 후원이 만드는 변화",
     benefits: [

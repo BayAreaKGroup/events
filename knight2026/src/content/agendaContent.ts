@@ -120,8 +120,8 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
     ],
   },
   ko: {
-    headerTitle: "Agenda",
-    headerDescription: "K-Night 2026 행사의 전체 일정을 한눈에 확인해보세요.",
+    headerTitle: "세션",
+    headerDescription: "K-Night 2026의 세션을 살펴보세요",
     scheduleNote: "프로그램, 순서 및 시간은 사전 공지 없이 변경될 수 있습니다.",
     downloadLabel: "Download Full Version",
     attendeeFields:

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Footer from "@/components/layout/Footer";
 import SectionDonation from "@/components/donation/SectionDonation";
+import SectionDonationHeader from "@/components/donation/SectionDonationHeader";
 import SectionDonationSupport from "@/components/donation/SectionDonationSupport";
 
 export default function DonationPage() {
@@ -26,6 +27,7 @@ export default function DonationPage() {
 
   return (
     <main className="donation-page">
+      <SectionDonationHeader />
       <SectionDonation />
       <SectionDonationSupport />
       <Footer />

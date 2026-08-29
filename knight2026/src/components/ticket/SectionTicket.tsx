@@ -12,7 +12,7 @@ export default function SectionTicket() {
   return (
     <section
       id="ticket"
-      className="section-ticket section-viewport section-viewport-auto relative bg-surface-elevated"
+      className="section-ticket section-viewport section-viewport-auto relative !py-0 bg-surface-elevated"
       aria-labelledby="ticket-notice-heading"
       data-node-id="562:6728"
     >
@@ -24,7 +24,7 @@ export default function SectionTicket() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-5 py-8 md:gap-20 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-5 py-8 md:gap-20 md:py-12 lg:gap-20 lg:py-16"
         data-node-id="561:5110"
       >
         {/* section-notice — title 371 / gap 48 / content 741 */}

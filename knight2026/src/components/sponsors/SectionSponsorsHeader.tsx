@@ -10,7 +10,7 @@ export default function SectionSponsorsHeader() {
   return (
     <section
       id="sponsors-header"
-      className="section-sponsors-header section-compact-page-header section-viewport section-viewport-auto section-page-start relative bg-white"
+      className="section-sponsors-header section-compact-page-header section-viewport section-viewport-auto section-page-start relative !border-b-0 !pt-[80px] !pb-0 bg-white md:!pt-[172px] md:!pb-[52px] lg:!pt-[168px] lg:!pb-[48px]"
       aria-labelledby="sponsors-header-heading"
     >
       <div
@@ -18,7 +18,7 @@ export default function SectionSponsorsHeader() {
         aria-hidden="true"
       />
 
-      <Stagger className="section-compact-page-header-content relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-4 md:py-6 lg:py-8">
+      <Stagger className="section-compact-page-header-content relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-5 md:py-7 lg:py-8">
         <StaggerItem className="w-full shrink-0 lg:w-[741px]">
           <h1
             id="sponsors-header-heading"

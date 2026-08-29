@@ -26,7 +26,7 @@ export default function SectionDonationSupport() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 py-10 md:gap-20 md:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-5 py-8 md:gap-20 md:py-12 lg:py-16"
         data-node-id="562:7235"
       >
         {/* Title 371 / gap 48 / methods 741 */}
@@ -152,7 +152,7 @@ export default function SectionDonationSupport() {
 
             <StaggerItem>
               <div
-                className="flex items-start gap-3 rounded-[12px] border border-line px-[25px] py-[13px]"
+                className="flex items-start gap-3 rounded-[12px] border border-line bg-white px-[25px] py-[13px]"
                 data-node-id="562:7344"
               >
                 <img

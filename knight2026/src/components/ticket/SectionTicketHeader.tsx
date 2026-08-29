@@ -106,7 +106,7 @@ export default function SectionTicketHeader() {
   return (
     <section
       id="ticket-header"
-      className="section-ticket-header section-viewport section-viewport-auto section-page-start relative bg-white"
+      className="section-ticket-header section-viewport section-viewport-auto section-page-start relative !pt-[80px] !pb-0 bg-white md:!pt-[172px] lg:!pt-[168px]"
       aria-labelledby="ticket-header-heading"
       data-node-id="562:6586"
     >
@@ -118,7 +118,7 @@ export default function SectionTicketHeader() {
       />
 
       <div
-        className="section-text relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-8 md:gap-16 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="section-text relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 pb-8 pt-5 md:gap-16 md:pb-12 md:pt-7 lg:gap-20 lg:pb-16 lg:pt-8"
         data-node-id="562:6697"
       >
         {/* Header — title 741 / gap 48 / aside 371 */}

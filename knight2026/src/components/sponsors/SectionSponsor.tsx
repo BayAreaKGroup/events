@@ -28,7 +28,7 @@ export default function SectionSponsor() {
   return (
     <section
       id="sponsor-list"
-      className="section-sponsor section-viewport section-viewport-auto !py-0 relative bg-white"
+      className="section-sponsor section-viewport section-viewport-auto !py-0 relative bg-surface-elevated"
       aria-label="Sponsor categories"
     >
       <div
@@ -37,12 +37,12 @@ export default function SectionSponsor() {
         data-node-id="562:6870"
       />
 
-      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-8 md:py-12 lg:py-16">
+      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-8 pt-0 md:pb-12 lg:pb-16">
         <Reveal className="flex w-full flex-col">
-          {copy.tiers.map((tier) => (
+          {copy.tiers.map((tier, index) => (
             <div
               key={tier.id}
-              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-[''] after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-white" : "after:bg-surface-elevated"}`}
+              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-surface-elevated" : "after:bg-white"}`}
             >
               <h2 className="relative z-[1] type-h3 text-text lg:col-span-1">
                 {tier.title}
@@ -86,8 +86,15 @@ export default function SectionSponsor() {
           ))}
         </Reveal>
 
-        <Reveal delay={0.16}>
-          <div className="card-ui sponsor-inquiry-card bg-surface-muted flex shrink-0 flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
+        <Reveal
+          delay={0.16}
+          className="relative -mx-5 px-5 py-8 md:py-12 lg:py-16"
+        >
+          <div
+            className="pointer-events-none absolute inset-y-0 left-1/2 z-0 w-screen -translate-x-1/2 bg-surface-elevated"
+            aria-hidden="true"
+          />
+          <div className="card-ui sponsor-inquiry-card relative z-[1] flex shrink-0 flex-col gap-6 bg-white p-6 md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
             <div className="flex min-w-0 flex-1 flex-col gap-2">
               <h3 className="type-h5 text-text">{copy.subtitle}</h3>
               <p className="type-body max-w-[42rem] text-pretty text-text-muted">

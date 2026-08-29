@@ -79,12 +79,19 @@ function SpeakerGroupRow({
   group: SpeakerGroup;
   isFirst: boolean;
 }) {
+  const backgroundClass =
+    group.id === "fireside-chat"
+      ? "after:bg-surface-elevated"
+      : group.id === "keynote" || group.id === "20x20-talk-session"
+        ? "after:bg-white"
+        : "after:bg-surface-elevated";
+
   return (
     <div
-      className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${isFirst ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"}`}
+      className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-[371px_minmax(0,741px)] lg:gap-12 ${isFirst ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${backgroundClass}`}
     >
-      <h2 className="type-h3 text-text lg:col-span-1">{group.title}</h2>
-      <ul className="grid w-full list-none grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 lg:col-span-2 lg:gap-x-8 lg:gap-y-14">
+      <h2 className="relative z-[1] type-h3 text-text">{group.title}</h2>
+      <ul className="relative z-[1] grid w-full min-w-0 list-none grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 lg:gap-x-8 lg:gap-y-14">
         {group.speakers.map((speaker) => (
           <SpeakerProfile key={speaker.id} speaker={speaker} />
         ))}
@@ -99,14 +106,14 @@ export default function SectionSpeakerList() {
   return (
     <section
       id="speaker-list"
-      className="section-speaker-list section-viewport section-viewport-auto !py-0 relative bg-surface-elevated"
+      className="section-speaker-list section-viewport section-viewport-auto !py-0 relative bg-white"
       aria-label="Speaker categories"
     >
       <div
-        className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-[min(1200px,100%)] -translate-x-1/2 border-x border-line lg:block"
+        className="pointer-events-none absolute inset-y-0 left-1/2 z-[2] hidden w-[min(1200px,100%)] -translate-x-1/2 border-x border-line lg:block"
         aria-hidden="true"
       />
-      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-8 md:py-12 lg:py-16">
+      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-0 pt-0">
         <Reveal className="flex w-full flex-col">
           {groups.map((group, index) => (
             <SpeakerGroupRow

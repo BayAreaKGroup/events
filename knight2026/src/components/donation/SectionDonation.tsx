@@ -22,8 +22,8 @@ export default function SectionDonation() {
   return (
     <section
       id="donation"
-      className="section-donation section-viewport section-viewport-auto section-page-start relative bg-white"
-      aria-labelledby="donation-heading"
+      className="section-donation section-viewport section-viewport-auto relative !bg-white !pt-0"
+      aria-labelledby="donation-header-heading"
       data-node-id="570:89"
     >
       {/* Decorative vertical strokes — Figma bg-stroke 1200px */}
@@ -34,51 +34,23 @@ export default function SectionDonation() {
       />
 
       <div
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 py-8 md:gap-20 md:py-20 lg:gap-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-5 pb-8 pt-0 md:gap-20 md:pb-12 lg:gap-20 lg:pb-16"
         data-node-id="570:91"
       >
-        {/* Header — title 741 / gap 48 / aside 371 */}
-        <Stagger
-          className="section-page-header flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
-          data-node-id="570:92"
-        >
-          <StaggerItem
-            className="w-full shrink-0 lg:w-[741px]"
-            data-node-id="570:93"
-          >
-            <h2
-              id="donation-heading"
-              className="type-h2 text-text"
-              data-node-id="570:94"
-            >
-              {copy.title}
-            </h2>
-          </StaggerItem>
-
-          <StaggerItem
-            className="flex w-full shrink-0 flex-col justify-end lg:ml-auto lg:w-[371px]"
-            data-node-id="570:95"
-          >
-            <p className="type-body" data-node-id="570:97">
-              {copy.description}
-            </p>
-          </StaggerItem>
-        </Stagger>
-
         {/* Intro — left 371 / gap 48 / right 741 */}
         <Reveal
-          className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
+          className="flex w-full flex-col gap-8 lg:grid lg:grid-cols-[371px_minmax(0,741px)] lg:items-start lg:gap-12"
           delay={0.08}
           data-node-id="570:99"
         >
-          <div className="w-full shrink-0 lg:w-[371px]" data-node-id="570:100">
+          <div className="w-full shrink-0" data-node-id="570:100">
             <h3 className="type-h3 text-text" data-node-id="570:102">
               {copy.subtitle}
             </h3>
           </div>
 
           <div
-            className="flex w-full min-w-0 shrink-0 flex-col gap-6 lg:w-[741px]"
+            className="flex w-full min-w-0 flex-col gap-6"
             data-node-id="570:103"
           >
             <div className="flex flex-col gap-3" data-node-id="570:104">
@@ -127,13 +99,10 @@ export default function SectionDonation() {
 
         {/* Impact — left title 371 / gap 48 / cards 741 */}
         <div
-          className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:gap-12"
+          className="flex w-full flex-col gap-8 lg:grid lg:grid-cols-[371px_minmax(0,741px)] lg:items-start lg:gap-12"
           data-node-id="570:179"
         >
-          <Reveal
-            className="w-full shrink-0 lg:w-[371px]"
-            data-node-id="570:180"
-          >
+          <Reveal className="w-full shrink-0" data-node-id="570:180">
             <h3 className="type-h3 text-text" data-node-id="570:182">
               {copy.impactTitle}
             </h3>
@@ -142,7 +111,7 @@ export default function SectionDonation() {
           <Stagger
             as="ul"
             variants={staggerContainerSlow}
-            className="grid w-full min-w-0 list-none grid-cols-1 items-stretch gap-[18px] sm:grid-cols-2 lg:w-[741px] lg:grid-cols-3 lg:gap-[18px]"
+            className="grid w-full min-w-0 list-none grid-cols-1 items-stretch gap-[18px] sm:grid-cols-2 lg:grid-cols-3 lg:gap-[18px]"
             data-node-id="570:117"
           >
             {benefits.map((benefit, index) => {

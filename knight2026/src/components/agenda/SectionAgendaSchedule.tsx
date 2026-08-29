@@ -20,7 +20,7 @@ export default function SectionAgendaSchedule() {
   return (
     <section
       id="agenda-schedule"
-      className="section-agenda-schedule section-viewport section-viewport-auto !py-0 relative bg-surface-elevated"
+      className="section-agenda-schedule section-viewport section-viewport-auto !py-0 relative bg-white"
       aria-label="Agenda schedule"
     >
       <div
