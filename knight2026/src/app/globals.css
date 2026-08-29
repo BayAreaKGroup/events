@@ -18,6 +18,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Keep Korean text wrapping at word boundaries while allowing overflow fallback. */
+  html[lang="ko"] {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
   body {
     @apply min-h-dvh bg-surface font-sans text-body text-text;
     width: 100%;

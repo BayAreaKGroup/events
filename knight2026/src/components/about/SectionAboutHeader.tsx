@@ -14,7 +14,7 @@ export default function SectionAboutHeader() {
   return (
     <section
       id="about-header"
-      className="section-about-header section-viewport section-viewport-auto section-page-start relative overflow-x-clip bg-white"
+      className="section-about-header section-viewport section-viewport-auto section-page-start relative !pt-[80px] !pb-0 overflow-x-clip bg-white md:!pt-[172px] md:!pb-[52px] lg:!pt-[168px] lg:!pb-[48px]"
       aria-labelledby="about-header-heading"
       data-node-id="562:6754"
     >
@@ -27,7 +27,7 @@ export default function SectionAboutHeader() {
 
       <Stagger
         variants={staggerContainerSlow}
-        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col items-center px-5 py-8 md:py-20 lg:py-[100px]"
+        className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col items-center px-5 py-5 md:py-7 lg:py-8"
         data-node-id="562:6796"
       >
         {/* Text block — Figma container 784, gap 32 */}

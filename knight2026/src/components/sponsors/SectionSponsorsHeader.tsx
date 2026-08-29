@@ -22,7 +22,7 @@ export default function SectionSponsorsHeader() {
         <StaggerItem className="w-full shrink-0 lg:w-[741px]">
           <h1
             id="sponsors-header-heading"
-            className="type-h2 whitespace-pre-line text-text"
+            className="type-h2 whitespace-pre-line text-text max-md:whitespace-normal"
           >
             {copy.headerTitle}
           </h1>

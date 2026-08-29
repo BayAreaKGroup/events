@@ -21,7 +21,10 @@ export default function SectionSpeakersHeader() {
       <Stagger className="section-compact-page-header-content relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-3 px-5 py-5 md:gap-4 md:py-7 lg:py-8">
         <StaggerItem className="flex w-full shrink-0 flex-col gap-2">
           <p className="type-caption text-text-muted">{copy.headerTitle}</p>
-          <h1 id="speakers-header-heading" className="type-h2 text-text">
+          <h1
+            id="speakers-header-heading"
+            className="type-h2 whitespace-pre-line text-text md:whitespace-normal"
+          >
             {copy.headerDescription}
           </h1>
         </StaggerItem>

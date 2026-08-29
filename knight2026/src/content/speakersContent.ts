@@ -170,7 +170,7 @@ export const speakersCopy = {
   },
   ko: {
     headerTitle: "연사",
-    headerDescription: "K-Night 2026의 연사를 만나보세요",
+    headerDescription: "K-Night 2026\n연사를 만나보세요",
     groups: [
       {
         id: "keynote",

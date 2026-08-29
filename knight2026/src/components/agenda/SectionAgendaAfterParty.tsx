@@ -46,29 +46,28 @@ export default function SectionAgendaAfterParty() {
           ) : null}
           <div className="flex flex-col items-start gap-6">
             <a
-              className="group flex items-center gap-4 text-text"
+              className="group grid grid-cols-[1.5rem_minmax(0,1fr)] items-start gap-3 text-text"
               href={copy.afterPartyLocationHref}
               target="_blank"
               rel="noreferrer"
             >
               <span
-                className="flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-white/35 text-white transition-colors group-hover:border-white group-hover:text-white"
+                className="flex size-6 shrink-0 items-center justify-center text-white transition-colors"
                 aria-hidden="true"
               >
                 <svg
-                  className="size-5"
+                  className="size-6"
                   viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  fill="currentColor"
+                  stroke="none"
                 >
-                  <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
-                  <circle cx="12" cy="10" r="2.5" />
+                  <path
+                    d="M12 2a8 8 0 0 0-8 8c0 5 8 12 8 12s8-7 8-12a8 8 0 0 0-8-8Zm0 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+                    fillRule="evenodd"
+                  />
                 </svg>
               </span>
-              <span className="flex flex-col gap-1">
+              <span className="flex flex-col gap-2">
                 <span className="type-body inline-flex items-center gap-2 !text-white">
                   {copy.afterPartyLocation}
                   <span aria-hidden="true">↗</span>

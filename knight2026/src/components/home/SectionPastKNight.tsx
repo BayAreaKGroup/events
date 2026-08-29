@@ -182,7 +182,7 @@ export default function SectionPastKNight() {
   return (
     <section
       id="past-k-night"
-      className="section-past-k-night section-viewport relative bg-surface"
+      className="section-past-k-night section-viewport relative bg-surface py-6 md:py-8 lg:py-16"
       aria-labelledby="past-k-night-heading"
       data-node-id="561:6267"
     >

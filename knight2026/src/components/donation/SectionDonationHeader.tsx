@@ -23,7 +23,7 @@ export default function SectionDonationHeader() {
           <p className="type-caption text-text-muted">{copy.title}</p>
           <h1
             id="donation-header-heading"
-            className="type-h2 w-full max-w-[700px] text-text"
+            className="type-h2 w-full max-w-[700px] text-text lg:max-w-none"
           >
             {copy.supportTitle}
           </h1>

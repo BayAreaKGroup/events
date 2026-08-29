@@ -36,7 +36,7 @@ export default function SectionNetwork() {
       <div className="section-network-inner relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5">
         {/* Header — shared baseline row */}
         <Stagger
-          className="section-network-header flex w-full flex-col gap-4 sm:gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-12"
+          className="section-network-header flex w-full flex-col gap-4 sm:gap-5 lg:flex-row lg:items-start lg:justify-between lg:gap-12"
           data-node-id="561:6412"
         >
           <StaggerItem
