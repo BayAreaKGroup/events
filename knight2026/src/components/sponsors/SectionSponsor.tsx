@@ -38,54 +38,52 @@ export default function SectionSponsor() {
       />
 
       <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-8 pt-0 md:pb-12 lg:pb-16">
-        <Reveal className="flex w-full flex-col">
-          {copy.tiers
-            .filter((tier) => tier.id !== "gold")
-            .map((tier, index) => (
-              <div
-                key={tier.id}
-                className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "bronze" ? "after:bg-surface-elevated" : "after:bg-white"}`}
-              >
-                <h2 className="relative z-[1] type-h3 text-text lg:col-span-1">
-                  {tier.title}
-                </h2>
-                <ul className="relative z-[1] grid w-full list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-2 lg:gap-6">
-                  {tier.sponsors.map((sponsor) => {
-                    const logo =
-                      sponsor.id === "kcgsf"
-                        ? locale === "ko"
-                          ? kcgsfKoLogo
-                          : kcgsfEnLogo
-                        : sponsorLogos[sponsor.id as keyof typeof sponsorLogos];
+        <Reveal className="hidden w-full flex-col">
+          {copy.tiers.map((tier, index) => (
+            <div
+              key={tier.id}
+              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-surface-elevated" : "after:bg-white"}`}
+            >
+              <h2 className="relative z-[1] type-h3 text-text lg:col-span-1">
+                {tier.title}
+              </h2>
+              <ul className="relative z-[1] grid w-full list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-2 lg:gap-6">
+                {tier.sponsors.map((sponsor) => {
+                  const logo =
+                    sponsor.id === "kcgsf"
+                      ? locale === "ko"
+                        ? kcgsfKoLogo
+                        : kcgsfEnLogo
+                      : sponsorLogos[sponsor.id as keyof typeof sponsorLogos];
 
-                    return (
-                      <li key={sponsor.id} className="min-w-0">
-                        <a
-                          href={sponsor.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-white px-4 shadow-none transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line focus-visible:ring-offset-2 sm:h-[140px] sm:px-8 lg:h-[153px]"
-                        >
-                          {logo ? (
-                            <img
-                              src={logo.src}
-                              alt={sponsor.name}
-                              className="max-h-full max-w-full object-contain"
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          ) : (
-                            <span className="type-body text-center font-medium text-text">
-                              {sponsor.name}
-                            </span>
-                          )}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
+                  return (
+                    <li key={sponsor.id} className="min-w-0">
+                      <a
+                        href={sponsor.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-[120px] w-full items-center justify-center overflow-hidden rounded-[12px] border border-line bg-white px-4 shadow-none transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line focus-visible:ring-offset-2 sm:h-[140px] sm:px-8 lg:h-[153px]"
+                      >
+                        {logo ? (
+                          <img
+                            src={logo.src}
+                            alt={sponsor.name}
+                            className="max-h-full max-w-full object-contain"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <span className="type-body text-center font-medium text-text">
+                            {sponsor.name}
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
         </Reveal>
 
         <Reveal
