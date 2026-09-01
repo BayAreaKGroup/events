@@ -226,6 +226,11 @@ export const sponsorCopy = {
             name: "Fastcampus",
             href: "https://fastcampus.co.kr/",
           },
+          {
+            id: "jigo",
+            name: "Jigo",
+            href: "https://www.jigo.work/",
+          },
         ],
       },
       {
@@ -284,6 +289,11 @@ export const sponsorCopy = {
             id: "fastcampus",
             name: "Fastcampus",
             href: "https://fastcampus.co.kr/",
+          },
+          {
+            id: "jigo",
+            name: "Jigo",
+            href: "https://www.jigo.work/",
           },
         ],
       },

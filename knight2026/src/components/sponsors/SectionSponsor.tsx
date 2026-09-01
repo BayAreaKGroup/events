@@ -3,6 +3,7 @@
 import { Reveal } from "@/components/motion/Reveal";
 import asanLogo from "@/assets/sponsors/asan-nanum-foundation.png";
 import fastcampusLogo from "@/assets/sponsors/fastcampus.png";
+import jigoLogo from "@/assets/sponsors/jigo.png";
 import kcgsfEnLogo from "@/assets/sponsors/kcgsf-en.png";
 import kcgsfKoLogo from "@/assets/sponsors/kcgsf-ko.png";
 import kicLogo from "@/assets/sponsors/kic-silicon-valley.png";
@@ -17,6 +18,7 @@ const sponsorLogos = {
   kic: kicLogo,
   asan: asanLogo,
   fastcampus: fastcampusLogo,
+  jigo: jigoLogo,
   "kdb-sv": kdbLogo,
   "like-lion": likeLionLogo,
   "naver-d2sf": naverD2sfLogo,
@@ -38,7 +40,7 @@ export default function SectionSponsor() {
       />
 
       <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-8 pt-0 md:pb-12 lg:pb-16">
-        <Reveal className="hidden w-full flex-col">
+        <Reveal className="flex w-full flex-col">
           {copy.tiers.map((tier, index) => (
             <div
               key={tier.id}
