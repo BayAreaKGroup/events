@@ -24,7 +24,10 @@ export default function SectionSponsorsHeader() {
             id="sponsors-header-heading"
             className="type-h2 whitespace-pre-line text-text max-md:whitespace-normal"
           >
-            {copy.headerTitle}
+            <span className="hidden md:inline">{copy.headerTitle}</span>
+            <span className="whitespace-pre-line md:hidden">
+              {copy.mobileHeaderTitle}
+            </span>
           </h1>
         </StaggerItem>
       </Stagger>
