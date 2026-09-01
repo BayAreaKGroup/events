@@ -183,7 +183,7 @@ export const comingSoonCopy = {
 
 export const sponsorCopy = {
   en: {
-    headerTitle: "Thank you to\nour K-Night 2026 sponsors",
+    headerTitle: "Thank you to our sponsors",
     tiers: [
       {
         id: "diamond",
