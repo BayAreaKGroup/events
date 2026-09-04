@@ -510,7 +510,8 @@
       overflow-y: visible;
     }
 
-    .home-page .section-network {
+    .home-page .section-network,
+    .about-page .section-network {
       box-sizing: border-box;
       height: auto;
       min-height: 0;
@@ -535,8 +536,12 @@
 
     .home-page .section-past-k-night {
       gap: 0;
-      padding-top: 3rem;
-      padding-bottom: 0 !important;
+      padding-top: var(--section-gap-mobile-large) !important;
+      padding-bottom: var(--section-gap-mobile-large) !important;
+    }
+
+    .home-page > .section-network {
+      padding-bottom: var(--section-gap-mobile) !important;
     }
 
     .home-page .section-past-k-night-gallery {
@@ -544,26 +549,58 @@
       margin-bottom: 0;
     }
 
-    .home-page .section-network-inner {
+    .home-page .section-network-inner,
+    .about-page .section-network-inner {
       flex: 1;
       padding-top: 3rem;
     }
 
-    .home-page .section-network-header {
+    .home-page .section-network-header,
+    .about-page .section-network-header {
       margin-bottom: 1.5rem;
       gap: 0.75rem;
     }
 
-    .home-page .section-network .social-card-grid {
+    .home-page .section-network .social-card-grid,
+    .about-page .section-network .social-card-grid {
       gap: 0.5rem;
       margin-bottom: 2rem;
     }
 
-    .home-page .section-network .social-card {
+    .home-page .section-network .social-card,
+    .about-page .section-network .social-card {
       min-height: 0;
       max-height: none;
       height: 4.25rem;
       padding: 0.75rem 0.875rem;
+    }
+
+    .speakers-page .speaker-group-fireside-chat,
+    .speakers-page .speaker-group-20x20-talk-session {
+      padding-top: var(--section-gap-mobile-large) !important;
+      padding-bottom: var(--section-gap-mobile-large) !important;
+    }
+
+    .speakers-page .speaker-group-keynote {
+      padding-bottom: var(--section-gap-mobile-large) !important;
+    }
+
+    .speakers-page .speaker-group-event-mc {
+      padding-top: var(--section-gap-mobile-large) !important;
+    }
+
+    .sponsors-page .sponsor-tier-diamond {
+      padding-bottom: var(--section-gap-mobile-large) !important;
+    }
+
+    .sponsors-page .sponsor-tier-gold,
+    .sponsors-page .sponsor-tier-silver {
+      padding-top: var(--section-gap-mobile-large) !important;
+      padding-bottom: var(--section-gap-mobile-large) !important;
+    }
+
+    .sponsors-page .sponsor-tier-bronze {
+      padding-top: var(--section-gap-mobile-large) !important;
     }
   }
 
@@ -1577,7 +1614,7 @@
 
     .section-past-k-night-gallery .last-knight-track.is-dragging {
       cursor: grabbing;
-      animation-play-state: paused;
+      animation-play-state: running;
     }
 
     .section-past-k-night-gallery .last-knight-track-content {

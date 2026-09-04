@@ -44,7 +44,7 @@ export default function SectionSponsor() {
           {copy.tiers.map((tier, index) => (
             <div
               key={tier.id}
-              className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-surface-elevated" : "after:bg-white"}`}
+              className={`sponsor-tier-row sponsor-tier-${tier.id} relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-3 lg:gap-12 ${index === 0 ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${tier.id === "gold" || tier.id === "bronze" ? "after:bg-surface-elevated" : "after:bg-white"}`}
             >
               <h2 className="relative z-[1] type-h3 text-text lg:col-span-1">
                 {tier.title}

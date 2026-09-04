@@ -88,7 +88,7 @@ function SpeakerGroupRow({
 
   return (
     <div
-      className={`relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-[371px_minmax(0,741px)] lg:gap-12 ${isFirst ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${backgroundClass}`}
+      className={`speaker-group-row speaker-group-${group.id} relative grid w-full grid-cols-1 gap-8 py-8 md:gap-10 md:py-10 lg:grid-cols-[371px_minmax(0,741px)] lg:gap-12 ${isFirst ? "pt-0" : "before:absolute before:left-1/2 before:top-0 before:z-[2] before:w-screen before:-translate-x-1/2 before:border-t before:border-line before:content-['']"} after:absolute after:inset-y-0 after:left-1/2 after:-z-0 after:w-screen after:-translate-x-1/2 after:content-[''] ${backgroundClass}`}
     >
       <h2 className="relative z-[1] type-h3 text-text">{group.title}</h2>
       <ul className="relative z-[1] grid w-full min-w-0 list-none grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 lg:gap-x-8 lg:gap-y-14">

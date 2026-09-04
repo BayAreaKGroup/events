@@ -61,6 +61,7 @@
   --section-pad-top: calc(var(--nav-height) + 1.25rem);
   --section-pad-bottom: 2rem;
   --section-gap-mobile: 2rem;
+  --section-gap-mobile-large: 3rem;
 
   /*
     Typography — mobile-first scale
