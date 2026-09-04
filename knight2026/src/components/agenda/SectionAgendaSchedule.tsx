@@ -55,12 +55,22 @@ export default function SectionAgendaSchedule() {
                 </span>
               ) : null}
               <div className="flex min-w-0 flex-col gap-3 md:col-start-2 md:row-start-1">
-                <h3 className="type-h4 text-text">{item.title}</h3>
+                <h3 className="type-h4 text-text">
+                  {item.title.includes(" — ") ? (
+                    <>
+                      {item.title.split(" — ")[0]}
+                      <br className="md:hidden" />
+                      {` — ${item.title.split(" — ")[1]}`}
+                    </>
+                  ) : (
+                    item.title
+                  )}
+                </h3>
                 {item.description ? (
                   <p className="type-body">{item.description}</p>
                 ) : null}
                 {item.speakers?.length ? (
-                  <p className="type-body whitespace-pre-line">
+                  <p className="type-body whitespace-pre-line max-md:text-[12px]">
                     {item.speakers.join("\n")}
                   </p>
                 ) : null}

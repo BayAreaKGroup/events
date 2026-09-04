@@ -31,15 +31,15 @@ function SpeakerProfile({ speaker }: { speaker: SpeakerProfile }) {
           <p className="type-h4 text-text">{speaker.name}</p>
           <div className="flex flex-col gap-0.5">
             {speaker.bakgRole ? (
-              <p className="type-body leading-tight text-text-muted">
+              <p className="type-body leading-tight text-text-muted max-md:text-[12px]">
                 {speaker.bakgRole}
               </p>
             ) : null}
-            <p className="type-body whitespace-pre-line leading-tight text-text-muted">
+            <p className="type-body whitespace-pre-line leading-tight text-text-muted max-md:text-[12px]">
               {speaker.role}
             </p>
             <p
-              className={`type-body ${speaker.id === "jung-yeon-kim" ? "text-text-muted" : "text-text-subtle"}`}
+              className={`type-body max-md:text-[12px] ${speaker.id === "jung-yeon-kim" ? "text-text-muted" : "text-text-subtle"}`}
             >
               {speaker.company}
             </p>
@@ -106,14 +106,14 @@ export default function SectionSpeakerList() {
   return (
     <section
       id="speaker-list"
-      className="section-speaker-list section-viewport section-viewport-auto !py-0 relative bg-white"
+      className="section-speaker-list section-viewport section-viewport-auto !py-0 relative bg-white max-md:after:pointer-events-none max-md:after:absolute max-md:after:bottom-0 max-md:after:left-0 max-md:after:h-[var(--section-gap-mobile)] max-md:after:w-full max-md:after:bg-surface-elevated max-md:after:content-['']"
       aria-label="Speaker categories"
     >
       <div
         className="pointer-events-none absolute inset-y-0 left-1/2 z-[2] hidden w-[min(1200px,100%)] -translate-x-1/2 border-x border-line lg:block"
         aria-hidden="true"
       />
-      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 pb-0 pt-0">
+      <div className="relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col bg-white px-5 pb-0 pt-0">
         <Reveal className="flex w-full flex-col">
           {groups.map((group, index) => (
             <SpeakerGroupRow

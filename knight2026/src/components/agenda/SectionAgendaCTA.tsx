@@ -3,7 +3,11 @@
 import { agendaCopy } from "@/content/agendaContent";
 import { useLocale } from "@/lib/locale";
 
-export default function SectionAgendaCTA() {
+export default function SectionAgendaCTA({
+  mobileSpeakerStyle = false,
+}: {
+  mobileSpeakerStyle?: boolean;
+}) {
   const locale = useLocale();
   const copy = agendaCopy[locale];
 
@@ -22,10 +26,21 @@ export default function SectionAgendaCTA() {
           K-Night attendees
         </h2>
         <div className="flex min-w-0 flex-col lg:pt-1">
-          <p className="type-h4 text-text">{copy.attendeeDescription}</p>
+          <p
+            className={`${mobileSpeakerStyle ? "type-h3 md:type-h4" : "type-h4"} text-text`}
+          >
+            <span className="md:hidden">
+              {copy.mobileAttendeeDescription ?? copy.attendeeDescription}
+            </span>
+            <span className="hidden md:inline">{copy.attendeeDescription}</span>
+          </p>
         </div>
         <div className="flex min-w-0 flex-col lg:pt-1">
-          <p className="type-h4 text-text">{copy.attendeeFields}</p>
+          <p
+            className={`${mobileSpeakerStyle ? "type-body md:type-h4" : "type-h4"} text-text`}
+          >
+            {copy.attendeeFields}
+          </p>
         </div>
       </div>
     </section>

@@ -30,7 +30,7 @@ export default function SectionAgendaAfterParty() {
           </div>
           <h2
             id="agenda-after-party-heading"
-            className="type-h3 whitespace-pre-line !text-white"
+            className="type-h3 whitespace-normal md:whitespace-pre-line !text-white"
           >
             {copy.afterPartyTitle}
           </h2>

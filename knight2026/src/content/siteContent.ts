@@ -183,6 +183,7 @@ export const comingSoonCopy = {
 
 export const sponsorCopy = {
   en: {
+    title: "Sponsors",
     headerTitle: "Thank you to our sponsors",
     mobileHeaderTitle: "Thank you to\nour sponsors",
     tiers: [
@@ -252,6 +253,7 @@ export const sponsorCopy = {
     cta: "GET IN TOUCH",
   },
   ko: {
+    title: "후원",
     headerTitle: "K-Night 2026을 후원해주신\n모든 분들께 감사드립니다",
     mobileHeaderTitle: "K-Night 2026을 후원해주신\n모든 분들께 감사드립니다",
     tiers: [
@@ -333,7 +335,7 @@ export const donationCopy = {
     impactTitle: "The Impact of Your Support",
     benefits: [
       [
-        "An Open Community",
+        "Open Community",
         "Keeping K-Group free and accessible to Korean professionals across Silicon Valley’s tech community",
       ],
       [
@@ -386,8 +388,7 @@ export const donationSupportCopy = {
     address:
       "Mailing Address: P.O Box 60424, 209 East Java Dr., Sunnyvale, CA 94086",
     matchingTitle: "Corporate Matching",
-    matchingHighlight:
-      "Increase your support impact by 200% through company benefits",
+    matchingHighlight: "200% More Impact with Company Benefits",
     matchingHighlightBody:
       "Consider using corporate donation matching programs available in Silicon Valley. Your contribution can become two or three times larger for K-Group.",
     matchingBody:

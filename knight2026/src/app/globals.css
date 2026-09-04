@@ -1,4 +1,4 @@
-@import '../styles/tokens.css';
+@import "../styles/tokens.css";
 
 @tailwind base;
 @tailwind components;
@@ -168,6 +168,18 @@
   }
 
   @media (min-width: 768px) {
+    .donation-card-title {
+      font-size: var(--type-h4-size);
+      line-height: var(--type-h4-leading);
+      letter-spacing: -0.01em;
+    }
+
+    .donation-card-number {
+      font-size: var(--type-h4-size);
+      line-height: var(--type-h4-leading);
+      letter-spacing: -0.01em;
+    }
+
     .section-compact-page-header {
       min-height: 170px;
     }
@@ -227,6 +239,59 @@
   @media (max-width: 767px) {
     .section-page-start {
       padding-top: 5rem;
+    }
+
+    /* Keep mobile page sections visually separated without changing desktop rhythm. */
+    .home-page > section + section,
+    .about-page > section + section,
+    .agenda-page > section + section,
+    .donation-page > section + section,
+    .speakers-page > section + section,
+    .sponsors-page > section + section,
+    .ticket-page > section + section {
+      padding-top: var(--section-gap-mobile) !important;
+    }
+
+    .home-page > section,
+    .about-page > section,
+    .agenda-page > section,
+    .donation-page > section,
+    .speakers-page > section,
+    .sponsors-page > section,
+    .ticket-page > section {
+      padding-bottom: var(--section-gap-mobile) !important;
+    }
+
+    .sponsors-page > .section-sponsor {
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0 1rem,
+        #fafafa 1rem 100%
+      ) !important;
+    }
+
+    .agenda-page .agenda-schedule-list > .agenda-schedule-row:first-child {
+      padding-top: 0;
+    }
+
+    .agenda-page > .section-agenda-header,
+    .speakers-page > .section-speakers-header,
+    .donation-page > .section-donation-header {
+      padding-bottom: 1rem !important;
+    }
+
+    .agenda-page > .section-agenda-schedule,
+    .speakers-page > .section-speaker-list,
+    .donation-page > .section-donation {
+      padding-top: 1rem !important;
+    }
+
+    .sponsors-page > .section-sponsors-header {
+      padding-bottom: 1rem !important;
+    }
+
+    .sponsors-page > .section-sponsor {
+      padding-top: 1rem !important;
     }
   }
 
@@ -585,7 +650,7 @@
   }
 
   .social-card-name {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.375;
@@ -594,7 +659,7 @@
   }
 
   .social-card-action {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.35;
@@ -609,7 +674,9 @@
     align-items: center;
     justify-content: center;
     color: rgb(var(--color-text-subtle));
-    transition: transform 0.2s var(--ease-out), color 0.2s var(--ease-out);
+    transition:
+      transform 0.2s var(--ease-out),
+      color 0.2s var(--ease-out);
   }
 
   .social-card:focus-visible {
@@ -634,7 +701,7 @@
   }
 
   .section-looping-cta-text {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
@@ -1106,7 +1173,7 @@
 
   /* —— Typography system —— */
   .type-h1 {
-    font-family: theme('fontFamily.display');
+    font-family: theme("fontFamily.display");
     font-size: var(--type-h1-size);
     font-weight: 300;
     line-height: var(--type-h1-leading);
@@ -1114,7 +1181,7 @@
   }
 
   .type-h2 {
-    font-family: theme('fontFamily.display');
+    font-family: theme("fontFamily.display");
     font-size: var(--type-h2-size);
     font-weight: 300;
     line-height: var(--type-h2-leading);
@@ -1122,7 +1189,7 @@
   }
 
   .type-h3 {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: var(--type-h3-size);
     font-weight: 400;
     line-height: var(--type-h3-leading);
@@ -1130,7 +1197,7 @@
   }
 
   .type-h4 {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: var(--type-h4-size);
     font-weight: 400;
     line-height: var(--type-h4-leading);
@@ -1138,7 +1205,7 @@
   }
 
   .type-h5 {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: var(--type-h5-size);
     font-weight: 400;
     line-height: var(--type-h5-leading);
@@ -1146,7 +1213,7 @@
   }
 
   .type-body {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: var(--type-body-size);
     font-weight: 400;
     line-height: var(--type-body-leading);
@@ -1154,7 +1221,7 @@
   }
 
   .type-caption {
-    font-family: theme('fontFamily.mono');
+    font-family: theme("fontFamily.mono");
     font-size: var(--type-caption-size);
     font-weight: 400;
     line-height: var(--type-caption-leading);
@@ -1164,7 +1231,7 @@
 
   /* Buttons, nav links, chips — JetBrains Mono label */
   .type-button {
-    font-family: theme('fontFamily.mono');
+    font-family: theme("fontFamily.mono");
     font-size: var(--type-button-size);
     font-weight: 400;
     line-height: var(--type-button-leading);
@@ -1173,7 +1240,7 @@
   }
 
   .type-footer {
-    font-family: theme('fontFamily.sans');
+    font-family: theme("fontFamily.sans");
     font-size: var(--type-footer-size);
     font-weight: 400;
     line-height: var(--type-footer-leading);
@@ -1480,8 +1547,10 @@
     gap: 1.5rem;
   }
 
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
+  @media (min-width: 768px) {
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
   }
 
   @keyframes marquee-scroll {

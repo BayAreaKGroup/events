@@ -136,19 +136,19 @@ export default function SectionDonation() {
                         alt=""
                         width={705}
                         height={277}
-                        className="size-full object-cover object-bottom md:scale-[1.015] md:object-contain"
+                        className="size-full scale-[1.02] object-cover object-bottom md:scale-[1.015] md:object-contain"
                         loading="lazy"
                         decoding="async"
                         sizes="(min-width: 1024px) 235px, (min-width: 640px) 50vw, 100vw"
                       />
                     </div>
                     <div className="flex flex-1 flex-col gap-3 p-0">
-                      <span className="type-h4 text-text">
+                      <span className="donation-card-number type-h3 text-text">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       <div className="flex flex-col gap-1.5">
                         <h4
-                          className={`type-body font-normal text-text ${locale === "en" ? "text-balance" : ""}`}
+                          className={`donation-card-title type-h4 text-text md:min-h-[calc(var(--type-h4-size)*var(--type-h4-leading)*2)] ${locale === "en" ? "text-balance" : ""}`}
                         >
                           {benefitCopy[0]}
                         </h4>

@@ -31,7 +31,7 @@ export default function SectionDonationSupport() {
       >
         {/* Title 371 / gap 48 / methods 741 */}
         <div
-          className="flex w-full flex-col gap-10 lg:flex-row lg:items-start lg:gap-12"
+          className="flex w-full flex-col gap-6 lg:flex-row lg:items-start lg:gap-12"
           data-node-id="562:7243"
         >
           <Reveal className="w-full shrink-0 lg:w-[371px]">

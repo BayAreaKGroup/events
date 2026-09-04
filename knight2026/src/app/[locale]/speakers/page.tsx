@@ -8,7 +8,7 @@ export default function SpeakersPage() {
     <main className="speakers-page">
       <SectionSpeakersHeader />
       <SectionSpeakerList />
-      <SectionAgendaCTA />
+      <SectionAgendaCTA mobileSpeakerStyle />
       <Footer />
     </main>
   );

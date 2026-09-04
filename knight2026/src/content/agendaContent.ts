@@ -16,9 +16,12 @@ export type AgendaCopy = {
   downloadLabel: string;
   attendeeFields: string;
   attendeeDescription: string;
+  mobileAttendeeDescription?: string;
   groupsTitle: string;
+  mobileGroupsTitle?: string;
   groupsDescription: string;
   groupsList: string;
+  mobileGroupsList?: string;
   afterPartyTitle: string;
   afterPartyDescription: string;
   afterPartyBody?: string;
@@ -42,11 +45,17 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
       "SWE · AI/ML · Data Science & Engineering · PM · HW/Semicon · Design · Cybersecurity · Bio/Healthcare · Robotics · Marketing · Sales · Startup · VC · Research/Academia · HR · Finance · Legal · Students & More",
     attendeeDescription:
       "K-Night brings together people from a wide range of fields.",
+    mobileAttendeeDescription:
+      "K-Night brings together people from a wide range of fields",
     groupsTitle: "Meet K-Group’s Subgroups",
+    mobileGroupsTitle:
+      "Meet K-Group’s subgroups, explore their activities, and make new connections.",
     groupsDescription:
       "K-Night hosts booths for K-Group’s diverse communities, giving you an opportunity to meet the people behind them.",
     groupsList:
       "Bio AI, SV Money Book Club, Study Club++, Boardgame, Between Jobs, WiNG, ESKAPE, and AI/ML groups will be there. Stop by the booths of groups you are interested in to learn more about what they do and chat with the organizers.",
+    mobileGroupsList:
+      "Bio AI · SV Money Book Club · Study Club++ · Boardgame · Between Jobs · WiNG · ESKAPE · AI/ML Groups",
     afterPartyTitle: "K-Night x DivZero\nAfter Party",
     afterPartyDescription:
       "Continue the K-Night experience at the official after party, hosted and sponsored by DivZero at Steins.",
@@ -127,7 +136,9 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
     attendeeFields:
       "SWE · AI/ML · Data Science & Engineering · PM · HW/Semicon · Design · Cybersecurity · Bio/Healthcare · Robotics · Marketing · Sales · Startup · VC · Research/Academia · HR · Finance · Legal · Students & More",
     attendeeDescription: "K-Night에는 다양한 분야의 사람들이 참석합니다.",
+    mobileAttendeeDescription: "K-Night에는 다양한 분야의 사람들이 참석합니다",
     groupsTitle: "K-Group의 다양한 소그룹을 만나보세요!",
+    mobileGroupsTitle: "K-Group의 다양한 소그룹을 만나보세요",
     groupsDescription:
       "K-Night에서는 K-Group의 다양한 소그룹을 직접 만나볼 수 있는 소그룹 부스가 운영됩니다.",
     groupsList:

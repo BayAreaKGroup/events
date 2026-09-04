@@ -18,8 +18,9 @@ export default function SectionSponsorsHeader() {
         aria-hidden="true"
       />
 
-      <Stagger className="section-compact-page-header-content relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col px-5 py-5 md:py-7 lg:py-8">
-        <StaggerItem className="w-full shrink-0 lg:w-[741px]">
+      <Stagger className="section-compact-page-header-content relative z-[1] mx-auto flex w-full max-w-[1200px] flex-col gap-3 px-5 py-5 md:gap-4 md:py-7 lg:py-8">
+        <StaggerItem className="flex w-full shrink-0 flex-col gap-2 lg:w-[741px]">
+          <p className="type-caption text-text-muted">{copy.title}</p>
           <h1
             id="sponsors-header-heading"
             className="type-h2 whitespace-pre-line text-text max-md:whitespace-normal"

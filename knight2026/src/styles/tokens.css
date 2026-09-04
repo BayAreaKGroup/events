@@ -60,6 +60,7 @@
 
   --section-pad-top: calc(var(--nav-height) + 1.25rem);
   --section-pad-bottom: 2rem;
+  --section-gap-mobile: 2rem;
 
   /*
     Typography — mobile-first scale
@@ -75,7 +76,7 @@
   --type-h4-leading: 1.23;
   --type-h5-size: 1.125rem;
   --type-h5-leading: 1.25;
-  --type-body-size: 1rem;
+  --type-body-size: 0.875rem;
   --type-body-leading: 1.6;
   --type-body-tracking: 0;
   --type-caption-size: 0.75rem; /* 12px */
