@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="layout-container flex flex-col items-center text-center md:items-stretch md:text-left">
         <div className="flex w-full flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
           <Link
-            href={`${getLocalizedHref(currentLocale)}#hero`}
+            href={getLocalizedHref(currentLocale)}
             className="inline-flex h-6 w-auto shrink-0 items-center justify-center transition-opacity hover:opacity-70 md:size-[73px]"
             aria-label="Bay Area Group home"
             onClick={(event) => {

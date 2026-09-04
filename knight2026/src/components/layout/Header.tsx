@@ -126,7 +126,7 @@ export default function Header() {
           data-node-id="561:6101"
         >
           <Link
-            href={`${getLocalizedHref(currentLocale)}#hero`}
+            href={getLocalizedHref(currentLocale)}
             className="inline-flex h-11 w-11 shrink-0 items-center overflow-hidden transition-opacity hover:opacity-70 active:opacity-70 md:w-[132px]"
             aria-label="Bay Area Group — Home"
             data-node-id="561:6102"
