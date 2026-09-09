@@ -468,7 +468,7 @@ export const ticketCopy = {
       ],
       [
         "Registration & Refund Deadline",
-        "Ticket purchases and refunds will be available until Thursday, September 10 at 5:00 PM (PT).",
+        "Ticket purchases and refunds will be available until Thursday, September 10 at 8:00 PM (PT).",
       ],
       [
         "No On-site Ticket Sales",
@@ -510,14 +510,14 @@ export const ticketCopy = {
         "매진 유의",
         "준비된 티켓이 조기에 마감 될 수 있으니 구매를 서둘러 주세요.",
       ],
-      ["사전 예매 및 환불", "9/10(목) 오후 5시까지만 가능합니다."],
+      ["사전 예매 및 환불", "9/10(목) 오후 8시까지만 가능합니다."],
       [
         "현장 판매 없음",
         "모든 티켓은 사전 구매로만 판매되며, 행사 당일 현장 판매는 진행하지 않습니다.",
       ],
       [
         "미성년자 입장 불가",
-        "본 행사에는 미성년자가 동반 및 입장할 수 없습니다.(No Minors Allowed)",
+        "본 행사에는 미성년자가 동반 및 입장할 수 없습니다.",
       ],
       [
         "진행 언어",
