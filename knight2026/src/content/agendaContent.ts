@@ -87,8 +87,8 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         startTime: "5:10 PM",
         title: "Keynote Session",
         speakers: [
-          "Kristy Kim, Co-Founder & CEO, Tomo Credit",
-          "Kathy Ku, Partner, Sazze",
+          "Kristy Kim, Co-Founder & CEO @ TomoCredit",
+          "Kathy Ku, Partner @ Sazze",
         ],
         type: "KEYNOTE",
       },
@@ -185,8 +185,8 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         startTime: "5:10 PM",
         title: "Keynote Session",
         speakers: [
-          "크리스티 김, Co-Founder & CEO, Tomo Credit",
-          "구 슬, Partner, Sazze",
+          "크리스티 김, Co-Founder & CEO @ TomoCredit",
+          "구 슬, Partner @ Sazze",
         ],
         type: "KEYNOTE",
       },
