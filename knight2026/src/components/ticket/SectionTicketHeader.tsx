@@ -165,7 +165,6 @@ export default function SectionTicketHeader() {
         >
           {ticketOptions.map((option, index) => {
             const isEarly = option.variant === "early";
-            const isDisabled = isEarly || option.variant === "regular";
 
             return (
               <StaggerItem
@@ -207,10 +206,10 @@ export default function SectionTicketHeader() {
                         : copy.regularButton,
                       destination_url: ticketDestinationUrl,
                     }}
-                    disabled={isDisabled}
+                    disabled={isEarly}
                     className={[
                       "type-button inline-flex h-10 max-md:w-full shrink-0 items-center justify-center px-4 py-2 text-center text-sm md:h-11 md:px-5 md:py-0 md:text-base",
-                      isDisabled
+                      isEarly
                         ? "pointer-events-none cursor-not-allowed rounded-[12px] border btn-muted"
                         : "cursor-pointer rounded-[12px] border btn-home-cta",
                     ].join(" ")}
