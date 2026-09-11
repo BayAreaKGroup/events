@@ -51,25 +51,40 @@ export default function SectionAgendaSchedule() {
                       "rgb(var(--color-muted-surface))",
                   }}
                 >
-                  {item.type}
+                  {item.tag ?? item.type}
                 </span>
               ) : null}
               <div className="flex min-w-0 flex-col gap-3 md:col-start-2 md:row-start-1">
-                <h3 className="type-h4 text-text">
-                  {item.title.includes(" — ") ? (
-                    <>
-                      {item.title.split(" — ")[0]}
-                      <br className="md:hidden" />
-                      {` — ${item.title.split(" — ")[1]}`}
-                    </>
-                  ) : (
-                    item.title
-                  )}
-                </h3>
+                {!item.repeatTitleForSpeakers ? (
+                  <h3 className="type-h4 text-text">
+                    {item.title.includes(" — ") ? (
+                      <>
+                        {item.title.split(" — ")[0]}
+                        <br className="md:hidden" />
+                        {` — ${item.title.split(" — ")[1]}`}
+                      </>
+                    ) : (
+                      item.title
+                    )}
+                  </h3>
+                ) : null}
                 {item.description ? (
                   <p className="type-body">{item.description}</p>
                 ) : null}
-                {item.speakers?.length ? (
+                {item.repeatTitleForSpeakers && item.speakers?.length ? (
+                  <div className="flex flex-col gap-5">
+                    {item.speakers.map((speaker, index) => (
+                      <div key={speaker} className="flex flex-col gap-1">
+                        <h3 className="type-h4 text-text">
+                          {item.speakerTitles?.[index] ?? item.title}
+                        </h3>
+                        <p className="type-body whitespace-pre-line max-md:text-[12px]">
+                          {speaker}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : item.speakers?.length ? (
                   <p className="type-body whitespace-pre-line max-md:text-[12px]">
                     {item.speakers.join("\n")}
                   </p>

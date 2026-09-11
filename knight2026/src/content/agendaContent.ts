@@ -5,7 +5,10 @@ export type AgendaItem = {
   title: string;
   description?: string;
   speakers?: readonly string[];
+  speakerTitles?: readonly string[];
   type?: string;
+  tag?: string;
+  repeatTitleForSpeakers?: boolean;
   location?: string;
 };
 
@@ -73,6 +76,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         startTime: "4:00 PM",
         title: "Check-In & Pre-Networking with Dinner",
         type: "ARRIVAL",
+        tag: "Check-In",
       },
       {
         startTime: "5:00 PM",
@@ -90,13 +94,14 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
       },
       {
         startTime: "6:00 PM",
-        title: "Fireside Chat",
+        title: "Beyond Borders, Building Careers Between Korea and the U.S.",
         speakers: [
           "Yu Seung Kim, Corporate Vice President, Head of Security Lab @ Samsung Electronics",
           "Junyong Suh, Senior Member of Technical Staff @ Nutanix",
           "Joo Yeon Chae, K-Group Director, Senior Engineer @ AMD",
         ],
         type: "CONVERSATION",
+        tag: "Fireside Chat",
       },
       {
         startTime: "6:30 PM",
@@ -117,7 +122,16 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
           "Jung Yeon Kim, Software Engineer, Musical Producer",
           "Sam Jang, Staff Product Designer @ Rivian",
         ],
+        speakerTitles: [
+          "Where Possibility Meets Opportunity",
+          "The Good Intentions Behind Change",
+          "Beyond the Plan: In Defense of Being a P",
+          "From Fangirl to Creator",
+          "One Less",
+        ],
         type: "TALKS",
+        tag: "20x20 Talk",
+        repeatTitleForSpeakers: true,
       },
       {
         startTime: "8:20 PM",
@@ -160,6 +174,7 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
         startTime: "4:00 PM",
         title: "Check-In & Pre-Networking with Dinner",
         type: "ARRIVAL",
+        tag: "Check-In",
       },
       {
         startTime: "5:00 PM",
@@ -177,13 +192,14 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
       },
       {
         startTime: "6:00 PM",
-        title: "Fireside Chat",
+        title: "Beyond Borders, 한·미를 오가는 커리어 이야기",
         speakers: [
           "김유승, Corporate Vice President, Head of Security Lab @ Samsung Electronics",
           "서준용, Senior Member of Technical Staff @ Nutanix",
           "채주연, K-Group Director, Senior Engineer @ AMD",
         ],
         type: "CONVERSATION",
+        tag: "Fireside Chat",
       },
       {
         startTime: "6:30 PM",
@@ -204,7 +220,16 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
           "김정연, Software Engineer, Musical Producer",
           "장현석, Staff Product Designer @ Rivian",
         ],
+        speakerTitles: [
+          "가능성이 기회를 만날 때",
+          "변덕이라는 이름의 선의",
+          "계획대로 되지는 않지만 괜찮아: P의 변론",
+          "From Fangirl to Creator",
+          "하나빼기",
+        ],
         type: "TALKS",
+        tag: "20x20 Talk",
+        repeatTitleForSpeakers: true,
       },
       {
         startTime: "8:20 PM",
