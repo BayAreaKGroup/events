@@ -90,7 +90,12 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
           "Kristy Kim, Co-Founder & CEO @ TomoCredit",
           "Kathy Ku, Partner @ Sazze",
         ],
+        speakerTitles: [
+          "The outsider advantage in the age of AI",
+          "Beyond AI : On efficiency, impact, and what we should actually be optimizing for",
+        ],
         type: "KEYNOTE",
+        repeatTitleForSpeakers: true,
       },
       {
         startTime: "6:00 PM",
@@ -188,7 +193,12 @@ export const agendaCopy: Record<Locale, AgendaCopy> = {
           "크리스티 김, Co-Founder & CEO @ TomoCredit",
           "구 슬, Partner @ Sazze",
         ],
+        speakerTitles: [
+          "The outsider advantage in the age of AI",
+          "Beyond AI : On efficiency, impact, and what we should actually be optimizing for",
+        ],
         type: "KEYNOTE",
+        repeatTitleForSpeakers: true,
       },
       {
         startTime: "6:00 PM",
